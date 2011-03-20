@@ -17,25 +17,20 @@ You should have received a copy of the GNU General Public License
 along with Derpy Delivery. If not, see <http://www.gnu.org/licenses/>.
 """
 
-try:
-	import sys
-	import pygame
-	import pymunk
-	import os
-	import time
-	import handle.img
-	import handle.obj
-	import handle.key
-	import handle.room
-	import handle.snd
-	import cfg
-	from math import pi
-	import traceback
-	
-	
-except ImportError, err:
-	print "Failed to load Module. %s" % (err)
-	sys.exit(2)
+import sys
+import pygame
+import pymunk
+import os
+import json
+import time
+import handle.img
+import handle.obj
+import handle.key
+import handle.room
+import handle.snd
+import cfg
+from math import pi
+import traceback
 	
 #go
 #	run game
@@ -95,6 +90,34 @@ def __init():
 def __load():
 	loadingImages = True
 	loadingSounds = True
+	#load defaults
+	cfg.leftButton = str(pygame.K_LEFT)
+	cfg.rightButton = str(pygame.K_RIGHT)
+	cfg.upButton = str(pygame.K_UP)
+	cfg.downButton = str(pygame.K_DOWN)
+	cfg.menuButton = str(pygame.K_ESCAPE)
+	cfg.startButton = str(pygame.K_SPACE)
+	cfg.oneButton = str(pygame.K_z)
+	cfg.twoButton = str(pygame.K_x)
+	#try to load external settings
+	cfgFile = os.path.abspath("config")
+	if os.path.isfile(cfgFile):
+		f = open(cfgFile, 'r')
+		try:
+			settings = json.load(f)
+			cfg.rightButton = settings["controls"]["right"]
+			cfg.upButton = settings["controls"]["up"]
+			cfg.leftButton = settings["controls"]["left"]
+			cfg.downButton = settings["controls"]["down"]
+			cfg.oneButton = settings["controls"]["one"]
+			cfg.twoButton = settings["controls"]["two"]
+			cfg.startButton = settings["controls"]["start"]
+			cfg.menuButton = settings["controls"]["menu"]
+			cfg.sndH.musicVolume = float(settings["sound"]["music"])
+			cfg.sndH.effectVolume = float(settings["sound"]["effects"])
+		except (ValueError, KeyError):
+			pass
+		f.close()
 	#load images
 	while loadingImages:
 		__procMsg()	#process messages
@@ -106,7 +129,6 @@ def __load():
 			pygame.display.flip()
 		else:
 			loadingImages = False
-	print cfg.imgH.file
 	#load sounds
 	while loadingSounds:
 		__procMsg() #process messages
@@ -118,6 +140,8 @@ def __load():
 			pygame.display.flip()
 		else:
 			loadingSounds = False
+	#set the options menu key
+	cfg.keyH.assignKeyPress(cfg.menuButton, cfg.rmH.pause)
 	#set default room
 	cfg.rmH.mainMenu()
 #exit
@@ -149,25 +173,24 @@ def __loop():
 	
 	now = time.clock()		#used to measure FPS
 	frame = 0				#counts the frames
-	spaceStepSize = 1/60.0
-	
+	fs = 1.0/(cfg.objH.defFS*cfg.objH.frameSpeed)
 	#the main loop
 	while True:
 		#limits the loop speed
-		cfg.clock.tick(60)
+		cfg.clock.tick(cfg.objH.defFS*cfg.objH.frameSpeed)
 		
 		#FPS counter for testing
 		#not 100% accurate
 		frame += 1
 		if time.clock() - now >= 1:
 			now = time.clock()
-			pygame.display.set_caption("Derpy Delivery - 0.01.00 FPS: " + str(frame) + "ish")
-			frame = 0 
+			pygame.display.set_caption("Derpy Delivery - 0.02.00 FPS: " + str(frame) + "ish")
+			frame = 0
 			
 		#prestep and physics
 		if not cfg.objH.paused:
 			cfg.objH.preStep()
-			cfg.space.step(spaceStepSize)
+			cfg.space.step(fs)
 			
 		#process messages
 		__procMsg()
@@ -184,19 +207,21 @@ def __loop():
 		cfg.objH.draw()
 		
 		#flip display
-		pygame.display.flip()
+		pygame.display.update(cfg.objH.cam.getRect())
 		
 #procMsg
 #	processes message
 def __procMsg():
 	#pygame message
 	for event in pygame.event.get():
-		if event.type == pygame.QUIT:			#quit
+		if event.type == pygame.QUIT:												#quit
 			__exit()
-		elif event.type == pygame.KEYDOWN:		#keyboard press
+		elif event.type == pygame.KEYDOWN or event.type == pygame.JOYBUTTONDOWN:		#keyboard/joystick press
 			cfg.keyH.processPress(event)
-		elif event.type == pygame.KEYUP:		#keyboard release
+		elif event.type == pygame.KEYUP or event.type == pygame.JOYBUTTONUP:		#keyboard/joystick release
 			cfg.keyH.processRelease(event)
-		else:									#other
+		elif event.type == pygame.JOYAXISMOTION:									#joystick analog axis
+			cfg.keyH.processAnalog(event)
+		else:																		#other
 			pass
 			

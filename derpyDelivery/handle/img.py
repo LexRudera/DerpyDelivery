@@ -20,6 +20,9 @@ along with Derpy Delivery. If not, see <http://www.gnu.org/licenses/>.
 import os
 import pygame
 from derpyDelivery import cfg
+from math import ceil
+import pygame.rect
+import pygame.surface
 
 #handles images
 class handler():
@@ -61,8 +64,31 @@ class handler():
 	#loads an image
 	def __loadImage(self, filePath):
 		image = pygame.image.load(filePath)								#load image
-		image = image.convert(cfg.window)
-		image.set_colorkey((0,255,0), pygame.HWSURFACE)					#set transparency key to (0, 255, 0)
-		return image
-		
-		
+		image = image.convert()
+		image.set_colorkey((0,255,0))					#set transparency key to (0, 255, 0)
+		clipW = 250
+		clipH = 250
+		if image.get_width() <= clipW and image.get_height() <= clipH:
+			#return image
+			return image
+		else:
+			images = []
+			#shred image
+			hT = int(ceil(image.get_width()/clipW))
+			vT = int(ceil(image.get_height()/clipH))
+			for hi in range(0, hT+1):
+				dW = clipW
+				if (hi+1)*clipW > image.get_width():
+					dW = clipW-(((hi+1)*clipW)-image.get_width())
+				for vi in range(0, vT+1):
+					clipRect = pygame.rect.Rect((hi*clipW, vi*clipH), (clipW, clipH))
+					dH = clipH
+					if (vi+1)*clipH > image.get_height():
+						dH = clipH-(((vi+1)*clipH)-image.get_height())
+					clipImage = pygame.surface.Surface((dW, dH))
+					clipImage = clipImage.convert()
+					clipImage.fill((0,255,0))
+					clipImage.set_colorkey((0,255,0))
+					clipImage.blit(image, (0,0), clipRect)
+					images.append((clipImage, hi*clipW, vi*clipH))
+			return images

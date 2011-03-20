@@ -25,3 +25,13 @@ keyH = None
 rmH = None
 space = None
 sndH = None
+
+#keybindings
+leftButton = None
+rightButton = None
+upButton = None
+downButton = None
+menuButton = None
+startButton = None
+oneButton = None
+twoButton = None

@@ -22,12 +22,16 @@ import pygame
 from math import ceil, degrees, cos, sin, pi, tan, hypot, floor, radians
 from derpyDelivery import cfg
 from objects.base import base
+import json
+import os
+import types
 
 #handles objects
 class handler():
 	
 	def __init__(self):
 		#load fonts
+		self.veryLargeText = pygame.font.Font(os.path.join(os.path.abspath('font'), "font.ttf"), 34)
 		self.largeText = pygame.font.Font(os.path.join(os.path.abspath('font'), "font.ttf"), 22)
 		self.mediumText = pygame.font.Font(os.path.join(os.path.abspath('font'), "font.ttf"), 14)
 		self.smallText = pygame.font.Font(os.path.join(os.path.abspath('font'), "font.ttf"), 10)
@@ -38,6 +42,11 @@ class handler():
 		self.keyReleasePrePause = {}
 		self.keyDownPrePause = {}
 		self.keyPressPrePause = {}
+		#framespeed
+		self.frameSpeed = 1
+		self.defFS = 30
+		#stage scores
+		self.stageScores = {}
 	
 	#create new object
 	#	arguments:
@@ -48,6 +57,31 @@ class handler():
 	def new(self, objectType, *args):
 		newObject = objectType(*args)
 		return newObject
+	
+	def saveSettings(self):
+		controls = {
+			"right"		: cfg.rightButton,
+			"up"		: cfg.upButton,
+			"left"		: cfg.leftButton,
+			"down"		: cfg.downButton,
+			"one"		: cfg.oneButton,
+			"two"		: cfg.twoButton,
+			"start"		: cfg.startButton,
+			"menu"		: cfg.menuButton
+		}
+		sound = {
+			"music" 	: str(cfg.sndH.musicVolume),
+			"effects" 	: str(cfg.sndH.effectVolume),
+		}
+		video = {"fps" : str(self.frameSpeed)}
+		settings = {
+			"controls" 	: controls,
+			"sound"		: sound,
+			"video"		: video
+		}
+		f = open(os.path.abspath("config"), "w")
+		jsonCfg = json.dump(settings, f)
+		f.close()
 		
 	#pause
 	def pause(self):
@@ -60,8 +94,9 @@ class handler():
 			cfg.keyH.keyRelease = {}
 			cfg.keyH.keyDown = {}
 			cfg.keyH.keyPress = {}
+			
 			for e in self.keyReleasedPrePause:
-				if self.keyReleasePrePause[e] == cfg.rmH.pause:
+				if self.keyReleasedPrePause[e] == cfg.rmH.pause:
 					cfg.keyH.assignKeyRelease(e, cfg.rmH.pause)
 			for e in self.keyDownPrePause:
 				if self.keyDownPrePause[e] == cfg.rmH.pause:
@@ -96,49 +131,83 @@ class handler():
 		self.cam.follow()
 		#draw background, repeat it if necessary
 		if cfg.rmH.bgImage is not None:
-			xTimes = 0
-			yTimes = 0
-			bgWidth = cfg.rmH.bgImage.get_width()
-			bgHeight = cfg.rmH.bgImage.get_height()
-			if cfg.rmH.bgRepeat[0]:
-				xTimes = int(ceil((cfg.rmH.dimensions[0]/bgWidth)))+1
+			if isinstance(cfg.rmH.bgImage, types.ListType):
+				for imgDef in cfg.rmH.bgImage:
+					img = imgDef[0]
+					ioW = imgDef[1]
+					ioH = imgDef[2]
+					if self.cam.isInView((ioW, ioH), img):
+						position = (ioW-self.cam.position[0], ioH-self.cam.position[1])
+						cfg.window.blit(img, position)
 			else:
-				xTimes = 1
-			if cfg.rmH.bgRepeat[1]:
-				yTimes = int(ceil((cfg.rmH.dimensions[0]/bgHeight)))+1
-			else:
-				yTimes = 1
-			for xRepeat in range(xTimes):
-				for yRepeat in range(yTimes):
-					position = (xRepeat*bgWidth, yRepeat*bgHeight)
-					if self.cam.isInView(position, cfg.rmH.bgImage):
-						position = (position[0]-self.cam.position[0], position[1]-self.cam.position[1])
-						cfg.window.blit(cfg.rmH.bgImage, position)
+				position = (-self.cam.position[0], -self.cam.position[1])
+				cfg.window.blit(cfg.rmH.bgImage, position)
 		else:
-			cfg.window.fill((0,0,0))	#fill window
+			pass
+			cfg.window.fill((86,189,227))	#fill window
 		#sort objects by depth
 		base.instances.sort(key = lambda d: d.depth, reverse = True)
 		#draw each object in order if visible
 		for o in base.instances:
 			if o.visible:
 				if o.image is not None:
-					img = o.image[o.imageIndex]													#get img
-					if o.alpha != 255:															#apply alpha
-						img.set_alpha(o.alpha)
-					if o.scale != 1:															#apply scale
-						img = pygame.transform.scale(img, (int(img.get_width()*o.scale), int(img.get_height()*o.scale)))
-					rot = (degrees(o.body.angle)/2.0)											#apply rotation, limit to degrees of 2
-					if rot < 0:
-						rot = ceil(rot)
-					else:
-						rot = floor(rot)
-					rot *= 2
-					if rot != 0:
-						img = pygame.transform.rotate(img, -rot)
-					imgCenter = (img.get_width()/2, img.get_height()/2)							#get center
-					if self.cam.isInView(o.body.position+o.drawffset-imgCenter, img):			#if in view
-						center = o.body.position-self.cam.position+o.drawffset						#find object center
-						cfg.window.blit(img, center-imgCenter)										#draw
+					images = o.image[o.imageIndex]												#get img
+					if isinstance(images, types.ListType):
+							#shredded image
+						last = images[len(images)-1]
+						width = last[1]+last[0].get_width()
+						height = last[2]+last[0].get_height()
+						center = o.body.position-self.cam.position+o.drawffset					#find object center
+						camRect = pygame.rect.Rect((0, 0), (840, 525))
+						imgCenter = (width/2, height/2)
+						for imgDef in images:
+							img = imgDef[0]
+							ioW = imgDef[1]
+							ioH = imgDef[2]
+							if self.cam.isInView(o.body.position+o.drawffset+(ioW, ioH)-imgCenter, img):			#if in view
+								if o.alpha != img.get_alpha():														
+									img.set_alpha(o.alpha, pygame.RLEACCEL)
+								myRect = pygame.rect.Rect(center-imgCenter+(ioW, ioH), (img.get_width(), img.get_height()))
+								cliprect = camRect.clip(myRect)
+								cliprect = cliprect.move(-(center-imgCenter+(ioW, ioH)))
+								cfg.window.blit(img, center-imgCenter+(ioW, ioH)+(cliprect.left, cliprect.top), cliprect)
+								"""testing
+								pygame.draw.rect(cfg.window, (255, 0, 255), pygame.rect.Rect(center-imgCenter+(cliprect.left, cliprect.top), (img.get_width(), img.get_height())), 1)
+								cliprect = cliprect.move(center[0]-imgCenter[0], center[1]-imgCenter[1])
+								pygame.draw.rect(cfg.window, (255, 0, 0), cliprect, 1)
+								pygame.draw.circle(cfg.window, (0, 0, 255), o.body.position-self.cam.position, 10)
+								pygame.draw.circle(cfg.window, (255, 255, 0), center-imgCenter, 5)
+								pygame.draw.circle(cfg.window, (255, 0, 255), center, 5)
+								"""
+								
+					else:	#single image
+						img = images
+						if o.scale != 1:															#apply scale
+							img = pygame.transform.scale(img, (int(img.get_width()*o.scale), int(img.get_height()*o.scale)))
+						rot = (degrees(o.body.angle)/2.0)											#apply rotation, limit to degrees of 2
+						if rot < 0:
+							rot = ceil(rot)
+						else:
+							rot = floor(rot)
+						rot *= 2
+						if rot != 0:
+							img = pygame.transform.rotate(img, -rot)
+						imgCenter = (img.get_width()/2, img.get_height()/2)							#get center
+						if self.cam.isInView(o.body.position+o.drawffset-imgCenter, img):			#if in view														
+							img.set_alpha(o.alpha)
+							center = o.body.position-self.cam.position+o.drawffset						#find object center
+							camRect = pygame.rect.Rect((0, 0), (840, 525))
+							myRect = pygame.rect.Rect(center-imgCenter, (img.get_width(), img.get_height()))
+							cliprect = camRect.clip(myRect)
+							cliprect = cliprect.move(-(center-imgCenter))
+							cfg.window.blit(img, center-imgCenter+(cliprect.left, cliprect.top), cliprect)
+							"""testing
+							cliprect = cliprect.move(center[0]-imgCenter[0], center[1]-imgCenter[1])
+							pygame.draw.rect(cfg.window, (255, 0, 0), cliprect, 1)
+							pygame.draw.circle(cfg.window, (255, 255, 0), center-imgCenter, 5)
+							pygame.draw.circle(cfg.window, (255, 0, 255), center, 5)
+							"""
+						
 				o.draw()
 	
 #handles camera
@@ -150,6 +219,9 @@ class camera():
 			self.__view = (cfg.window.get_width(), cfg.window.get_height())
 			self.tracker = None
 			self.trackingBounds = (self.__view[0]/3, self.__view[1]/3)
+			
+		def getRect(self):
+			return pygame.rect.Rect((0,0), (840, 525))
 		
 		#check if an image is in the view
 		def isInView(self, position, img):

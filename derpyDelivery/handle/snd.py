@@ -65,8 +65,8 @@ class handler():
 		return sound
 		
 	#play sound
-	def play(self, soundIndex):
-		self.file[soundIndex].set_volume(self.effectVolume)
+	def play(self, soundIndex, volume = 1):
+		self.file[soundIndex].set_volume(self.effectVolume*volume)
 		self.channels[soundIndex].stop()
 		self.channels[soundIndex].play(self.file[soundIndex])
 		

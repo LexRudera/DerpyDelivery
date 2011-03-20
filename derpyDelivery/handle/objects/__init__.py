@@ -19,9 +19,9 @@ along with Derpy Delivery. If not, see <http://www.gnu.org/licenses/>.
 
 from test import testBlock
 
-from derpy import derpy
-from mainMenu import mainMenuController, optionsMenu
-from dynamicBlock import dynamicBlock, dynamicPoly
-from env import crate, balloon, mail, bush, birdWithMail
-from cutscene import introCutsceneController
-from characters import boxBrown
+from derpyM import derpy
+from mainMenuM import *
+from dynamicBlockM import *
+from envM import *
+from cutsceneM import *
+from charactersM import *

@@ -40,8 +40,9 @@ class base():
 		if "instances" not in vars(self.__class__):
 			self.__class__.instances = []
 		self.__class__.instances.append(self)
-		#create the 
-		base.instances.append(self)
+		#create the
+		if self.__class__ != base:
+			base.instances.append(self)
 		#image
 		self.image = None
 		self.rect = None
@@ -54,13 +55,14 @@ class base():
 		self.imageSpeed = float(1)
 		self.__imageIncrement = float(0)
 		self.drawffset = (0, 0)
+		self.position = position
 		#physics
 		self.__static = static
 		self.__solid = solid
 		self.body = None
 		self.shapes = []
 		if not self.__static:
-			self.body = pymunk.Body(10, 100)
+			self.body = pymunk.Body(10, 1000)
 			cfg.space.add(self.body)
 		else:
 			self.body = pymunk.Body(pymunk.inf, pymunk.inf)
@@ -70,6 +72,7 @@ class base():
 		self.setImage(imageKey)
 		#collisions
 		self.solid = False
+		self.currentLayer = 1
 	
 	#flags the object for destruction in the next step
 	def postDestroy(self):
@@ -77,20 +80,32 @@ class base():
 		
 	#destroys the object's physics existence
 	def destroy(self, obj = None, *args, **kwargs):
-		print self.__class__.__name__
-		if cfg.objH.cam.tracker == self:
-			cfg.objH.cam.tracker = None
-		self.__class__.instances.remove(self)
-		base.instances.remove(self)
+		if self in self.__class__.instances and self in base.instances:
+			if cfg.objH.cam.tracker == self:
+				cfg.objH.cam.tracker = None
+			if self.__class__ != base:
+				self.__class__.instances.remove(self)
+			base.instances.remove(self)
+			if self.__static:
+				for shape in self.shapes:
+					try:
+						cfg.space.remove_static(shape)
+					except:
+						pass
+			else:
+				for shape in self.shapes:
+					try:
+						cfg.space.remove(shape)
+					except:
+						pass
+				cfg.space.remove(self.body)
+			self.body.parentObject = None
+		
+	def getDrawPos(self):
 		if self.__static:
-			for shape in self.shapes:
-				cfg.space.remove_static(shape)
+			return self.position
 		else:
-			for shape in self.shapes:
-				cfg.space.remove(shape)
-			cfg.space.remove(self.body)
-		self.body.parentObject = None
-		del self
+			return self.body.position
 		
 	#moves an object in space
 	#	arguments:
@@ -103,19 +118,26 @@ class base():
 	#	arguments:
 	#		position	- (x, y) tuple defining the position in space for the object
 	def set(self, position):
+		self.position = position
 		self.body.position = (position[0], position[1])
 		
 	#applies an impulse to the object's body
 	#	arguments:
 	#		force - the force to apply
 	def impulse(self, force):
-		self.body.apply_impulse(force)
+		if cfg.objH.frameSpeed == 1:
+			self.body.apply_impulse((force[0]*2, force[1]*2))
+		else:
+			self.body.apply_impulse(force)
 		
 	#applies a force to the object's body
 	#	arguments:
 	#		force - the force to apply
 	def force(self, force):
-		self.body.apply_force(force)
+		if cfg.objH.frameSpeed == 1:
+			self.body.apply_force((force[0]*2, force[1]*2))
+		else:
+			self.body.apply_force(force)
 		
 	#set collision event
 	#	arguments:
@@ -138,12 +160,16 @@ class base():
 		self = None
 		event = args[0]
 		other = None
+		myShapes = []
 		for shape in arbiter.shapes:
+			if shape is None:
+				return False
 			if shape.body.parentObject.__class__ == declarer.__class__:
 				self = shape.body.parentObject
+				myShapes.append(shape)
 			else:
 				other = shape.body.parentObject
-		event(self, other)
+		event(self, other, myShapes)
 		if other.__solid and self.__solid:
 			return True
 		else:
@@ -151,15 +177,23 @@ class base():
 	
 	#animation step processed every loop
 	def animateStep(self):
+		iSpeed = self.imageSpeed
+		if cfg.objH.frameSpeed == 1:
+			iSpeed *= 2
 		#animate
 		if self.__maxImageIndex > 0:												#if has animation
 			if self.imageSpeed > 0:													#	if animating
-				self.__imageIncrement += self.imageSpeed							#		increment frame counter
+				self.__imageIncrement += iSpeed										#		increment frame counter
 				if self.__imageIncrement >= 1:										#		if frame threshold exceeded
+					
 					self.imageIndex += int(floor(self.__imageIncrement))			#			increases frame index
 					self.__imageIncrement -= floor(self.__imageIncrement)			#			reduce frame counter
 					if self.imageIndex > self.__maxImageIndex:						#			if frame index exceeds max frame index
+						self.animationEnd()
 						self.imageIndex = 0											#				frame is back to 0
+						
+	def animationEnd(self):
+		pass
 	
 	#pre step event processed every loop
 	def preStep(self):
@@ -208,6 +242,7 @@ class base():
 	def addCircle(self, radius):
 		shape = pymunk.Circle(self.body, radius)
 		shape.collision_type = id(self.__class__)
+		shape.layers = 1
 		if not self.__solid:
 			shape.sensor = True
 		if not self.__static:
@@ -225,6 +260,7 @@ class base():
 	def addLine(self, startPoint, endPoint, thickness):
 		shape = pymunk.Segment(self.body, startPoint, endPoint, thickness)
 		shape.collision_type = id(self.__class__)
+		shape.layers = 1
 		if not self.__solid:
 			shape.sensor = True
 		if not self.__static:
@@ -247,6 +283,26 @@ class base():
 		bottomLeft = (topLeft[0], bottomRight[1])
 		shape = pymunk.Poly(self.body, [topLeft, topRight, bottomRight, bottomLeft], (0, 0))
 		shape.collision_type = id(self.__class__)
+		shape.layers = 1
+		if not self.__solid:
+			shape.sensor = True
+		if not self.__static:
+			cfg.space.add(shape)
+		else:
+			cfg.space.add_static(shape)
+		self.shapes.append(shape)
+		return shape
+		
+	def addRectImg(self, topLeft, bottomRight):
+		width = self.image[0].get_width()/2
+		height = self.image[0].get_height()/2
+		topLeft = (topLeft[0] - width/2, topLeft[1] - height/2)
+		bottomRight = (bottomRight[0] - width/2, bottomRight[1] - height/2)
+		topRight = (bottomRight[0], topLeft[1])
+		bottomLeft = (topLeft[0], bottomRight[1])
+		shape = pymunk.Poly(self.body, [topLeft, topRight, bottomRight, bottomLeft], (0, 0))
+		shape.collision_type = id(self.__class__)
+		shape.layers = 1
 		if not self.__solid:
 			shape.sensor = True
 		if not self.__static:
@@ -259,6 +315,7 @@ class base():
 	def addPoly(self, vertices):
 		shape = pymunk.Poly(self.body, vertices, (0, 0))
 		shape.collision_type = id(self.__class__)
+		shape.layers = 1
 		if not self.__solid:
 			shape.sensor = True
 		if not self.__static:
@@ -267,3 +324,8 @@ class base():
 			cfg.space.add_static(shape)
 		self.shapes.append(shape)
 		return shape
+		
+	def swapLayer(self, layerPlane):
+		self.currentLayer = layerPlane
+		for shape in self.shapes:
+			shape.layers = layerPlane

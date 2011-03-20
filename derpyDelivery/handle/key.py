@@ -27,6 +27,9 @@ class handler():
 		self.keyDown = {}
 		self.keyPress = {}
 		self.down = {}
+		self.joysticks = []
+		self.getJoysticks()
+			
 	
 	#assignKeyRelease
 	#	arguments:
@@ -66,27 +69,90 @@ class handler():
 	
 	#process when a press happens
 	#	arguments:
-	#		event - pygame key event
+	#		event - pygame key/joybutton event
 	def processPress(self, event):
-		key = str(event.key)
+		if event.type == pygame.JOYBUTTONDOWN:
+			key = (self.joysticks[event.joy].get_name()).replace(" ", "") + "_" + str(event.button)
+		else:
+			key = str(event.key)
 		self.down[key] = True	#set the key to down
 		if key in self.keyPress:
 			self.keyPress[key]()
-	
+			
 	#process when a release happens
 	#	arguments:
-	#		event - pygame key event
+	#		event - pygame key/joybutton event
 	def processRelease(self, event):
-		key = str(event.key)
+		if event.type == pygame.JOYBUTTONUP:
+			key = (self.joysticks[event.joy].get_name()).replace(" ", "") + "_" + str(event.button)
+		else:
+			key = str(event.key)
 		del self.down[key]		#remove the key from down position
 		if key in self.keyRelease:
 			self.keyRelease[key]()
+			
+	#process when analog axis motion happens
+	#	arguments:
+	#		event - pygame joyaxis motion event
+	def processAnalog(self, event):
+		key = (self.joysticks[event.joy].get_name()).replace(" ", "") + "_"+str(event.axis)+"_axis"
+		if event.value > -.5 and event.value < .5: 	#release
+			if key+"_1" in self.down:
+				del self.down[key+"_1"]		#remove the key from down position
+				if key+"_1" in self.keyRelease:
+					self.keyRelease[key+"_1"]()
+			if key+"_-1" in self.down:
+				del self.down[key+"_-1"]		#remove the key from down position
+				if key+"_-1" in self.keyRelease:
+					self.keyRelease[key+"_-1"]()
+		else:										#press
+			if event.value > 0:
+				self.down[key+"_1"] = True	#set the key to down
+				if key+"_1" in self.keyPress:
+					self.keyPress[key+"_1"]()
+				if key+"_-1" in self.down:
+					del self.down[key+"_-1"]		#remove the key from down position
+					if key+"_-1" in self.keyRelease:
+						self.keyRelease[key+"_-1"]()
+			else:
+				self.down[key+"_-1"] = True	#set the key to down
+				if key+"_-1" in self.keyPress:
+					self.keyPress[key+"_-1"]()
+				if key+"_1" in self.down:
+					del self.down[key+"_1"]		#remove the key from down position
+					if key+"_1" in self.keyRelease:
+						self.keyRelease[key+"_1"]()
 
 	#processes all pressed keys
 	def process(self):
 		for key in self.down:
 			if key in self.keyDown:
 				self.keyDown[key]()
+				
+				
+	def keyCodeToString(self, keyCode):
+		if keyCode.isdigit():
+			keyCode = int(keyCode)
+			return pygame.key.name(keyCode)
+		else:
+			return keyCode
 		
-	
+	def getJoysticks(self):
+		for j in self.joysticks:
+			j.quit()
+		self.joysticks = []
+		pygame.joystick.quit()
+		pygame.joystick.init()
+		if pygame.joystick.get_count() > 0:
+			for i in range(pygame.joystick.get_count()):
+				duplicate = False
+				joystick = pygame.joystick.Joystick(i)
+				joystick.init()
+				for j in self.joysticks:
+					if j.get_name == joystick.get_name:
+						duplicate = True
+				if not duplicate:
+					self.joysticks.append(joystick)
+				else:
+					self.joysticks.quit()
 		
