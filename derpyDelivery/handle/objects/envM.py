@@ -18,7 +18,7 @@ along with Derpy Delivery. If not, see <http://www.gnu.org/licenses/>.
 """
 
 from base import base
-from math import copysign, fabs, pi
+from math import copysign, fabs
 from derpyDelivery import cfg
 import derpyM
 import pymunk
@@ -613,7 +613,7 @@ class depthPortal(base):
 					other.pickedUp.lastdepth = 50
 					other.pickedUp.swapLayer(2)
 			else:
-				if isinstance(derpyM.derpy, other);
+				if isinstance(derpyM.derpy, other):
 					other.alpha = 255
 				other.depth = -50
 				other.swapLayer(1)
