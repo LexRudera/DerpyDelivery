@@ -228,9 +228,12 @@ class drhooves(base):
 		self.sk = sk
 		
 	def getMail(self):
-		self.needMail = False
-		self.setImage("drwhooves_hasmail")
-		self.sk.mailDelivered += 1
+		if self.needMail:
+			self.needMail = False
+			self.setImage("drwhooves_hasmail")
+			self.sk.mailDelivered += 1
+		else:
+			cfg.objH.new(mail, self.body.position)
 		
 	def push(self, other, myShapes):
 		if self.phase == 0:
