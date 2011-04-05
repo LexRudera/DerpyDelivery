@@ -10,13 +10,9 @@ setup(
     description='A game based on the MLP:FiM background pony Derpy Hooves.',
     author='Erik Soma',
     author_email='stillusingirc@gmail.com',
-    url='http://wiki.secondlife.com/wiki/Eventlet',
-    packages=['derpyDelivery'],
-	data_files=[
-		('img', []),
-		('snd', []),
-		('font', []),
-	],
+    url='http://www.hamalonesandwich.com/derpydelivery',
+	packages = ['derpyDelivery', 'derpyDelivery.handle', 'derpyDelivery.handle.objects'],
+	package_data = {'derpyDelivery' : imgFiles + sndFiles + fntFiles},
 	classifiers=[
 		"License :: OSI Approved :: GNU General Public License (GPL)",
 		"Programming Language :: Python",
