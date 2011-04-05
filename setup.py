@@ -40,5 +40,6 @@ setup(
 		"Topic :: My Little Pony"],
 	keywords = 'derpy hooves pony friendship magic',
 	license = 'GPL',
-	requires = ['pygame', 'pymunk']
+	requires = ['pygame', 'pymunk'],
+	scripts = ['run_derpy_delivery.py']
 	)

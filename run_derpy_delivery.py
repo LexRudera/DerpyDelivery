@@ -1,3 +1,5 @@
+#!python
+
 """
 Copyright 2010 Erik Soma <stillusingirc@gmail.com>
 
