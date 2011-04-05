@@ -602,13 +602,19 @@ class depthPortal(base):
 				self.animator.animate()
 			self.leftOuter = False
 			if other.depth != 50:
-				other.depth = 50
+				if isinstance(derpyM.derpy, other):
+					other.depth = -100
+					other.alpha = 127
+				else:
+					other.depth = 50
 				other.swapLayer(2)
 				if other.pickedUp is not None:
 					other.pickedUp.depth = 50
 					other.pickedUp.lastdepth = 50
 					other.pickedUp.swapLayer(2)
 			else:
+				if isinstance(derpyM.derpy, other);
+					other.alpha = 255
 				other.depth = -50
 				other.swapLayer(1)
 				if other.pickedUp is not None:
@@ -678,22 +684,26 @@ class depthConverter(base):
 					self.derpyObj.swapLayer(1)
 					if self.derpyObj.pickedUp is not None:
 						self.derpyObj.pickedUp.depth = -50
+						self.derpyObj.alpha = 255
 						self.derpyObj.pickedUp.swapLayer(1)
 				else:
 					self.derpyObj.depth = 50
 					self.derpyObj.swapLayer(2)
 					if self.derpyObj.pickedUp is not None:
-						self.derpyObj.pickedUp.depth = 50
+						self.derpyObj.pickedUp.depth = -100
+						self.derpyObj.alpha = 127
 						self.derpyObj.pickedUp.swapLayer(2)
 			elif self.leftActive and not self.rightActive and self.lastRight:
 				if self.lToR:
 					self.derpyObj.depth = 50
 					self.derpyObj.swapLayer(2)
 					if self.derpyObj.pickedUp is not None:
-						self.derpyObj.pickedUp.depth = 50
+						self.derpyObj.pickedUp.depth = -100
+						self.derpyObj.alpha = 127
 						self.derpyObj.pickedUp.swapLayer(2)
 				else:
 					self.derpyObj.depth = -50
+					self.derpyObj.alpha = 255
 					self.derpyObj.swapLayer(1)
 					if self.derpyObj.pickedUp is not None:
 						self.derpyObj.pickedUp.depth = -50
