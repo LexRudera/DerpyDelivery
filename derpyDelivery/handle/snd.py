@@ -31,10 +31,10 @@ class handler():
 		self.currentLoop = None
 		pygame.mixer.set_num_channels(0)
 		#generate the sounds to search for from files in the img folder
-		for dirTree in os.walk(os.path.abspath("snd")):
+		for dirTree in os.walk(os.path.join(cfg.root_path, "snd")):
 			for file in dirTree[2]:
 				path = str(dirTree[0])
-				path = path.replace(os.path.abspath("snd"), "")[1:]
+				path = path.replace(os.path.join(cfg.root_path, "snd"), "")[1:]
 				path = path.replace("/", "_")
 				path = path.replace("\\", "_")
 				path = path + "_" + file.replace(".ogg", "")
@@ -51,7 +51,7 @@ class handler():
 				for piece in files.split("_"):
 					filePath = os.path.join(filePath, piece)
 				#create the sound
-				filePath = os.path.join(os.path.abspath("snd"), filePath)
+				filePath = os.path.join(os.path.join(cfg.root_path, "snd"), filePath)
 				if os.path.exists(filePath + ".ogg"):
 					self.file[files] = self.__loadSound(filePath + ".ogg")		#load
 					pygame.mixer.set_num_channels(pygame.mixer.get_num_channels()+1)

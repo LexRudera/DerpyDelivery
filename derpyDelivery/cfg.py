@@ -17,6 +17,10 @@ You should have received a copy of the GNU General Public License
 along with Derpy Delivery. If not, see <http://www.gnu.org/licenses/>.
 """
 
+import os
+
+root_path = os.path.abspath(os.path.dirname(os.path.relpath(__file__)))
+
 window = None
 clock = None
 imgH = None

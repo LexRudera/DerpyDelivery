@@ -31,10 +31,10 @@ class handler():
 	
 	def __init__(self):
 		#load fonts
-		self.veryLargeText = pygame.font.Font(os.path.join(os.path.abspath('font'), "font.ttf"), 34)
-		self.largeText = pygame.font.Font(os.path.join(os.path.abspath('font'), "font.ttf"), 22)
-		self.mediumText = pygame.font.Font(os.path.join(os.path.abspath('font'), "font.ttf"), 14)
-		self.smallText = pygame.font.Font(os.path.join(os.path.abspath('font'), "font.ttf"), 10)
+		self.veryLargeText = pygame.font.Font(os.path.join(cfg.root_path, "font"), "font.ttf"), 34)
+		self.largeText = pygame.font.Font(os.path.join(cfg.root_path, "font"), "font.ttf"), 22)
+		self.mediumText = pygame.font.Font(os.path.join(cfg.root_path, "font"), "font.ttf"), 14)
+		self.smallText = pygame.font.Font(os.path.join(cfg.root_path, "font"), "font.ttf"), 10)
 		#create camera
 		self.cam = camera()
 		#pause

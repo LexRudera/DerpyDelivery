@@ -30,10 +30,10 @@ class handler():
 	def __init__(self):
 		self.file = {}
 		#generate the images to search for from files in the img folder
-		for dirTree in os.walk(os.path.abspath("img")):
+		for dirTree in os.walk(os.path.join(cfg.root_path, "img")):
 			for file in dirTree[2]:
 				path = str(dirTree[0])
-				path = path.replace(os.path.abspath("img"), "")[1:]
+				path = path.replace(os.path.join(cfg.root_path, "img"), "")[1:]
 				path = path.replace("/", "_")
 				path = path.replace("\\", "_")
 				self.file[path] = None
@@ -52,7 +52,7 @@ class handler():
 				#create the sprite, load all the frames
 				index = 0
 				frames = []
-				filePath = os.path.join(os.path.abspath("img"), filePath)
+				filePath = os.path.join(os.path.join(cfg.root_path, "img"), filePath)
 				while os.path.exists(os.path.join(filePath, str(index) + ".png")):
 					frames.append(self.__loadImage(os.path.join(filePath, str(index) + ".png")))			#load
 					index += 1
