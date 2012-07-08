@@ -1,3 +1,9 @@
 *.pyc
 *.db
 *.egg
+
+
+# Custom Code::Blocks Env
+*.layout
+*.depend
+objs/
