@@ -1,11 +1,11 @@
 #include "Menu.hpp"
 
-Menu::Menu()
+tg::Menu::Menu()
 {
     //ctor
 }
 
-Menu::~Menu()
+tg::Menu::~Menu()
 {
     //dtor
 }

@@ -6,21 +6,8 @@
 // this makes sense in that, when you make a new object. it makes all the variables declared in the header. The
 // statics are around, not really caring if there are any objects. Who's gonna make them a place to hang out then,
 // if the objects dont? You are!
-std::vector<Input*> Input::s_inputs;
+//std::vector<Input*> Input::s_inputs;
+// Alright, SFML doesn't support multiple input sources, so screw this.
 
-Input::Input()
-{
-    //ctor
-}
-
-Input::~Input()
-{
-    //dtor
-}
-
-Input* Input::NewInput()
-{
-Input* i = new Input();
-s_inputs.push_back(i);
-return i;
-}
+// Well, now it's static, and basically just being an easy wrapper around SFML's own two Mouse and Keyboard classes.
+// What am i gonna do with this place?

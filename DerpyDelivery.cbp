@@ -52,11 +52,11 @@
 		<Unit filename="Input.hpp" />
 		<Unit filename="Level.cpp" />
 		<Unit filename="Level.hpp" />
-		<Unit filename="Main.cpp" />
 		<Unit filename="Menu.cpp" />
 		<Unit filename="Menu.hpp" />
 		<Unit filename="Scene.cpp" />
 		<Unit filename="Scene.hpp" />
+		<Unit filename="main.cpp" />
 		<Extensions>
 			<code_completion />
 			<debugger />

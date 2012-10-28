@@ -1,18 +1,20 @@
 #ifndef MENU_H
 #define MENU_H
 
-#include <Scene.h00>
+#include "Scene.hpp"
 
-
-class Menu : public Scene
+namespace tg
 {
-    public:
-        /** Default constructor */
-        Menu();
-        /** Default destructor */
-        virtual ~Menu();
-    protected:
-    private:
+    class Menu : public Scene
+    {
+        public:
+            /** Default constructor */
+            Menu();
+            /** Default destructor */
+            virtual ~Menu();
+        protected:
+        private:
+    };
 };
 
 #endif // MENU_H

@@ -1,11 +1,12 @@
 #include "Scene.hpp"
 
-Scene::Scene()
+tg::Scene::Scene()
 {
     //ctor
 }
 
-Scene::~Scene()
+tg::Scene::~Scene()
 {
     //dtor
 }
+

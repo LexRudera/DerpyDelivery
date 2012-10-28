@@ -1,31 +1,48 @@
 #include "Game.hpp"
 #include "Input.hpp"
 
-Game::Game()
-{
+tg::Game::Game() {
     //ctor
 }
 
-Game::~Game()
-{
+tg::Game::~Game() {
     //dtor
 }
 
-void Game::Run(std::string& EndMessage) {
+void tg::Game::Run(std::string& EndMessage) {
     m_window = new sf::RenderWindow(sf::VideoMode(800,600),"Some Game");
+
+//    ChangeScene()
     while (m_window->isOpen())
     {
-        // Process events
+        // Input/events
+        //--------------
         sf::Event event;
         while (m_window->pollEvent(event))
         {
-        // Close window : exit
-        if (event.type == sf::Event::Closed)
-        m_window->close();
+            // Close window : exit
+            if (event.type == sf::Event::Closed)
+                m_window->close();
         }
-        // Clear screen
+
+        // Logic
+        //-------
+        GetActiveScene()->Tick();
+
+        // Render
+        //--------
         m_window->clear();
-        // Update the window
+        GetActiveScene()->Render();
         m_window->display();
+
+        // After frame stuff
+        //-------------------
+        m_frameTime = m_clk.restart().asMilliseconds();
     }
+    return;
+}
+void tg::Game::ChangeScene(tg::Scene* scn) {
+    delete m_activeScene;
+    m_activeScene = scn;
+    return;
 }

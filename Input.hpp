@@ -1,21 +1,35 @@
 #ifndef INPUT_H
 #define INPUT_H
 #include <vector>
+#include "Game.hpp"
 
-class Input
+namespace tg
 {
-    public:
-        /** Default constructor */
-        /** Default destructor */
-        virtual ~Input();
-        static Input* GetInputSource(int i) {return s_inputs[i];}
-        static Input* NewInput();
-    protected:
-    private:
-        Input();
-        // TODO: Find out why the s_inputs is an undefined reference
-        static std::vector<Input*> s_inputs;
-        //friend Game;
+    class Input
+    {
+        public:
+            class Keyboard
+            {
+                public:
+                    static bool IsKeyPressed(sf::Keyboard::Key k) { return sf::Keyboard::isKeyPressed(k); }
+                protected:
+                private:
+            };
+
+            class Mouse
+            {
+                public:
+                    static bool isButtonPressed(sf::Mouse::Button b) { return sf::Mouse::isButtonPressed(b); }
+                    static sf::Vector2i getPosition() { return sf::Mouse::getPosition(); }
+                    static sf::Vector2i getPosition(const sf::Window &relativeTo) { return sf::Mouse::getPosition(relativeTo); }
+                    static void setPosition (const sf::Vector2i &position) { sf::Mouse::setPosition(position); }
+                    static void setPosition (const sf::Vector2i &position, const sf::Window &relativeTo) { sf::Mouse::setPosition(position, relativeTo); }
+                protected:
+                private:
+            };
+        protected:
+        private:
+    };
 };
 
 #endif // INPUT_H
