@@ -10,12 +10,36 @@
 				<Option output="bin\Release\DerpyDelivery" prefix_auto="1" extension_auto="1" />
 				<Option object_output="obj\Release\" />
 				<Option type="0" />
-				<Option compiler="gnu_gcc_compiler_w_dw2_unwinding" />
+				<Option compiler="gcc" />
 				<Compiler>
+					<Add option="-fomit-frame-pointer" />
 					<Add option="-O2" />
+					<Add option="-Winit-self" />
+					<Add option="-Wredundant-decls" />
+					<Add option="-Wcast-align" />
+					<Add option="-Wundef" />
+					<Add option="-Wfloat-equal" />
+					<Add option="-Winline" />
+					<Add option="-Wunreachable-code" />
+					<Add option="-Wmissing-declarations" />
+					<Add option="-Wmissing-include-dirs" />
+					<Add option="-Wswitch-enum" />
+					<Add option="-Wswitch-default" />
+					<Add option="-Wmain" />
+					<Add option="-std=c++11" />
+					<Add directory="$(#SFML)\include" />
 				</Compiler>
+				<ResourceCompiler>
+					<Add directory="$(#sfml)\include" />
+				</ResourceCompiler>
 				<Linker>
 					<Add option="-s" />
+					<Add library="sfml-system" />
+					<Add library="sfml-window" />
+					<Add library="sfml-graphics" />
+					<Add library="sfml-audio" />
+					<Add library="sfml-network" />
+					<Add directory="$(#sfml)\build\lib" />
 				</Linker>
 			</Target>
 		</Build>
@@ -24,7 +48,15 @@
 		</Compiler>
 		<Unit filename="Game.cpp" />
 		<Unit filename="Game.hpp" />
+		<Unit filename="Input.cpp" />
+		<Unit filename="Input.hpp" />
+		<Unit filename="Level.cpp" />
+		<Unit filename="Level.hpp" />
 		<Unit filename="Main.cpp" />
+		<Unit filename="Menu.cpp" />
+		<Unit filename="Menu.hpp" />
+		<Unit filename="Scene.cpp" />
+		<Unit filename="Scene.hpp" />
 		<Extensions>
 			<code_completion />
 			<debugger />

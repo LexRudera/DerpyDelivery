@@ -3,9 +3,14 @@
 int main()
 {
     Game Derp;
-    std::string EndMessage;
+    std::string EndMessage("OK");
     Derp.Run(EndMessage);
-    std::cout << EndMessage;
-
-
+    Derp.GetWindow();
+    if (EndMessage != "OK")
+    {
+        sf::err() << EndMessage;
+        return 1;
+    }
+    else
+        return 0;
 }
