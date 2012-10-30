@@ -10,3 +10,12 @@ tg::Scene::~Scene()
     //dtor
 }
 
+void tg::Scene::Tick()
+{
+
+}
+
+void tg::Scene::Render()
+{
+
+}

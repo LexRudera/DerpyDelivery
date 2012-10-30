@@ -11,8 +11,7 @@ tg::Game::~Game() {
 
 void tg::Game::Run(std::string& EndMessage) {
     m_window = new sf::RenderWindow(sf::VideoMode(800,600),"Some Game");
-
-//    ChangeScene()
+    ChangeScene(new tg::Scene());
     while (m_window->isOpen())
     {
         // Input/events
