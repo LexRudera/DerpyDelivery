@@ -1,6 +1,8 @@
 #include "Game.hpp"
 #include "Input.hpp"
 
+sf::Time tg::Game::sm_frameTime;
+
 tg::Game::Game() {
     //ctor
 }
@@ -36,7 +38,7 @@ void tg::Game::Run(std::string& EndMessage) {
 
         // After frame stuff
         //-------------------
-        m_frameTime = m_clk.restart().asMilliseconds();
+        tg::Game::sm_frameTime = m_clk.restart();
     }
     return;
 }

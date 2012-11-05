@@ -46,6 +46,8 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="Animation.cpp" />
+		<Unit filename="Animation.hpp" />
 		<Unit filename="Game.cpp" />
 		<Unit filename="Game.hpp" />
 		<Unit filename="Input.cpp" />
@@ -54,8 +56,11 @@
 		<Unit filename="Level.hpp" />
 		<Unit filename="Menu.cpp" />
 		<Unit filename="Menu.hpp" />
+		<Unit filename="README.md" />
 		<Unit filename="Scene.cpp" />
 		<Unit filename="Scene.hpp" />
+		<Unit filename="Settings.cpp" />
+		<Unit filename="Settings.hpp" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<code_completion />

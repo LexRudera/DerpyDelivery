@@ -5,16 +5,16 @@
 
 namespace tg
 {
-    class Movie : public Scene
+    class Animation : public Scene
     {
         public:
             /** Default constructor */
-            Movie();
+            Animation();
             /** Default destructor */
-            virtual ~Movie();
+            virtual ~Animation();
         protected:
         private:
     };
-}
+};
 
 #endif // MOVIE_H
