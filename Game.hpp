@@ -19,7 +19,7 @@ namespace tg
             tg::Scene* GetActiveScene() const {return m_activeScene;}
             void ChangeScene(tg::Scene* scn);
 
-            sf::Time GetFrameTime() { return tg::Game::sm_frameTime; }
+            sf::Time* GetFrameTime() { return &tg::Game::sm_frameTime; }
         protected:
         private:
             sf::Clock m_clk;

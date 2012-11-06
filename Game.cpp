@@ -1,10 +1,12 @@
 #include "Game.hpp"
 #include "Input.hpp"
+#include <iostream>
 
 sf::Time tg::Game::sm_frameTime;
 
 tg::Game::Game() {
     //ctor
+    m_activeScene = 0;
 }
 
 tg::Game::~Game() {
@@ -43,7 +45,11 @@ void tg::Game::Run(std::string& EndMessage) {
     return;
 }
 void tg::Game::ChangeScene(tg::Scene* scn) {
-    delete m_activeScene;
+    if (m_activeScene != 0)
+    {
+        delete m_activeScene;
+        m_activeScene = 0;
+    }
     m_activeScene = scn;
     return;
 }
