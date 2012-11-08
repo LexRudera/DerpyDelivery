@@ -27,6 +27,7 @@
 					<Add option="-Wswitch-default" />
 					<Add option="-Wmain" />
 					<Add option="-std=c++11" />
+					<Add option="-DSFML_STATIC" />
 					<Add directory="$(#SFML)\include" />
 				</Compiler>
 				<ResourceCompiler>
@@ -36,11 +37,11 @@
 					<Add option="-s" />
 					<Add option="-static-libgcc" />
 					<Add option="-static-libstdc++" />
-					<Add library="sfml-system" />
-					<Add library="sfml-window" />
-					<Add library="sfml-graphics" />
-					<Add library="sfml-audio" />
-					<Add library="sfml-network" />
+					<Add library="sfml-network-s" />
+					<Add library="sfml-audio-s" />
+					<Add library="sfml-graphics-s" />
+					<Add library="sfml-window-s" />
+					<Add library="sfml-system-s" />
 					<Add directory="$(#sfml)\build\lib" />
 				</Linker>
 			</Target>
