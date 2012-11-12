@@ -5,7 +5,7 @@
 #include <SFML/Graphics.hpp>
 #include "Scene.hpp"
 
-namespace tg
+namespace me
 {
     class Game
     {
@@ -16,15 +16,15 @@ namespace tg
             virtual ~Game();
             void Run(std::string& EndMessage);
             sf::RenderWindow* GetWindow() const {return m_window;}
-            tg::Scene* GetActiveScene() const {return m_activeScene;}
-            void ChangeScene(tg::Scene* scn);
+            me::Scene* GetActiveScene() const {return m_activeScene;}
+            void ChangeScene(me::Scene* scn);
 
-            sf::Time* GetFrameTime() { return &tg::Game::sm_frameTime; }
+            sf::Time* GetFrameTime() { return &me::Game::sm_frameTime; }
         protected:
         private:
             sf::Clock m_clk;
             sf::RenderWindow* m_window;
-            tg::Scene* m_activeScene;
+            me::Scene* m_activeScene;
 
             static sf::Time sm_frameTime;
     };

@@ -1,11 +1,11 @@
 #include "Level.hpp"
 
-tg::Level::Level()
+me::Level::Level()
 {
     //ctor
 }
 
-tg::Level::~Level()
+me::Level::~Level()
 {
     //dtor
 }

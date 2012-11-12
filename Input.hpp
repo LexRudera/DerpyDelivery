@@ -3,7 +3,7 @@
 #include <vector>
 #include "Game.hpp"
 
-namespace tg
+namespace me
 {
     class Input
     {

@@ -1,7 +1,10 @@
 #ifndef SCENE_H
 #define SCENE_H
 
-namespace tg
+#include <vector>
+#include "Object.hpp"
+
+namespace me
 {
     class Scene
     {
@@ -15,6 +18,7 @@ namespace tg
             void Render();
         protected:
         private:
+            std::vector<Object*> m_Objects;
     };
 };
 

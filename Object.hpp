@@ -1,18 +1,19 @@
-#ifndef SETTINGS_H
-#define SETTINGS_H
+#ifndef OBJECT_H
+#define OBJECT_H
 
 namespace me
 {
-    class Settings
+    class Object
     {
         public:
             /** Default constructor */
-            Settings();
+            Object();
             /** Default destructor */
-            virtual ~Settings();
+            virtual ~Object();
+            void Draw();
         protected:
         private:
     };
-}
+};
 
-#endif // SETTINGS_H
+#endif // OBJECT_H

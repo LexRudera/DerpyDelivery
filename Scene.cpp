@@ -1,21 +1,24 @@
 #include "Scene.hpp"
 
-tg::Scene::Scene()
+me::Scene::Scene()
 {
     //ctor
 }
 
-tg::Scene::~Scene()
+me::Scene::~Scene()
 {
     //dtor
 }
 
-void tg::Scene::Tick()
+void me::Scene::Tick()
 {
 
 }
 
-void tg::Scene::Render()
+void me::Scene::Render()
 {
-
+    for (unsigned int i = 0; i < m_Objects.capacity(); i++)
+    {
+        m_Objects[i]->Draw();
+    }
 }

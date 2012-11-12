@@ -59,6 +59,8 @@
 		<Unit filename="Level.hpp" />
 		<Unit filename="Menu.cpp" />
 		<Unit filename="Menu.hpp" />
+		<Unit filename="Object.cpp" />
+		<Unit filename="Object.hpp" />
 		<Unit filename="README.md" />
 		<Unit filename="Scene.cpp" />
 		<Unit filename="Scene.hpp" />

@@ -2,20 +2,20 @@
 #include "Input.hpp"
 #include <iostream>
 
-sf::Time tg::Game::sm_frameTime;
+sf::Time me::Game::sm_frameTime;
 
-tg::Game::Game() {
+me::Game::Game() {
     //ctor
     m_activeScene = 0;
 }
 
-tg::Game::~Game() {
+me::Game::~Game() {
     //dtor
 }
 
-void tg::Game::Run(std::string& EndMessage) {
+void me::Game::Run(std::string& EndMessage) {
     m_window = new sf::RenderWindow(sf::VideoMode(800,600),"Some Game");
-    ChangeScene(new tg::Scene());
+    ChangeScene(new me::Scene());
     while (m_window->isOpen())
     {
         // Input/events
@@ -40,11 +40,11 @@ void tg::Game::Run(std::string& EndMessage) {
 
         // After frame stuff
         //-------------------
-        tg::Game::sm_frameTime = m_clk.restart();
+        me::Game::sm_frameTime = m_clk.restart();
     }
     return;
 }
-void tg::Game::ChangeScene(tg::Scene* scn) {
+void me::Game::ChangeScene(me::Scene* scn) {
     if (m_activeScene != 0)
     {
         delete m_activeScene;

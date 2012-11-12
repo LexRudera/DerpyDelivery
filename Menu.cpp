@@ -1,11 +1,16 @@
 #include "Menu.hpp"
 
-tg::Menu::Menu()
+me::Menu::Menu()
 {
     //ctor
 }
 
-tg::Menu::~Menu()
+me::Menu::~Menu()
 {
     //dtor
+}
+
+void me::Menu::Tick()
+{
+
 }

@@ -3,7 +3,7 @@
 
 #include "Scene.hpp"
 
-namespace tg
+namespace me
 {
     class Animation : public Scene
     {

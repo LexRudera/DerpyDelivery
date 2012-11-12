@@ -1,11 +1,11 @@
 #include "Settings.hpp"
 
-tg::Settings::Settings()
+me::Settings::Settings()
 {
     //ctor
 }
 
-tg::Settings::~Settings()
+me::Settings::~Settings()
 {
     //dtor
 }

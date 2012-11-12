@@ -1,11 +1,11 @@
 #include "Animation.hpp"
 
-tg::Animation::Animation()
+me::Animation::Animation()
 {
     //ctor
 }
 
-tg::Animation::~Animation()
+me::Animation::~Animation()
 {
     //dtor
 }

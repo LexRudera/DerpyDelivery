@@ -3,7 +3,7 @@
 
 #include "Scene.hpp"
 
-namespace tg
+namespace me
 {
     class Menu : public Scene
     {
@@ -12,6 +12,7 @@ namespace tg
             Menu();
             /** Default destructor */
             virtual ~Menu();
+            void Tick();
         protected:
         private:
     };
