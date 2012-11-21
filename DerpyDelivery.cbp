@@ -29,6 +29,7 @@
 					<Add option="-std=c++11" />
 					<Add option="-DSFML_STATIC" />
 					<Add directory="$(#SFML)\include" />
+					<Add directory=".\include" />
 				</Compiler>
 				<ResourceCompiler>
 					<Add directory="$(#sfml)\include" />
@@ -49,24 +50,26 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
-		<Unit filename="Animation.cpp" />
-		<Unit filename="Animation.hpp" />
-		<Unit filename="Game.cpp" />
-		<Unit filename="Game.hpp" />
-		<Unit filename="Input.cpp" />
-		<Unit filename="Input.hpp" />
-		<Unit filename="Level.cpp" />
-		<Unit filename="Level.hpp" />
-		<Unit filename="Menu.cpp" />
-		<Unit filename="Menu.hpp" />
-		<Unit filename="Object.cpp" />
-		<Unit filename="Object.hpp" />
 		<Unit filename="README.md" />
-		<Unit filename="Scene.cpp" />
-		<Unit filename="Scene.hpp" />
-		<Unit filename="Settings.cpp" />
-		<Unit filename="Settings.hpp" />
-		<Unit filename="main.cpp" />
+		<Unit filename="include\Animation.hpp" />
+		<Unit filename="include\Game.hpp" />
+		<Unit filename="include\Input.hpp" />
+		<Unit filename="include\Level.hpp" />
+		<Unit filename="include\Menu.hpp" />
+		<Unit filename="include\MenuControls\ControlBase.hpp" />
+		<Unit filename="include\Object.hpp" />
+		<Unit filename="include\Scene.hpp" />
+		<Unit filename="include\Settings.hpp" />
+		<Unit filename="src\Animation.cpp" />
+		<Unit filename="src\Game.cpp" />
+		<Unit filename="src\Input.cpp" />
+		<Unit filename="src\Level.cpp" />
+		<Unit filename="src\Menu.cpp" />
+		<Unit filename="src\MenuControls\ControlBase.cpp" />
+		<Unit filename="src\Object.cpp" />
+		<Unit filename="src\Scene.cpp" />
+		<Unit filename="src\Settings.cpp" />
+		<Unit filename="src\main.cpp" />
 		<Extensions>
 			<code_completion />
 			<debugger />
