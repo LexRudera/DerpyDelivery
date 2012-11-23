@@ -7,16 +7,17 @@
 #ifndef OBJECT_H
 #define OBJECT_H
 
+#include <SFML\Graphics.hpp>
+
 namespace me
 {
-    class Object
+    class Object : sf::Drawable
     {
         public:
             /** Default constructor */
             Object();
             /** Default destructor */
             virtual ~Object();
-            virtual void Draw() = 0;
         protected:
         private:
     };

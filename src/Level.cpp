@@ -1,11 +1,13 @@
 #include "Level.hpp"
-
-me::Level::Level()
+namespace me
 {
-    //ctor
-}
+    Level::Level()
+    {
+        //ctor
+    }
 
-me::Level::~Level()
-{
-    //dtor
+    Level::~Level()
+    {
+        //dtor
+    }
 }

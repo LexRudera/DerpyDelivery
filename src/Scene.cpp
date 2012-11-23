@@ -1,24 +1,26 @@
 #include "Scene.hpp"
-
-me::Scene::Scene()
+namespace me
 {
-    //ctor
-}
-
-me::Scene::~Scene()
-{
-    //dtor
-}
-
-void me::Scene::Tick()
-{
-
-}
-
-void me::Scene::Render()
-{
-    for (unsigned int i = 0; i < m_Objects.capacity(); i++)
+    Scene::Scene()
     {
-        m_Objects[i]->Draw();
+        //ctor
+    }
+
+    Scene::~Scene()
+    {
+        //dtor
+    }
+
+    void Scene::Tick()
+    {
+
+    }
+
+    void Scene::Render(sf::RenderTarget& target, sf::RenderStates states)
+    {
+        for (unsigned int i = 0; i < m_Objects.capacity(); i++)
+        {
+            m_Objects[i]->draw(sf::RenderTarget& target, sf::RenderStates states);
+        }
     }
 }

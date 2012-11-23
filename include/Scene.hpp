@@ -15,7 +15,7 @@ namespace me
             virtual ~Scene();
 
             virtual void Tick();
-            void Render();
+            void Render(sf::RenderTarget& target, sf::RenderStates states);
         protected:
             std::vector<Object*> m_Objects;
         private:

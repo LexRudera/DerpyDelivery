@@ -9,8 +9,3 @@ me::Object::~Object()
 {
     //dtor
 }
-
-void me::Object::Draw()
-{
-
-}

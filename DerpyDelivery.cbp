@@ -56,7 +56,9 @@
 		<Unit filename="include\Input.hpp" />
 		<Unit filename="include\Level.hpp" />
 		<Unit filename="include\Menu.hpp" />
-		<Unit filename="include\MenuControls\ControlBase.hpp" />
+		<Unit filename="include\Menu\Button.hpp" />
+		<Unit filename="include\Menu\ControlBase.hpp" />
+		<Unit filename="include\Menu\Label.hpp" />
 		<Unit filename="include\Object.hpp" />
 		<Unit filename="include\Scene.hpp" />
 		<Unit filename="include\Settings.hpp" />
@@ -65,7 +67,9 @@
 		<Unit filename="src\Input.cpp" />
 		<Unit filename="src\Level.cpp" />
 		<Unit filename="src\Menu.cpp" />
-		<Unit filename="src\MenuControls\ControlBase.cpp" />
+		<Unit filename="src\Menu\Button.cpp" />
+		<Unit filename="src\Menu\ControlBase.cpp" />
+		<Unit filename="src\Menu\Label.cpp" />
 		<Unit filename="src\Object.cpp" />
 		<Unit filename="src\Scene.cpp" />
 		<Unit filename="src\Settings.cpp" />

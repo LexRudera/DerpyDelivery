@@ -1,21 +1,32 @@
 #include "Menu.hpp"
+#include "Menu\Label.hpp"
 
-me::Menu::Menu()
+namespace me
 {
-    //ctor
-}
+    Menu::Menu()
+    {
+        //ctor
+    }
 
-me::Menu::~Menu()
-{
-    //dtor
-}
+    Menu::~Menu()
+    {
+        //dtor
+    }
 
-void me::Menu::Tick()
-{
+    void Menu::Tick()
+    {
 
-}
+    }
 
-void me::Menu::Add(ControlBase* obj)
-{
+    void Menu::Add(ControlBase* obj)
+    {
 
+    }
+
+    Menu* Menu::MainMenu()
+    {
+        Menu* t = new Menu();
+        t->Add(new Label());
+        return t;
+    }
 }

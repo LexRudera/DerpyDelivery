@@ -1,11 +1,13 @@
 #include "Settings.hpp"
-
-me::Settings::Settings()
+namespace me
 {
-    //ctor
-}
+    Settings::Settings()
+    {
+        //ctor
+    }
 
-me::Settings::~Settings()
-{
-    //dtor
+    Settings::~Settings()
+    {
+        //dtor
+    }
 }

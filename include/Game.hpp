@@ -14,12 +14,12 @@ namespace me
             Game();
             /** Default destructor */
             virtual ~Game();
-            void Run(std::string& EndMessage);
+            void Run(std::string& EndMessage, Scene* scn);
             sf::RenderWindow* GetWindow() const {return m_window;}
             me::Scene* GetActiveScene() const {return m_activeScene;}
             void ChangeScene(me::Scene* scn);
 
-            sf::Time* GetFrameTime() { return &me::Game::sm_frameTime; }
+            sf::Time* GetFrameTime() { return &Game::sm_frameTime; }
         protected:
         private:
             sf::Clock m_clk;

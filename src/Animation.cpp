@@ -1,11 +1,14 @@
 #include "Animation.hpp"
 
-me::Animation::Animation()
+namespace me
 {
-    //ctor
-}
+    me::Animation::Animation()
+    {
+        //ctor
+    }
 
-me::Animation::~Animation()
-{
-    //dtor
+    me::Animation::~Animation()
+    {
+        //dtor
+    }
 }

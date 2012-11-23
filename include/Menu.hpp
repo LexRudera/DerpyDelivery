@@ -2,7 +2,7 @@
 #define MENU_H
 
 #include "Scene.hpp"
-#include "MenuControls\ControlBase.hpp"
+#include "Menu\ControlBase.hpp"
 
 namespace me
 {
@@ -15,6 +15,7 @@ namespace me
             virtual ~Menu();
             void Tick();
             void Add(ControlBase* obj);
+            static Menu* MainMenu();
         protected:
         private:
     };
