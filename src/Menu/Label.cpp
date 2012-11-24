@@ -14,6 +14,6 @@ namespace me
 
     void Label::draw(sf::RenderTarget& target, sf::RenderStates states) const
     {
-
+        target.draw(m_Text);
     }
 } // namespace me

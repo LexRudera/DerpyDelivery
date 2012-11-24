@@ -50,6 +50,7 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename=".gitignore" />
 		<Unit filename="README.md" />
 		<Unit filename="include\Animation.hpp" />
 		<Unit filename="include\Game.hpp" />

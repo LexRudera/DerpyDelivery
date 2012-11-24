@@ -4,7 +4,7 @@
 
 
 # Custom Code::Blocks Env
-*.layout
+#*.layout
 *.depend
 obj/
 bin/
