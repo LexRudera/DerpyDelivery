@@ -11,7 +11,7 @@
 
 namespace me
 {
-    class Object : sf::Drawable
+    class Object : public sf::Drawable
     {
         public:
             /** Default constructor */

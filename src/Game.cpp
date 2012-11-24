@@ -11,6 +11,11 @@ namespace me
         m_activeScene = 0;
     }
 
+    Game::Game(Settings* conf) : Game()
+    {
+        m_config = conf;
+    }
+
     Game::~Game() {
         //dtor
     }
@@ -39,12 +44,16 @@ namespace me
             // Render
             //--------
             m_window->clear();
-            GetActiveScene()->Render(m_window, sf::RenderStates states);
+            GetActiveScene()->Render(*m_window);
             m_window->display();
 
             // After frame stuff
             //-------------------
             Game::sm_frameTime = m_clk.restart();
+            if (GetConfiguration()->ShowFps())
+            {
+
+            }
         }
         delete m_window;
         return;

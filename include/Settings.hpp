@@ -10,8 +10,13 @@ namespace me
             Settings();
             /** Default destructor */
             virtual ~Settings();
+
+            // Accessor functions
+            bool ShowFps() { return m_ShowFps; }
+            void ShowFps(bool a) { m_ShowFps = a; }
         protected:
         private:
+            bool m_ShowFps;
     };
 }
 

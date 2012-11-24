@@ -3,6 +3,7 @@
 
 #include <string>
 #include <SFML/Graphics.hpp>
+#include "Settings.hpp"
 #include "Scene.hpp"
 
 namespace me
@@ -10,9 +11,7 @@ namespace me
     class Game
     {
         public:
-            /** Default constructor */
-            Game();
-            /** Default destructor */
+            Game(Settings* conf);
             virtual ~Game();
             void Run(std::string& EndMessage, Scene* scn);
             sf::RenderWindow* GetWindow() const {return m_window;}
@@ -20,8 +19,12 @@ namespace me
             void ChangeScene(me::Scene* scn);
 
             sf::Time* GetFrameTime() { return &Game::sm_frameTime; }
+            Settings* GetConfiguration() { return m_config; }
         protected:
         private:
+            Game();
+
+            Settings* m_config;
             sf::Clock m_clk;
             sf::RenderWindow* m_window;
             me::Scene* m_activeScene;

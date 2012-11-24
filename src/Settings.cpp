@@ -3,6 +3,7 @@ namespace me
 {
     Settings::Settings()
     {
+        m_ShowFps = true;
         //ctor
     }
 

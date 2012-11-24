@@ -6,12 +6,13 @@
 //---------------------------------------------
 
 #include "Game.hpp"
+#include "Settings.hpp"
 #include "Scene.hpp"
 #include <iostream>
 
 int main()
 {
-    me::Game Derp;
+    me::Game Derp(new me::Settings());
     std::string EndMessage("OK");
     Derp.Run(EndMessage, new me::Scene());
     if (EndMessage != "OK")
