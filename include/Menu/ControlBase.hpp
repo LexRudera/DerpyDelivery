@@ -4,7 +4,7 @@
 #include "Object.hpp"
 namespace me
 {
-    class ControlBase : public Object, public sf::Transformable
+    class ControlBase : public Object
     {
         public:
             ControlBase();

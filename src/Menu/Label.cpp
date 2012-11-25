@@ -2,18 +2,27 @@
 
 namespace me
 {
-    Label::Label()
+    Label::Label(sf::String text) : m_Text(text, m_Font)
     {
-        //ctor
+
     }
 
     Label::~Label()
     {
-        //dtor
     }
 
     void Label::draw(sf::RenderTarget& target, sf::RenderStates states) const
     {
-        target.draw(m_Text);
+        states.transform *= getTransform();
+        target.draw(m_Text,states);
+    }
+
+    bool Label::LoadFont(sf::String& font)
+    {
+        if (!m_Font.loadFromFile("arial.ttf"))
+        {
+            return false;
+        }
+        return true;
     }
 } // namespace me

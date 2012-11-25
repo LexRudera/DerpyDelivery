@@ -1,5 +1,6 @@
 #include "Menu.hpp"
 #include "Menu\Label.hpp"
+#include <string>
 
 namespace me
 {
@@ -25,8 +26,10 @@ namespace me
 
     Menu* Menu::MainMenu()
     {
+        sf::String temp;
+        temp = "derp";
         Menu* t = new Menu();
-        t->Add(new Label());
+        t->Add(new Label("SomeString"));
         return t;
     }
 }
