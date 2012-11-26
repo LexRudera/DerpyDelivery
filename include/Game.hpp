@@ -20,16 +20,17 @@ namespace me
 
             sf::Time* GetFrameTime() { return &Game::sm_frameTime; }
             Settings* GetConfiguration() { return m_config; }
+            static void Quit() {Game::sm_Instance->GetWindow()->close();}
         protected:
         private:
             Game();
-
             Settings* m_config;
             sf::Clock m_clk;
             sf::RenderWindow* m_window;
             me::Scene* m_activeScene;
 
             static sf::Time sm_frameTime;
+            static Game* sm_Instance;
     };
 };
 

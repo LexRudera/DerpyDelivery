@@ -19,7 +19,6 @@
 					<Add option="-Wcast-align" />
 					<Add option="-Wundef" />
 					<Add option="-Wfloat-equal" />
-					<Add option="-Winline" />
 					<Add option="-Wunreachable-code" />
 					<Add option="-Wmissing-declarations" />
 					<Add option="-Wmissing-include-dirs" />
@@ -54,6 +53,7 @@
 		<Unit filename="README.md" />
 		<Unit filename="include\Animation.hpp" />
 		<Unit filename="include\Game.hpp" />
+		<Unit filename="include\Global.hpp" />
 		<Unit filename="include\Input.hpp" />
 		<Unit filename="include\Level.hpp" />
 		<Unit filename="include\Menu.hpp" />
@@ -65,6 +65,7 @@
 		<Unit filename="include\Settings.hpp" />
 		<Unit filename="src\Animation.cpp" />
 		<Unit filename="src\Game.cpp" />
+		<Unit filename="src\Global.cpp" />
 		<Unit filename="src\Input.cpp" />
 		<Unit filename="src\Level.cpp" />
 		<Unit filename="src\Menu.cpp" />

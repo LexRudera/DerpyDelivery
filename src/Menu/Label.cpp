@@ -1,10 +1,12 @@
+#include "Global.hpp"
 #include "Menu/Label.hpp"
 
 namespace me
 {
-    Label::Label(sf::String text) : m_Text(text, m_Font)
+    Label::Label(const sf::String& text) : m_Text(text, m_Font)
     {
-
+        LoadFont("Gentium-R.ttf");
+        m_Text.setColor(sf::Color::White);
     }
 
     Label::~Label()
@@ -17,10 +19,11 @@ namespace me
         target.draw(m_Text,states);
     }
 
-    bool Label::LoadFont(sf::String& font)
+    bool Label::LoadFont(const sf::String& font = "Gentium-R.ttf")
     {
-        if (!m_Font.loadFromFile("arial.ttf"))
+        if (!m_Font.loadFromFile("fonts\\" + font))
         {
+            //me::Error("Font Loading Failed");
             return false;
         }
         return true;

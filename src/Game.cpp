@@ -5,10 +5,11 @@
 namespace me
 {
     sf::Time Game::sm_frameTime;
+    Game* Game::sm_Instance;
 
     Game::Game() {
-        //ctor
         m_activeScene = 0;
+        Game::sm_Instance = this;
     }
 
     Game::Game(Settings* conf) : Game()
@@ -17,7 +18,6 @@ namespace me
     }
 
     Game::~Game() {
-        //dtor
     }
 
     void Game::Run(std::string& EndMessage, Scene* scn) {

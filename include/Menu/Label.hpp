@@ -3,23 +3,21 @@
 
 #include <SFML/Graphics.hpp>
 #include <Menu/ControlBase.hpp>
-#include <string>
 
 namespace me
 {
     class Label : public me::ControlBase //, sf::Text
     {
         public:
-            Label(sf::String text);
+            Label(const sf::String& text);
             virtual ~Label();
-            //sf::String GetString() {return m_Text.getString();}
-            //void SetString() {m_Text}
-            bool LoadFont(sf::String& font);
+            sf::String GetString() {return m_Text.getString();}
+            void SetString(const sf::String& text) {m_Text.setString(text);}
+            bool LoadFont(const sf::String& font);
             void Draw();
         protected:
             virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
         private:
-
             sf::Font m_Font;
             sf::Text m_Text;
     };

@@ -1,6 +1,5 @@
 #include "Menu.hpp"
 #include "Menu\Label.hpp"
-#include <string>
 
 namespace me
 {

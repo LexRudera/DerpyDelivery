@@ -1,4 +1,6 @@
 #include "Scene.hpp"
+#include "Global.hpp"
+
 namespace me
 {
     Scene::Scene()

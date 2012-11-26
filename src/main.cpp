@@ -7,17 +7,18 @@
 
 #include "Game.hpp"
 #include "Settings.hpp"
-#include "Scene.hpp"
+#include "Menu.hpp"
+#include "Global.hpp"
 #include <iostream>
 
 int main()
 {
     me::Game Derp(new me::Settings());
     std::string EndMessage("OK");
-    Derp.Run(EndMessage, new me::Scene());
+    Derp.Run(EndMessage, me::Menu::MainMenu());
     if (EndMessage != "OK")
     {
-        sf::err() << EndMessage;
+        me::Error(EndMessage);
         return 1;
     }
     else
