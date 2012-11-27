@@ -20,7 +20,7 @@ namespace me
 
     void Menu::Add(ControlBase* obj)
     {
-
+        m_Objects.push_back(obj);
     }
 
     Menu* Menu::MainMenu()

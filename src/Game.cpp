@@ -1,6 +1,7 @@
 #include "Game.hpp"
 #include "Input.hpp"
 #include <iostream>
+#include "Global.hpp"
 
 namespace me
 {
@@ -64,6 +65,7 @@ namespace me
             delete m_activeScene;
             //m_activeScene = 0;
         }
+        Log("Changing scene");
         m_activeScene = scn;
         return;
     }

@@ -15,14 +15,15 @@ namespace me
 
     void Scene::Tick()
     {
-
+        Log("Tick");
     }
 
     void Scene::Render(sf::RenderTarget& target)
     {
         for (unsigned int i = 0; i < m_Objects.capacity(); i++)
         {
-            target.draw(*m_Objects[i],sf::RenderStates::Default);
+            //Log("Render Loop");
+            target.draw(*(m_Objects[i]),sf::RenderStates::Default);
         }
     }
 }

@@ -7,6 +7,7 @@ namespace me
     {
         LoadFont("Gentium-R.ttf");
         m_Text.setColor(sf::Color::White);
+        Log("Made Label");
     }
 
     Label::~Label()
@@ -15,6 +16,7 @@ namespace me
 
     void Label::draw(sf::RenderTarget& target, sf::RenderStates states) const
     {
+        //Log("Label Draw");
         states.transform *= getTransform();
         target.draw(m_Text,states);
     }
@@ -26,6 +28,7 @@ namespace me
             //me::Error("Font Loading Failed");
             return false;
         }
+        m_Text.setFont(m_Font);
         return true;
     }
 } // namespace me
