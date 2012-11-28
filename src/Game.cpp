@@ -24,11 +24,15 @@ namespace me
     void Game::Run(std::string& EndMessage, Scene* scn) {
         m_window = new sf::RenderWindow(sf::VideoMode(800,600),"Some Game");
         ChangeScene(scn);
+        sf::Font f;
+        f.loadFromFile("fonts\\Gentium-R.ttf");
+        sf::Text text("TestDerp",f);
+
+        sf::Event event;
         while (m_window->isOpen())
         {
             // Input/events
             //--------------
-            sf::Event event;
             while (m_window->pollEvent(event))
             {
                 // Close window : exit
@@ -44,8 +48,9 @@ namespace me
 
             // Render
             //--------
-            m_window->clear();
+            m_window->clear( );
             GetActiveScene()->Render(*m_window);
+            //m_window->draw(text);
             m_window->display();
 
             // After frame stuff

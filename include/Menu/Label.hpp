@@ -13,7 +13,7 @@ namespace me
             virtual ~Label();
             sf::String GetString() {return m_Text.getString();}
             void SetString(const sf::String& text) {m_Text.setString(text);}
-            bool LoadFont(const sf::String& font);
+            bool LoadFont(const sf::String& font = "Gentium-R.ttf");
             void Draw();
         protected:
             virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;

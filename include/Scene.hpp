@@ -14,7 +14,7 @@ namespace me
             /** Default destructor */
             virtual ~Scene();
 
-            virtual void Tick();
+            virtual void Tick() = 0;
             void Render(sf::RenderTarget& target);
         protected:
             std::vector<Object*> m_Objects;

@@ -1,5 +1,6 @@
 #include "Scene.hpp"
 #include "Global.hpp"
+#include "menu\label.hpp"
 
 namespace me
 {
@@ -22,8 +23,9 @@ namespace me
     {
         for (unsigned int i = 0; i < m_Objects.capacity(); i++)
         {
-            //Log("Render Loop");
-            target.draw(*(m_Objects[i]),sf::RenderStates::Default);
+            ((Label*)m_Objects[i])->LoadFont("Gentium-R.ttf");
+            //Log("Render loop: " + *((Label)m_Objects[i]).GetString());
+            target.draw(*m_Objects[i],sf::RenderStates::Default);
         }
     }
 }
