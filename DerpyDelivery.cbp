@@ -61,6 +61,7 @@
 		<Unit filename="include\Menu\ControlBase.hpp" />
 		<Unit filename="include\Menu\Label.hpp" />
 		<Unit filename="include\Object.hpp" />
+		<Unit filename="include\ResourceManager.hpp" />
 		<Unit filename="include\Scene.hpp" />
 		<Unit filename="include\Settings.hpp" />
 		<Unit filename="src\Animation.cpp" />
@@ -73,6 +74,7 @@
 		<Unit filename="src\Menu\ControlBase.cpp" />
 		<Unit filename="src\Menu\Label.cpp" />
 		<Unit filename="src\Object.cpp" />
+		<Unit filename="src\ResourceManager.cpp" />
 		<Unit filename="src\Scene.cpp" />
 		<Unit filename="src\Settings.cpp" />
 		<Unit filename="src\main.cpp" />

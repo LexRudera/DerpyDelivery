@@ -1,3 +1,8 @@
+// The Global Functions
+//------------------------------------------------------------------
+// Functions and stuff that is globally accessible to the entire
+// architecture of the game. Logging and error stuff for instance.
+
 #ifndef GLOBAL_HPP_INCLUDED
 #define GLOBAL_HPP_INCLUDED
 

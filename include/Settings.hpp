@@ -1,5 +1,11 @@
+// The Encapsulated Settings
+//------------------------------------------------------------------
+// The class containing all the in-game settings.
+
 #ifndef SETTINGS_H
 #define SETTINGS_H
+
+#include <SFML\Graphics.hpp>
 
 namespace me
 {
@@ -17,6 +23,7 @@ namespace me
         protected:
         private:
             bool m_ShowFps;
+            sf::VideoMode m_VideoMode;
     };
 }
 

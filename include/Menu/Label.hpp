@@ -18,7 +18,7 @@ namespace me
         protected:
             virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
         private:
-            sf::Font m_Font;
+            sf::Font* m_Font;
             sf::Text m_Text;
     };
 } // namespace me
