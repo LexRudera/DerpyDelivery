@@ -19,8 +19,8 @@ namespace me
 
             //Fonts
             sf::Font* LoadFont(const sf::String& Name, const sf::String& FileName);
-            bool UnloadFont(const sf::String&);
-            sf::Font* GetFont(const sf::String&);
+            bool UnloadFont(const sf::String& strng);
+            sf::Font* GetFont(const sf::String& strng);
 
         protected:
         private:
@@ -29,10 +29,10 @@ namespace me
             std::vector<FontEntry*> m_Fonts;
     };
 
-    class FontEntry : sf::Font
+    class FontEntry : public sf::Font
     {
         public:
-            FontEntry();
+            FontEntry(const sf::String& Name, const sf::String& FileName) : m_FileName(FileName), m_Name(Name) {}
             virtual ~FontEntry(){}
             const sf::String& getName() const { return m_Name; }
             const sf::String& getFilename() const { return m_FileName; }

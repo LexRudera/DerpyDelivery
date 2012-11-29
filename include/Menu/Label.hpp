@@ -9,11 +9,11 @@ namespace me
     class Label : public me::ControlBase //, sf::Text
     {
         public:
-            Label(const sf::String& text);
+            Label(const sf::String& text, unsigned int size = 20, const sf::Vector2f& pos = sf::Vector2f(), float rot = 0);
             virtual ~Label();
             sf::String GetString() {return m_Text.getString();}
             void SetString(const sf::String& text) {m_Text.setString(text);}
-            bool LoadFont(const sf::String& font = "Gentium-R.ttf");
+            bool LoadFont(const sf::String& font = "Gentium");
             void Draw();
         protected:
             virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;

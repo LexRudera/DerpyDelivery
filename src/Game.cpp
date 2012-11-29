@@ -9,8 +9,10 @@ namespace me
     Game* Game::sm_Instance;
 
     Game::Game() {
-        m_activeScene = 0;
         Game::sm_Instance = this;
+        m_activeScene = 0;
+        m_ResManager = new ResourceManager();
+        GetResourceManager()->LoadFont("Gentium", "Gentium-R.ttf");
     }
 
     Game::Game(Settings* conf) : Game()
@@ -19,6 +21,8 @@ namespace me
     }
 
     Game::~Game() {
+        delete m_config;
+        delete m_ResManager;
     }
 
     void Game::Run(std::string& EndMessage, Scene* scn) {
