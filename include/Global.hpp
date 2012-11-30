@@ -13,6 +13,8 @@ namespace me
     void Error(std::string err);
     void CriticalError(std::string err);
     void Log(std::string txt);
+    template <typename T>
+    inline std::string to_string(const T& t);
 }
 
 #endif // GLOBAL_HPP_INCLUDED

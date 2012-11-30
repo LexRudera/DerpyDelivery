@@ -28,7 +28,7 @@ namespace me
         sf::String temp;
         temp = "derp";
         Menu* t = new Menu();
-        t->Add(new Label("SomeString"));
+        t->Add(new Label("SomeString",30,sf::Vector2f(0,30)));
         return t;
     }
 }

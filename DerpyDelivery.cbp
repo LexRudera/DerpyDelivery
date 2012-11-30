@@ -59,6 +59,7 @@
 		<Unit filename="include\Menu.hpp" />
 		<Unit filename="include\Menu\Button.hpp" />
 		<Unit filename="include\Menu\ControlBase.hpp" />
+		<Unit filename="include\Menu\Image.hpp" />
 		<Unit filename="include\Menu\Label.hpp" />
 		<Unit filename="include\Object.hpp" />
 		<Unit filename="include\ResourceManager.hpp" />
@@ -72,6 +73,7 @@
 		<Unit filename="src\Menu.cpp" />
 		<Unit filename="src\Menu\Button.cpp" />
 		<Unit filename="src\Menu\ControlBase.cpp" />
+		<Unit filename="src\Menu\Image.cpp" />
 		<Unit filename="src\Menu\Label.cpp" />
 		<Unit filename="src\Object.cpp" />
 		<Unit filename="src\ResourceManager.cpp" />

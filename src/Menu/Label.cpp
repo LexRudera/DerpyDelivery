@@ -25,19 +25,13 @@ namespace me
 
     bool Label::LoadFont(const sf::String& font)
     {
-        /*if (!m_Font->loadFromFile("fonts\\" + font))
-        {
-            //me::Error("Font Loading Failed");
-            return false;
-        }*/
         sf::Font* t = Game::GetInstance()->GetResourceManager()->GetFont(font);
         if (t == 0)
         {
             //delete t;
             return false;
         }
-        m_Font = t;
-        m_Text.setFont(*m_Font);
+        m_Text.setFont(*t);
         return true;
     }
 } // namespace me

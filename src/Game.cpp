@@ -30,6 +30,10 @@ namespace me
         ChangeScene(scn);
 
         sf::Event event;
+        sf::Text FpsTxt;
+        sf::String Fps;
+        FpsTxt.setString(Fps);
+        FpsTxt.setFont(*GetResourceManager()->GetFont("Gentium"));
         while (m_window->isOpen())
         {
             // Input/events
@@ -51,15 +55,17 @@ namespace me
             //--------
             m_window->clear( );
             GetActiveScene()->Render(*m_window);
+
+            if (GetConfiguration()->ShowFps())
+            {
+                Fps = to_string(1/Game::sm_frameTime.asMilliseconds());
+                m_window->draw(FpsTxt);
+            }
             m_window->display();
 
             // After frame stuff
             //-------------------
             Game::sm_frameTime = m_clk.restart();
-            if (GetConfiguration()->ShowFps())
-            {
-
-            }
         }
         delete m_window;
         return;
