@@ -4,13 +4,15 @@
 
 namespace me
 {
-    Label::Label(const sf::String& text, unsigned int size, const sf::Vector2f& pos, float rot)// : m_Text(text, *m_Font)
+    Label::Label(const sf::String& text, unsigned int size, const sf::Vector2f& pos, float rot)
     {
         LoadFont();
         m_Text.setString(text);
         m_Text.setCharacterSize(size);
-        m_Text.setPosition(pos);
-        m_Text.setRotation(rot);
+        //m_Text.setPosition(pos);
+        //m_Text.setRotation(rot);
+        setPosition(pos);
+        setRotation(rot);
     }
 
     Label::~Label()
@@ -19,8 +21,9 @@ namespace me
 
     void Label::draw(sf::RenderTarget& target, sf::RenderStates states) const
     {
+        //states.transform *= getTransform();
         states.transform *= getTransform();
-        target.draw(m_Text);
+        target.draw(m_Text, states);
     }
 
     bool Label::LoadFont(const sf::String& font)

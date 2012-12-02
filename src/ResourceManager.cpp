@@ -6,12 +6,15 @@ namespace me
     ResourceManager::ResourceManager()
     {
         FontDirectory = "fonts\\";
-        //ctor
+        TextureDirectory = "textures\\";
+        SoundDirectory = "sounds\\";
+        FallbackTexture = new sf::Texture();
+        FallbackTexture->create(50, 50);
     }
 
     ResourceManager::~ResourceManager()
     {
-        //dtor
+        delete FallbackTexture;
     }
 
     // ---Fonts---
@@ -99,6 +102,51 @@ namespace me
             if(m_Textures[i]->getName() == strng ||m_Textures[i]->getFilename() == strng )
                 {
                     return m_Textures[i];
+                }
+        }
+        return 0;
+    }
+
+    // ---Sounds---
+    sf::SoundBuffer* ResourceManager::LoadSound(const sf::String& Name, const sf::String& FileName)
+    {
+        SoundEntry* t = new SoundEntry(Name, FileName);
+        if(!t->loadFromFile(SoundDirectory + FileName))
+        {
+            delete t;
+            return 0;
+        }
+        m_Sounds.push_back(t);
+        return t;
+    }
+
+    bool ResourceManager::UnloadSound(const sf::String& strng)
+    {
+        SoundEntry* tf = 0;
+        std::vector<SoundEntry*>::iterator it = m_Sounds.begin();
+        for(unsigned int i = 0; i<m_Sounds.size(); i++)
+        {
+            if(m_Sounds[i]->getName() == strng ||m_Sounds[i]->getFilename() == strng )
+            {
+                tf = m_Sounds[i];
+                break;
+            }
+            it++;
+        }
+        if(tf == 0)
+            return false;
+        delete tf;
+        m_Sounds.erase(it);
+        return true;
+    }
+
+    sf::SoundBuffer* ResourceManager::GetSound(const sf::String& strng)
+    {
+        for(unsigned int i = 0; i<m_Sounds.size(); i++)
+        {
+            if(m_Sounds[i]->getName() == strng ||m_Sounds[i]->getFilename() == strng )
+                {
+                    return m_Sounds[i];
                 }
         }
         return 0;

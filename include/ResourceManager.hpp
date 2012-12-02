@@ -30,6 +30,7 @@ namespace me
             sf::Texture* LoadTexture(const sf::String& Name, const sf::String& FileName);
             bool UnloadTexture(const sf::String& strng);
             sf::Texture* GetTexture(const sf::String& strng);
+            sf::Texture* GetFallbackTexture(){ return FallbackTexture; };
 
             // Sounds
             sf::SoundBuffer* LoadSound(const sf::String& Name, const sf::String& FileName);
@@ -45,6 +46,7 @@ namespace me
             // Textures
             sf::String TextureDirectory;
             std::vector<TextureEntry*> m_Textures;
+            sf::Texture* FallbackTexture;
 
             // Sounds
             sf::String SoundDirectory;

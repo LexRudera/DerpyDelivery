@@ -7,14 +7,21 @@
 #define GLOBAL_HPP_INCLUDED
 
 #include <iostream>
+#include <sstream>
 
 namespace me
 {
-    void Error(std::string err);
-    void CriticalError(std::string err);
-    void Log(std::string txt);
-    template <typename T>
-    inline std::string to_string(const T& t);
+    void Error(const std::string& err);
+    void CriticalError(const std::string& err);
+    void Log(const std::string& txt);
+
+    template<typename T>
+    inline std::string to_string(const T& t)
+    {
+        std::stringstream ss;
+        ss << t;
+        return ss.str();
+    }
 }
 
 #endif // GLOBAL_HPP_INCLUDED

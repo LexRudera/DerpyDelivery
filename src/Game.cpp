@@ -26,18 +26,21 @@ namespace me
     }
 
     void Game::Run(std::string& EndMessage, Scene* scn) {
+        //Log("Initializing");
+        Game::sm_frameTime = m_clk.restart();
         m_window = new sf::RenderWindow(sf::VideoMode(800,600),"Some Game");
         ChangeScene(scn);
 
         sf::Event event;
         sf::Text FpsTxt;
-        sf::String Fps;
-        FpsTxt.setString(Fps);
+        FpsTxt.setCharacterSize(20);
         FpsTxt.setFont(*GetResourceManager()->GetFont("Gentium"));
+        //Log("Initialized");
         while (m_window->isOpen())
         {
             // Input/events
             //--------------
+            //Log("Input");
             while (m_window->pollEvent(event))
             {
                 // Close window : exit
@@ -46,26 +49,33 @@ namespace me
             }
             if (Input::Keyboard::IsKeyPressed(sf::Keyboard::Key::Escape))
                 m_window->close();
+            //Log("Inputed?");
 
             // Logic
             //-------
+            //Log("Tick");
             GetActiveScene()->Tick();
+            //Log("Ticked");
 
             // Render
             //--------
+            //Log("Render");
             m_window->clear( );
             GetActiveScene()->Render(*m_window);
 
             if (GetConfiguration()->ShowFps())
             {
-                Fps = to_string(1/Game::sm_frameTime.asMilliseconds());
+                FpsTxt.setString(to_string(1/Game::sm_frameTime.asSeconds()));
                 m_window->draw(FpsTxt);
             }
             m_window->display();
+            //Log("Rendered");
 
             // After frame stuff
             //-------------------
+            //Log("After");
             Game::sm_frameTime = m_clk.restart();
+            //Log("Aftered");
         }
         delete m_window;
         return;
