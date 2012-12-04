@@ -9,8 +9,6 @@ namespace me
         LoadFont();
         m_Text.setString(text);
         m_Text.setCharacterSize(size);
-        //m_Text.setPosition(pos);
-        //m_Text.setRotation(rot);
         setPosition(pos);
         setRotation(rot);
     }

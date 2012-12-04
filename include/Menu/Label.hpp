@@ -14,7 +14,9 @@ namespace me
             const sf::String& GetString() const {return m_Text.getString();}
             void SetString(const sf::String& text) {m_Text.setString(text);}
             bool LoadFont(const sf::String& font = "Gentium");
-            void Draw();
+
+            sf::FloatRect getLocalBounds() const { return m_Text.getLocalBounds(); }
+            sf::FloatRect getGlobalBounds() const { return m_Text.getGlobalBounds(); }
         protected:
             virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
         private:
