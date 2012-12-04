@@ -16,8 +16,8 @@ namespace me
         if (size != Image::DefaultSize)
         {
             sf::Vector2u imgsize = GetTexture()->getSize();
-            float x = 1/imgsize.x * size.x;
-            float y = 1/imgsize.y * size.y;
+            float x = ((float)1)/imgsize.x * size.x;
+            float y = ((float)1)/imgsize.y * size.y;
             setScale(x, y);
         }
     }
