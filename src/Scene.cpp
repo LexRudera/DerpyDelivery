@@ -16,7 +16,7 @@ namespace me
 
     void Scene::Tick()
     {
-        Log("Tick");
+        //Log("Tick");
     }
 
     void Scene::Render(sf::RenderTarget& target)

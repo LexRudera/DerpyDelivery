@@ -19,9 +19,14 @@ namespace me
 
     void Label::draw(sf::RenderTarget& target, sf::RenderStates states) const
     {
-        //states.transform *= getTransform();
         states.transform *= getTransform();
         target.draw(m_Text, states);
+        // Bounding box of the text
+        /*sf::RectangleShape boundings(sf::Vector2f(m_Text.getLocalBounds().width, m_Text.getLocalBounds().height));
+        boundings.setFillColor(sf::Color(0,0,0,0));
+        boundings.setOutlineColor(sf::Color(255,255,255));
+        boundings.setOutlineThickness(1);
+        target.draw(boundings,states);*/
     }
 
     bool Label::LoadFont(const sf::String& font)

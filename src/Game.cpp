@@ -28,7 +28,7 @@ namespace me
     void Game::Run(std::string& EndMessage, Scene* scn) {
         //Log("Initializing");
         Game::sm_frameTime = m_clk.restart();
-        m_window = new sf::RenderWindow(sf::VideoMode(800,600),"Some Game");
+        m_window = new sf::RenderWindow(sf::VideoMode(800,600),"Some Game",sf::Style::Titlebar);
         ChangeScene(scn);
 
         sf::Event event;
