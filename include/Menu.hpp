@@ -2,10 +2,15 @@
 #define MENU_H
 
 #include "Scene.hpp"
-#include "Menu\ControlBase.hpp"
+#include "MenuControls/ControlBase.hpp"
 
 namespace me
 {
+    //---------------------------------------------------------
+    // The virtual menu class.
+    // A menu is not just a menu. It's always a specific type
+    // of menu, like a main menu or options menu.
+    //---------------------------------------------------------
     class Menu : public Scene
     {
         public:
@@ -15,7 +20,7 @@ namespace me
             virtual ~Menu();
             void Tick();
             void Add(ControlBase* obj);
-            static Menu* MainMenu();
+            virtual sf::String GetType() const = 0;
         protected:
         private:
     };

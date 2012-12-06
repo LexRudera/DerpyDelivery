@@ -6,9 +6,11 @@
 #include "Settings.hpp"
 #include "Scene.hpp"
 #include "ResourceManager.hpp"
+//#include "InputManager.hpp"
 
 namespace me
 {
+    class InputManager;
     class Game
     {
         public:
@@ -22,7 +24,8 @@ namespace me
             sf::Time* GetFrameTime() { return &Game::sm_frameTime; }
             Settings* GetConfiguration() { return m_config; }
             ResourceManager* GetResourceManager() { return m_ResManager; }
-            static Game* GetInstance() { return sm_Instance; }
+            InputManager* GetInputManager() { return m_InputMan; }
+            static Game* Get() { return sm_Instance; }
             static void Quit() {Game::sm_Instance->GetWindow()->close();}
         protected:
         private:
@@ -33,6 +36,7 @@ namespace me
             sf::RenderWindow* m_window;
             Scene* m_activeScene;
             ResourceManager* m_ResManager;
+            me::InputManager* m_InputMan;
 
             static sf::Time sm_frameTime;
             static Game* sm_Instance;

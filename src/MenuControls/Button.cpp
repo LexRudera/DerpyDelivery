@@ -1,5 +1,7 @@
-#include "Menu/Button.hpp"
+#include "MenuControls/Button.hpp"
 #include "Global.hpp"
+#include "InputManager.hpp"
+#include "Game.hpp"
 
 namespace me
 {
@@ -33,5 +35,21 @@ namespace me
         states.transform *= getTransform();
         target.draw(m_Btn, states);
         target.draw(m_Text, states);
+    }
+
+    void Button::tick()
+    {
+        // Sense the mouse and react accordingly.
+        sf::Vector2i MPos = Game::Get()->GetInputManager()->GetMousePos();
+        if (MPos.x > getPosition().x // Below the x pos
+            && MPos.x < getPosition().x + m_Btn.getSize().x // Above the lower box bounds
+            && MPos.y > getPosition().y // Past the y pos
+            && MPos.y < getPosition().y + m_Btn.getSize().y) // Before the right box bounds
+        {
+            if (Game::Get()->GetInputManager()->IsButtonDown(sf::Mouse::Button::Left))
+                Log("Mouse it clicked on '" + m_Text.GetString() + "'");
+            //else
+                //Log("Mouse is hovering over '" + m_Text.GetString() + "' - " + to_string(MPos.x) + " - " + to_string(MPos.y));
+        }
     }
 } // namespace me

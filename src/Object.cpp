@@ -1,11 +1,19 @@
 #include "Object.hpp"
 
-me::Object::Object()
+namespace me
 {
-    //ctor
-}
+    Object::Object()
+    {
+        //ctor
+    }
 
-me::Object::~Object()
-{
-    //dtor
+    Object::~Object()
+    {
+        //dtor
+    }
+
+    void Object::tick()
+    {
+
+    }
 }

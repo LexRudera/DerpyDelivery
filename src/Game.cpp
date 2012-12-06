@@ -1,5 +1,5 @@
 #include "Game.hpp"
-#include "Input.hpp"
+#include "InputManager.hpp"
 #include <iostream>
 #include "Global.hpp"
 
@@ -12,6 +12,7 @@ namespace me
         Game::sm_Instance = this;
         m_activeScene = 0;
         m_ResManager = new ResourceManager();
+        m_InputMan = new InputManager();
         GetResourceManager()->LoadFont("Gentium", "Gentium-R.ttf");
     }
 
@@ -35,26 +36,29 @@ namespace me
         sf::Text FpsTxt;
         FpsTxt.setCharacterSize(20);
         FpsTxt.setFont(*GetResourceManager()->GetFont("Gentium"));
-        //Log("Initialized");
+        Log("Initialized");
         while (m_window->isOpen())
         {
             // Input/events
             //--------------
             //Log("Input");
+            m_InputMan->Clear();
             while (m_window->pollEvent(event))
             {
                 // Close window : exit
                 if (event.type == sf::Event::Closed)
                     m_window->close();
+                // Feed the InputManager
+                m_InputMan->ProcessInput(event);
             }
-            if (Input::Keyboard::IsKeyPressed(sf::Keyboard::Key::Escape))
+            if (GetInputManager()->IsKeyDown(sf::Keyboard::Key::Escape))
                 m_window->close();
             //Log("Inputed?");
 
             // Logic
             //-------
             //Log("Tick");
-            GetActiveScene()->Tick();
+            GetActiveScene()->DoTick();
             //Log("Ticked");
 
             // Render
@@ -62,8 +66,7 @@ namespace me
             //Log("Render");
             m_window->clear( );
             GetActiveScene()->Render(*m_window);
-
-            if (GetConfiguration()->ShowFps())
+            if (GetConfiguration()->ShowFps() && m_window->isOpen()) // Why it matters if the window is open or not, I don't know.
             {
                 FpsTxt.setString(to_string(1/Game::sm_frameTime.asSeconds()));
                 m_window->draw(FpsTxt);
@@ -73,9 +76,9 @@ namespace me
 
             // After frame stuff
             //-------------------
-            //Log("After");
+            Log("After");
             Game::sm_frameTime = m_clk.restart();
-            //Log("Aftered");
+            Log("Aftered");
         }
         delete m_window;
         return;

@@ -14,6 +14,7 @@
 				<Compiler>
 					<Add option="-fomit-frame-pointer" />
 					<Add option="-O2" />
+					<Add option="-Wshadow" />
 					<Add option="-Winit-self" />
 					<Add option="-Wredundant-decls" />
 					<Add option="-Wcast-align" />
@@ -22,8 +23,6 @@
 					<Add option="-Wunreachable-code" />
 					<Add option="-Wmissing-declarations" />
 					<Add option="-Wmissing-include-dirs" />
-					<Add option="-Wswitch-enum" />
-					<Add option="-Wswitch-default" />
 					<Add option="-Wmain" />
 					<Add option="-std=c++11" />
 					<Add option="-DSFML_STATIC" />
@@ -54,13 +53,14 @@
 		<Unit filename="include\Animation.hpp" />
 		<Unit filename="include\Game.hpp" />
 		<Unit filename="include\Global.hpp" />
-		<Unit filename="include\Input.hpp" />
+		<Unit filename="include\InputManager.hpp" />
 		<Unit filename="include\Level.hpp" />
+		<Unit filename="include\MainMenu.hpp" />
 		<Unit filename="include\Menu.hpp" />
-		<Unit filename="include\Menu\Button.hpp" />
-		<Unit filename="include\Menu\ControlBase.hpp" />
-		<Unit filename="include\Menu\Image.hpp" />
-		<Unit filename="include\Menu\Label.hpp" />
+		<Unit filename="include\MenuControls\Button.hpp" />
+		<Unit filename="include\MenuControls\ControlBase.hpp" />
+		<Unit filename="include\MenuControls\Image.hpp" />
+		<Unit filename="include\MenuControls\Label.hpp" />
 		<Unit filename="include\Object.hpp" />
 		<Unit filename="include\ResourceManager.hpp" />
 		<Unit filename="include\Scene.hpp" />
@@ -68,13 +68,14 @@
 		<Unit filename="src\Animation.cpp" />
 		<Unit filename="src\Game.cpp" />
 		<Unit filename="src\Global.cpp" />
-		<Unit filename="src\Input.cpp" />
+		<Unit filename="src\InputManager.cpp" />
 		<Unit filename="src\Level.cpp" />
+		<Unit filename="src\MainMenu.cpp" />
 		<Unit filename="src\Menu.cpp" />
-		<Unit filename="src\Menu\Button.cpp" />
-		<Unit filename="src\Menu\ControlBase.cpp" />
-		<Unit filename="src\Menu\Image.cpp" />
-		<Unit filename="src\Menu\Label.cpp" />
+		<Unit filename="src\MenuControls\Button.cpp" />
+		<Unit filename="src\MenuControls\ControlBase.cpp" />
+		<Unit filename="src\MenuControls\Image.cpp" />
+		<Unit filename="src\MenuControls\Label.cpp" />
 		<Unit filename="src\Object.cpp" />
 		<Unit filename="src\ResourceManager.cpp" />
 		<Unit filename="src\Scene.cpp" />

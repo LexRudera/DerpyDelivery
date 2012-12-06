@@ -7,18 +7,22 @@
 
 #include "Game.hpp"
 #include "Settings.hpp"
-#include "Menu.hpp"
+#include "MainMenu.hpp"
 #include "Global.hpp"
 #include <iostream>
 
+using namespace me;
 int main()
 {
-    me::Game Derp(new me::Settings());
+    Log("Running");
+    Log("Setting up game instance");
+    Game Derp(new Settings());
     std::string EndMessage("OK");
-    Derp.Run(EndMessage, me::Menu::MainMenu());
+    Log("Firing up the game.");
+    Derp.Run(EndMessage, new MainMenu());
     if (EndMessage != "OK")
     {
-        me::Error(EndMessage);
+        Error(EndMessage);
         return 1;
     }
     else

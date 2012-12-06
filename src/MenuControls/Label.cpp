@@ -1,5 +1,5 @@
 #include "Global.hpp"
-#include "Menu/Label.hpp"
+#include "MenuControls/Label.hpp"
 #include "Game.hpp"
 
 namespace me
@@ -31,7 +31,7 @@ namespace me
 
     bool Label::LoadFont(const sf::String& font)
     {
-        sf::Font* t = Game::GetInstance()->GetResourceManager()->GetFont(font);
+        sf::Font* t = Game::Get()->GetResourceManager()->GetFont(font);
         if (t == 0)
         {
             //delete t;

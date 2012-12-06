@@ -1,8 +1,8 @@
 #ifndef ME_BUTTON_H
 #define ME_BUTTON_H
 
-#include <Menu/ControlBase.hpp>
-#include "Menu\Label.hpp"
+#include <MenuControls/ControlBase.hpp>
+#include "MenuControls/Label.hpp"
 
 namespace me
 {
@@ -16,11 +16,15 @@ namespace me
                    float rot = 0);
             virtual ~Button();
 
+            void tick();
             void draw(sf::RenderTarget& target, sf::RenderStates states) const;
             bool LoadTexture(const sf::String& strng);
+            void SetOnClickFunction(void (*)());
+            virtual sf::String GetType() const { return "Button"; }
         protected:
         private:
             void ApplyState(BtnStateStyle* Style);
+
             Label m_Text;
             sf::RectangleShape m_Btn;
             void (*OnClick)();
@@ -36,6 +40,9 @@ namespace me
         ~BtnStateStyle();
 
         sf::Texture* Background;
+        sf::Color OutlineColour;
+        sf::Color FillColour;
+        sf::Color TextColour;
         float OutlineThickness;
     };
 } // namespace me

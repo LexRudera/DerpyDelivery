@@ -1,4 +1,4 @@
-#include "Menu/Image.hpp"
+#include "MenuControls/Image.hpp"
 #include "Game.hpp"
 
 namespace me
@@ -9,7 +9,7 @@ namespace me
     {
         if (!LoadTexture(image))
         {
-            m_Img.setTexture(*Game::GetInstance()->GetResourceManager()->GetFallbackTexture());
+            m_Img.setTexture(*Game::Get()->GetResourceManager()->GetFallbackTexture());
         }
         setPosition(pos);
         setRotation(rot);
@@ -35,7 +35,7 @@ namespace me
 
     bool Image::LoadTexture(const sf::String& strng)
     {
-        sf::Texture* t = Game::GetInstance()->GetResourceManager()->GetTexture(strng);
+        sf::Texture* t = Game::Get()->GetResourceManager()->GetTexture(strng);
         if (t == 0)
         {
             // If shit fails, load the texture into the Resource Manager beforehand,

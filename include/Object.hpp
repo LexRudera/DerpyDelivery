@@ -18,7 +18,10 @@ namespace me
             Object();
             /** Default destructor */
             virtual ~Object();
+            virtual sf::String GetType() const = 0;
+            virtual void tick();
         protected:
+            virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const = 0;
         private:
     };
 };
