@@ -4,6 +4,9 @@
 #include "Object.hpp"
 namespace me
 {
+    class Menu;
+    // MenuEvent type definition
+    typedef void (Menu::* MenuEvent)();
     class ControlBase : public Object
     {
         public:

@@ -22,7 +22,7 @@ namespace me
             Button* OptionsBtn;
             Button* QuitBtn;
 
-            void Quit_OnClick();
+            void QuitBtn_OnClick();
     };
 }
 #endif // MAINMENU_H

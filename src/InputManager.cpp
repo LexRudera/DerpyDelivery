@@ -1,4 +1,5 @@
 #include "InputManager.hpp"
+#include "Global.hpp"
 
 namespace me
 {
@@ -54,21 +55,25 @@ namespace me
                 // actually is a numeric value.
                 KeysPressed[event.key.code] = true;
                 KeysDown[event.key.code] = true;
+                break; // Don't forget your darn breaks!
             }
             case sf::Event::KeyReleased:
             {
                 KeysPressed[event.key.code] = false;
                 KeysUp[event.key.code] = true;
+                break;
             }
             case sf::Event::EventType::MouseButtonPressed:
             {
                 ButtonsPressed[event.mouseButton.button] = true;
                 ButtonsDown[event.mouseButton.button] = true;
+                break;
             }
             case sf::Event::EventType::MouseButtonReleased:
             {
                 ButtonsPressed[event.mouseButton.button] = false;
                 ButtonsUp[event.mouseButton.button] = true;
+                break;
             }
         }
     }

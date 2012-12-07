@@ -3,6 +3,7 @@
 
 #include <MenuControls/ControlBase.hpp>
 #include "MenuControls/Label.hpp"
+#include "Menu.hpp"
 
 namespace me
 {
@@ -10,7 +11,8 @@ namespace me
     class Button : public ControlBase
     {
         public:
-            Button(const sf::String& text,
+            Button(Menu* parent,
+                   const sf::String& text,
                    const sf::Vector2f& size = sf::Vector2f(50,50),
                    const sf::Vector2f& pos = sf::Vector2f(),
                    float rot = 0);
@@ -18,17 +20,23 @@ namespace me
 
             void tick();
             void draw(sf::RenderTarget& target, sf::RenderStates states) const;
+
             bool LoadTexture(const sf::String& strng);
-            void SetOnClickFunction(void (*)());
+            void SetOnClickFunction(MenuEvent Func) { OnClick = Func; }
             virtual sf::String GetType() const { return "Button"; }
         protected:
         private:
+            Menu* m_Parent;
             void ApplyState(BtnStateStyle* Style);
 
+            // Elements of a button
             Label m_Text;
             sf::RectangleShape m_Btn;
-            void (*OnClick)();
 
+            // Function Delegates
+            MenuEvent OnClick;
+
+            // Visual Styles
             BtnStateStyle* IdleStyle;
             BtnStateStyle* DownStyle;
             BtnStateStyle* HoverStyle;
