@@ -76,9 +76,9 @@ namespace me
 
             // After frame stuff
             //-------------------
-            Log("After");
+            //Log("After");
             Game::sm_frameTime = m_clk.restart();
-            Log("Aftered");
+            //Log("Aftered");
         }
         delete m_window;
         return;
