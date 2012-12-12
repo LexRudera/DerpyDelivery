@@ -1,9 +1,72 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <CodeBlocks_layout_file>
 	<ActiveTarget name="Release" />
+	<File name="src\Background.cpp" open="1" top="0" tabpos="16" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="702" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="include\Background.hpp" open="1" top="0" tabpos="15" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="782" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="include\Game.hpp" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="235" topLine="4" />
+		</Cursor>
+	</File>
+	<File name="include\Global.hpp" open="0" top="0" tabpos="12" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="559" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="include\InputManager.hpp" open="0" top="0" tabpos="20" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1285" topLine="28" />
+		</Cursor>
+	</File>
+	<File name="include\Object.hpp" open="1" top="0" tabpos="12" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="655" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="include\MainMenu.hpp" open="1" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="591" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="include\ResourceManager.hpp" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1088" topLine="23" />
+		</Cursor>
+	</File>
+	<File name="include\Menu.hpp" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="599" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="include\Scene.hpp" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="408" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="include\MenuControls\Button.hpp" open="1" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1117" topLine="11" />
+		</Cursor>
+		<Folding>
+			<Collapse line="45" />
+		</Folding>
+	</File>
 	<File name="include\Settings.hpp" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="659" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="include\MenuControls\ControlBase.hpp" open="1" top="0" tabpos="14" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="324" topLine="0" />
 		</Cursor>
 	</File>
 	<File name="src\Animation.cpp" open="0" top="0" tabpos="14" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -11,9 +74,19 @@
 			<Cursor1 position="43" topLine="0" />
 		</Cursor>
 	</File>
+	<File name="include\MenuControls\Image.hpp" open="0" top="0" tabpos="13" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="647" topLine="0" />
+		</Cursor>
+	</File>
 	<File name="src\Game.cpp" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="1217" topLine="26" />
+		</Cursor>
+	</File>
+	<File name="include\MenuControls\Label.hpp" open="0" top="0" tabpos="11" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="132" topLine="0" />
 		</Cursor>
 	</File>
 	<File name="src\Global.cpp" open="0" top="0" tabpos="13" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -21,9 +94,9 @@
 			<Cursor1 position="81" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="src\main.cpp" open="0" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name=".gitignore" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="521" topLine="0" />
+			<Cursor1 position="137" topLine="0" />
 		</Cursor>
 	</File>
 	<File name="src\InputManager.cpp" open="0" top="0" tabpos="19" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -36,9 +109,9 @@
 			<Cursor1 position="95" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="src\MainMenu.cpp" open="1" top="1" tabpos="9" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="src\MainMenu.cpp" open="1" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="1004" topLine="0" />
+			<Cursor1 position="1148" topLine="5" />
 		</Cursor>
 	</File>
 	<File name="src\Menu.cpp" open="1" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -46,12 +119,12 @@
 			<Cursor1 position="89" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="src\MenuControls\Button.cpp" open="1" top="0" tabpos="12" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="src\MenuControls\Button.cpp" open="1" top="0" tabpos="11" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="1930" topLine="36" />
+			<Cursor1 position="1216" topLine="29" />
 		</Cursor>
 	</File>
-	<File name="src\MenuControls\ControlBase.cpp" open="1" top="0" tabpos="14" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="src\MenuControls\ControlBase.cpp" open="1" top="0" tabpos="13" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="23" topLine="0" />
 		</Cursor>
@@ -76,14 +149,9 @@
 			<Cursor1 position="112" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="src\Scene.cpp" open="1" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="src\Scene.cpp" open="1" top="1" tabpos="17" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="89" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="include\Game.hpp" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="235" topLine="4" />
+			<Cursor1 position="529" topLine="0" />
 		</Cursor>
 	</File>
 	<File name="src\Settings.cpp" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -91,67 +159,9 @@
 			<Cursor1 position="187" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="include\Global.hpp" open="0" top="0" tabpos="12" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="src\main.cpp" open="0" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="559" topLine="0" />
-		</Cursor>
-	</File>
-	<File name=".gitignore" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="137" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="include\InputManager.hpp" open="0" top="0" tabpos="20" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1285" topLine="28" />
-		</Cursor>
-	</File>
-	<File name="include\MainMenu.hpp" open="1" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="568" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="include\Menu.hpp" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="599" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="include\MenuControls\Button.hpp" open="1" top="0" tabpos="11" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1117" topLine="11" />
-		</Cursor>
-		<Folding>
-			<Collapse line="45" />
-		</Folding>
-	</File>
-	<File name="include\MenuControls\ControlBase.hpp" open="1" top="0" tabpos="15" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="224" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="include\MenuControls\Image.hpp" open="0" top="0" tabpos="13" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="647" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="include\MenuControls\Label.hpp" open="0" top="0" tabpos="11" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="132" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="include\Object.hpp" open="1" top="0" tabpos="13" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="324" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="include\ResourceManager.hpp" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1088" topLine="23" />
-		</Cursor>
-	</File>
-	<File name="include\Scene.hpp" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="95" topLine="0" />
+			<Cursor1 position="521" topLine="0" />
 		</Cursor>
 	</File>
 </CodeBlocks_layout_file>

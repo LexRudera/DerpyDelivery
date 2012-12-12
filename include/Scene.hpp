@@ -3,6 +3,7 @@
 
 #include <vector>
 #include "Object.hpp"
+#include "Background.hpp"
 
 namespace me
 {
@@ -19,6 +20,7 @@ namespace me
             void Render(sf::RenderTarget& target);
         protected:
             std::vector<Object*> m_Objects;
+            Background* m_Background;
         private:
     };
 };

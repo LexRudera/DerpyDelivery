@@ -24,6 +24,8 @@ namespace me
 
     void Scene::Render(sf::RenderTarget& target)
     {
+        if (m_Background != 0)
+            target.draw(*m_Background,sf::RenderStates::Default);
         for (unsigned int i = 0; i < m_Objects.size(); i++)
         {
             //Log("Render loop: " + *((Label)m_Objects[i]).GetString());

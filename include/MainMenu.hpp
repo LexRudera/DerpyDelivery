@@ -22,6 +22,8 @@ namespace me
             Button* OptionsBtn;
             Button* QuitBtn;
 
+            void PlayBtn_OnClick();
+            void OptionsBtn_OnClick();
             void QuitBtn_OnClick();
     };
 }

@@ -10,11 +10,13 @@ namespace me
 
         Add(Title = new Label("SomeString",30,sf::Vector2f(0,30)));
         Add(ComplementaryPicture = new Image("Pretty Texture",sf::Vector2f(150,75)));
-        Add(PlayBtn = new Button(this,"32552512", sf::Vector2f(200,50), sf::Vector2f(300,300)));
+        Add(PlayBtn = new Button(this,"Pleh", sf::Vector2f(200,50), sf::Vector2f(300,300)));
         Add(OptionsBtn = new Button(this,"some string", sf::Vector2f(200,50), sf::Vector2f(300,400)));
         Add(QuitBtn = new Button(this,"Quit", sf::Vector2f(200,50), sf::Vector2f(300,500)));
 
-        //void (Menu::*QuitOnClick)() = &MainMenu::QuitBtn_OnClick;
+        // Event Function Delegation
+        PlayBtn->SetOnClickFunction(static_cast<MenuEvent>(&MainMenu::PlayBtn_OnClick));
+        OptionsBtn->SetOnClickFunction(static_cast<MenuEvent>(&MainMenu::OptionsBtn_OnClick));
         QuitBtn->SetOnClickFunction(static_cast<MenuEvent>(&MainMenu::QuitBtn_OnClick));
     }
 
@@ -22,9 +24,20 @@ namespace me
     {
         //dtor
     }
+
+    void MainMenu::PlayBtn_OnClick()
+    {
+        Log("Play");
+        //Game::Quit();
+    }
+    void MainMenu::OptionsBtn_OnClick()
+    {
+        Log("Options");
+        //Game::Quit();
+    }
     void MainMenu::QuitBtn_OnClick()
     {
-        Log("Quit OnClick Function!");
+        Log("Quit");
         Game::Quit();
     }
 }

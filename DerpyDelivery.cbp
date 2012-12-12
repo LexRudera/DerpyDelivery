@@ -51,6 +51,7 @@
 		<Unit filename=".gitignore" />
 		<Unit filename="README.md" />
 		<Unit filename="include\Animation.hpp" />
+		<Unit filename="include\Background.hpp" />
 		<Unit filename="include\Game.hpp" />
 		<Unit filename="include\Global.hpp" />
 		<Unit filename="include\InputManager.hpp" />
@@ -66,6 +67,7 @@
 		<Unit filename="include\Scene.hpp" />
 		<Unit filename="include\Settings.hpp" />
 		<Unit filename="src\Animation.cpp" />
+		<Unit filename="src\Background.cpp" />
 		<Unit filename="src\Game.cpp" />
 		<Unit filename="src\Global.cpp" />
 		<Unit filename="src\InputManager.cpp" />
