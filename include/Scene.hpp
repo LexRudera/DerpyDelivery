@@ -18,10 +18,12 @@ namespace me
             void DoTick();
             virtual void Tick() = 0;
             void Render(sf::RenderTarget& target);
+            Background* GetBackground(){ return m_Background; }
+            void ApplyBackground(Background* bg){ m_Background = bg; }
         protected:
             std::vector<Object*> m_Objects;
-            Background* m_Background;
         private:
+            Background* m_Background;
     };
 };
 

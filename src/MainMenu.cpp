@@ -6,7 +6,14 @@ namespace me
 {
     MainMenu::MainMenu()
     {
+        Game::Get()->GetResourceManager()->LoadTexture("Background 1", "bg1.png");
+        Game::Get()->GetResourceManager()->LoadTexture("Background 2", "bg2.png");
+        Game::Get()->GetResourceManager()->LoadTexture("Background 3", "bg3.png");
+        Game::Get()->GetResourceManager()->LoadTexture("Background 4", "bg4.png");
+
         Game::Get()->GetResourceManager()->LoadTexture("Pretty Texture","Pretty Texture.png");
+
+        Background* Bg = new Background();
 
         Add(Title = new Label("SomeString",30,sf::Vector2f(0,30)));
         Add(ComplementaryPicture = new Image("Pretty Texture",sf::Vector2f(150,75)));
