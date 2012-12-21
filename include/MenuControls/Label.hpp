@@ -18,7 +18,6 @@ namespace me
             sf::FloatRect getLocalBounds() const { return m_Text.getLocalBounds(); }
             sf::FloatRect getGlobalBounds() const { return m_Text.getGlobalBounds(); }
             unsigned int getCharacterSize() const { return m_Text.getCharacterSize(); }
-            virtual sf::String GetType() const { return "Label"; }
         protected:
             virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
         private:

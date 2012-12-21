@@ -13,7 +13,6 @@ namespace me
         public:
             MainMenu();
             virtual ~MainMenu();
-            sf::String GetType() const { return "MainMenu"; }
         protected:
         private:
             Label* Title;

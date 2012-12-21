@@ -20,7 +20,6 @@ namespace me
             virtual ~Menu();
             void Tick();
             void Add(ControlBase* obj);
-            virtual sf::String GetType() const = 0;
         protected:
         private:
     };

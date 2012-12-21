@@ -17,7 +17,6 @@ namespace me
             const sf::Texture* GetTexture() { return m_Img.getTexture(); }
 
             static sf::Vector2i DefaultSize;
-            virtual sf::String GetType() const { return "Image"; }
         protected:
         private:
             sf::Sprite m_Img;

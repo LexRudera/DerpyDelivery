@@ -1,4 +1,6 @@
 #include "Background.hpp"
+#include "Global.hpp"
+#include "Game.hpp"
 
 namespace me
 {
@@ -16,8 +18,18 @@ namespace me
     {
         states.transform *= getTransform();
         //Render dat shit!
+            //sf::Sprite t;
+            //t.setTexture(*Game::Get()->GetResourceManager()->GetTexture("Pretty Pictured"));
         for (unsigned int i = 0; i< m_BgTextures.size(); i++)
+        {
+            //----------------------
+            //THIS NEEDS FIXIN'!
+            //----------------------
+            Log("Let's draw backgrounds :3 " + to_string(m_BgTextures[i]->getTexture()));
+            //target.draw(t,states);
+            m_BgTextures[i]->setTexture(*Game::Get()->GetResourceManager()->GetTexture("Pretty Texture"));
             target.draw(*m_BgTextures[i],states);
+        }
     }
 
     void Background::Add(sf::Texture* tex, const sf::Vector2f& pos, const sf::Vector2f& scl, float rot)

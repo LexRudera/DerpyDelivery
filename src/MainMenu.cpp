@@ -6,14 +6,21 @@ namespace me
 {
     MainMenu::MainMenu()
     {
+        Log("Loading stuph");
         Game::Get()->GetResourceManager()->LoadTexture("Background 1", "bg1.png");
         Game::Get()->GetResourceManager()->LoadTexture("Background 2", "bg2.png");
         Game::Get()->GetResourceManager()->LoadTexture("Background 3", "bg3.png");
         Game::Get()->GetResourceManager()->LoadTexture("Background 4", "bg4.png");
 
         Game::Get()->GetResourceManager()->LoadTexture("Pretty Texture","Pretty Texture.png");
+        Log("Done Loading stuph");
 
         Background* Bg = new Background();
+        Bg->Add(Game::Get()->GetResourceManager()->GetTexture("Background 1"),sf::Vector2f(0,0));
+        Bg->Add(Game::Get()->GetResourceManager()->GetTexture("Background 2"),sf::Vector2f(50,50));
+        Bg->Add(Game::Get()->GetResourceManager()->GetTexture("Background 3"),sf::Vector2f(100,100));
+        Bg->Add(Game::Get()->GetResourceManager()->GetTexture("Background 4"),sf::Vector2f(150,150));
+        ApplyBackground(Bg);
 
         Add(Title = new Label("SomeString",30,sf::Vector2f(0,30)));
         Add(ComplementaryPicture = new Image("Pretty Texture",sf::Vector2f(150,75)));

@@ -23,7 +23,7 @@ namespace me
         protected:
             std::vector<Object*> m_Objects;
         private:
-            Background* m_Background;
+            Background* m_Background = 0;
     };
 };
 

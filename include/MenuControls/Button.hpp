@@ -23,7 +23,6 @@ namespace me
 
             bool LoadTexture(const sf::String& strng);
             void SetOnClickFunction(MenuEvent Func) { OnClick = Func; }
-            virtual sf::String GetType() const { return "Button"; }
         protected:
         private:
             Menu* m_Parent;
@@ -34,12 +33,12 @@ namespace me
             sf::RectangleShape m_Btn;
 
             // Function Delegates
-            MenuEvent OnClick;
+            MenuEvent OnClick = 0;
 
             // Visual Styles
-            BtnStateStyle* IdleStyle;
-            BtnStateStyle* DownStyle;
-            BtnStateStyle* HoverStyle;
+            BtnStateStyle* IdleStyle = 0;
+            BtnStateStyle* DownStyle = 0;
+            BtnStateStyle* HoverStyle = 0;
     };
 
     struct BtnStateStyle

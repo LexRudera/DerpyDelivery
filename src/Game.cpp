@@ -66,6 +66,7 @@ namespace me
             //Log("Render");
             m_window->clear( );
             GetActiveScene()->Render(*m_window);
+            //Log("Rendering FPS");
             if (GetConfiguration()->ShowFps() && m_window->isOpen()) // Why it matters if the window is open or not, I don't know.
             {
                 FpsTxt.setString(to_string(1/Game::sm_frameTime.asSeconds()));
