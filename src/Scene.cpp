@@ -10,7 +10,11 @@ namespace me
 
     Scene::~Scene()
     {
-        //dtor
+        delete m_Background;
+        for (unsigned int i = 0; i < m_Objects.size(); i++)
+        {
+            delete m_Objects[i];
+        }
     }
 
     void Scene::DoTick()

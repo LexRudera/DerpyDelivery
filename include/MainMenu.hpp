@@ -13,6 +13,7 @@ namespace me
         public:
             MainMenu();
             virtual ~MainMenu();
+            void Load();
         protected:
         private:
             Label* Title;

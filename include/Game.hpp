@@ -19,12 +19,13 @@ namespace me
             void Run(std::string& EndMessage, Scene* scn);
             sf::RenderWindow* GetWindow() const {return m_window;}
             Scene* GetActiveScene() const {return m_activeScene;}
-            void ChangeScene(me::Scene* scn);
+            void ChangeScene(me::Scene* scn, const Persistence& depth = Level);
 
             sf::Time* GetFrameTime() { return &Game::sm_frameTime; }
             Settings* GetConfiguration() { return m_config; }
             ResourceManager* GetResourceManager() { return m_ResManager; }
             InputManager* GetInputManager() { return m_InputMan; }
+
             static Game* Get() { return sm_Instance; }
             static void Quit() {Game::sm_Instance->GetWindow()->close();}
         protected:
@@ -32,11 +33,13 @@ namespace me
             Game();
 
             sf::Clock m_clk;
-            Settings* m_config;
-            sf::RenderWindow* m_window;
-            Scene* m_activeScene;
+            Settings* m_config = 0;
+            sf::RenderWindow* m_window = 0;
+            Scene* m_activeScene = 0;
+                Scene* m_nextscene = 0;
+                Persistence m_LvlChngMsg = Level;
             ResourceManager* m_ResManager;
-            me::InputManager* m_InputMan;
+            InputManager* m_InputMan;
 
             static sf::Time sm_frameTime;
             static Game* sm_Instance;

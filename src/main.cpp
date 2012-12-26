@@ -19,6 +19,7 @@ int main()
     Game Derp(new Settings());
     std::string EndMessage("OK");
     Log("Firing up the game.");
+
     Derp.Run(EndMessage, new MainMenu());
     if (EndMessage != "OK")
     {

@@ -23,9 +23,9 @@ namespace me
 
             bool LoadTexture(const sf::String& strng);
             void SetOnClickFunction(MenuEvent Func) { OnClick = Func; }
+            void SetString(const sf::String& t){ m_Text.SetString(t); }
         protected:
         private:
-            Menu* m_Parent;
             void ApplyState(BtnStateStyle* Style);
 
             // Elements of a button
@@ -43,8 +43,18 @@ namespace me
 
     struct BtnStateStyle
     {
-        BtnStateStyle();
-        ~BtnStateStyle();
+        BtnStateStyle(sf::Texture* tex, sf::Color outl, sf::Color fill, sf::Color text, float thcknss)
+        {
+            Background = tex;
+            OutlineColour = outl;
+            FillColour = fill;
+            TextColour = text;
+            OutlineThickness = thcknss;
+        }
+        ~BtnStateStyle()
+        {
+            delete Background;
+        }
 
         sf::Texture* Background;
         sf::Color OutlineColour;

@@ -11,23 +11,17 @@ namespace me
 
     Background::~Background()
     {
-        //dtor
+        for (unsigned int i = 0; i< m_BgTextures.size(); i++)
+        {
+            delete m_BgTextures[i];
+        }
     }
 
     void Background::draw(sf::RenderTarget& target, sf::RenderStates states) const
     {
         states.transform *= getTransform();
-        //Render dat shit!
-            //sf::Sprite t;
-            //t.setTexture(*Game::Get()->GetResourceManager()->GetTexture("Pretty Pictured"));
         for (unsigned int i = 0; i< m_BgTextures.size(); i++)
         {
-            //----------------------
-            //THIS NEEDS FIXIN'!
-            //----------------------
-            Log("Let's draw backgrounds :3 " + to_string(m_BgTextures[i]->getTexture()));
-            //target.draw(t,states);
-            m_BgTextures[i]->setTexture(*Game::Get()->GetResourceManager()->GetTexture("Pretty Texture"));
             target.draw(*m_BgTextures[i],states);
         }
     }
@@ -36,7 +30,13 @@ namespace me
     {
         sf::Sprite* t = new sf::Sprite(*tex);
         t->setPosition(pos);
-        t->setScale(scl);
+        if (scl != sf::Vector2f())
+        {
+            // Heads up: Don't let it scale to the default 0,0,
+            // then it's just gonna shrink out of existence.
+            // What a bummer that would be.
+            t->setScale(scl);
+        }
         t->setRotation(rot);
         m_BgTextures.push_back(t);
     }

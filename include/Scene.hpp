@@ -14,7 +14,7 @@ namespace me
             Scene();
             /** Default destructor */
             virtual ~Scene();
-
+            virtual void Load() = 0;
             void DoTick();
             virtual void Tick() = 0;
             void Render(sf::RenderTarget& target);

@@ -16,12 +16,7 @@ namespace me
         setPosition(pos);
         setRotation(rot);
 
-        // Function delegations
-        //OnClick = 0;
-
         // Visual Style
-        //DownStyle = 0;
-        //HoverStyle = 0;
         m_Btn.setFillColor(sf::Color(128,128,128));
         m_Btn.setOutlineColor(sf::Color(85,85,85));
         m_Btn.setOutlineThickness(3);

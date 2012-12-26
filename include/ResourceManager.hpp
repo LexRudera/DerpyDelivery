@@ -14,26 +14,31 @@ namespace me
     class FontEntry;
     class TextureEntry;
     class SoundEntry;
+    enum Persistence
+    { Level, Campaign, Global, };
 
     class ResourceManager
     {
         public:
+            // Global stuph
             ResourceManager();
             virtual ~ResourceManager();
 
+            void Clear(Persistence depth = Level);
+
             // Fonts
-            sf::Font* LoadFont(const sf::String& Name, const sf::String& FileName);
+            sf::Font* LoadFont(const sf::String& Name, const sf::String& FileName, const Persistence& persistence = Level);
             bool UnloadFont(const sf::String& strng);
             sf::Font* GetFont(const sf::String& strng);
 
             // Textures
-            sf::Texture* LoadTexture(const sf::String& Name, const sf::String& FileName);
+            sf::Texture* LoadTexture(const sf::String& Name, const sf::String& FileName, const Persistence& persistence = Level);
             bool UnloadTexture(const sf::String& strng);
             sf::Texture* GetTexture(const sf::String& strng);
-            sf::Texture* GetFallbackTexture(){ return FallbackTexture; };
+            sf::Texture* GetFallbackTexture(){ return FallbackTexture; }
 
             // Sounds
-            sf::SoundBuffer* LoadSound(const sf::String& Name, const sf::String& FileName);
+            sf::SoundBuffer* LoadSound(const sf::String& Name, const sf::String& FileName, const Persistence& persistence = Level);
             bool UnloadSound(const sf::String& strng);
             sf::SoundBuffer* GetSound(const sf::String& strng);
 
@@ -56,33 +61,37 @@ namespace me
     class ResourceEntry
     {
         public:
-            ResourceEntry(const sf::String& Name, const sf::String& FileName) : m_FileName(FileName), m_Name(Name) {}
+            ResourceEntry(const sf::String& Name, const sf::String& FileName, const Persistence& persist) : m_FileName(FileName), m_Name(Name), m_Persistance(persist) {}
             virtual ~ResourceEntry() {}
             const sf::String& getName() const { return m_Name; }
+            void setName(const sf::String& name) { m_Name = name; }
             const sf::String& getFilename() const { return m_FileName; }
+            const Persistence& getPersistance() const { return m_Persistance; }
+            void setPersistance(const Persistence& persist) { m_Persistance = persist; }
         private:
             sf::String m_FileName;
             sf::String m_Name;
+            Persistence m_Persistance;
     };
 
     class FontEntry : public ResourceEntry, public sf::Font
     {
         public:
-            FontEntry(const sf::String& Name, const sf::String& FileName) : ResourceEntry(Name, FileName) {}
+            FontEntry(const sf::String& Name, const sf::String& FileName, const Persistence& persist) : ResourceEntry(Name, FileName, persist) {}
             virtual ~FontEntry(){}
     };
 
     class TextureEntry : public ResourceEntry, public sf::Texture
     {
         public:
-            TextureEntry(const sf::String& Name, const sf::String& FileName) : ResourceEntry(Name, FileName) {}
+            TextureEntry(const sf::String& Name, const sf::String& FileName, const Persistence& persist) : ResourceEntry(Name, FileName, persist) {}
             virtual ~TextureEntry(){}
     };
 
     class SoundEntry : public ResourceEntry, public sf::SoundBuffer
     {
         public:
-            SoundEntry(const sf::String& Name, const sf::String& FileName) : ResourceEntry(Name, FileName) {}
+            SoundEntry(const sf::String& Name, const sf::String& FileName, const Persistence& persist) : ResourceEntry(Name, FileName, persist) {}
             virtual ~SoundEntry(){}
     };
 }

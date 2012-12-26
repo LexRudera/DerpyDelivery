@@ -10,10 +10,9 @@ namespace me
 
     Game::Game() {
         Game::sm_Instance = this;
-        m_activeScene = 0;
         m_ResManager = new ResourceManager();
         m_InputMan = new InputManager();
-        GetResourceManager()->LoadFont("Gentium", "Gentium-R.ttf");
+        GetResourceManager()->LoadFont("Gentium", "Gentium-R.ttf",Global);
     }
 
     Game::Game(Settings* conf) : Game()
@@ -22,8 +21,11 @@ namespace me
     }
 
     Game::~Game() {
+        delete m_activeScene;
+        delete m_InputMan;
         delete m_config;
         delete m_ResManager;
+        delete m_window;
     }
 
     void Game::Run(std::string& EndMessage, Scene* scn) {
@@ -39,6 +41,21 @@ namespace me
         Log("Initialized");
         while (m_window->isOpen())
         {
+            // Scene Management
+            //------------------
+            if (m_nextscene != 0)
+            {
+                // Destroy the scene
+                delete m_activeScene;
+                // Destroy resources acordingly to level change message
+                GetResourceManager()->Clear(m_LvlChngMsg);
+                m_LvlChngMsg = Level;
+                // Load and apply next scene
+                m_nextscene->Load();
+                m_activeScene = m_nextscene;
+                m_nextscene = 0;
+            }
+
             // Input/events
             //--------------
             //Log("Input");
@@ -81,17 +98,19 @@ namespace me
             Game::sm_frameTime = m_clk.restart();
             //Log("Aftered");
         }
-        delete m_window;
         return;
     }
-    void Game::ChangeScene(Scene* scn) {
-        if (m_activeScene != 0)
+    void Game::ChangeScene(Scene* scn, const Persistence& depth) {
+        /*if (m_activeScene != 0)
         {
             delete m_activeScene;
             //m_activeScene = 0;
         }
         Log("Changing scene");
         m_activeScene = scn;
-        return;
+        Log("Changed scene");
+        return;*/
+        m_LvlChngMsg = depth;
+        m_nextscene = scn;
     }
 }

@@ -13,6 +13,7 @@ namespace me
             ControlBase();
             virtual ~ControlBase();
         protected:
+            Menu* m_Parent;
         private:
     };
 }
