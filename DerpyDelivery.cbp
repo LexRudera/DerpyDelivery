@@ -54,6 +54,7 @@
 		<Unit filename="include\Animation.hpp" />
 		<Unit filename="include\Background.hpp" />
 		<Unit filename="include\Game.hpp" />
+		<Unit filename="include\GameMenu.hpp" />
 		<Unit filename="include\Global.hpp" />
 		<Unit filename="include\InputManager.hpp" />
 		<Unit filename="include\Level.hpp" />
@@ -61,6 +62,7 @@
 		<Unit filename="include\Menu.hpp" />
 		<Unit filename="include\MenuControls\Button.hpp" />
 		<Unit filename="include\MenuControls\ControlBase.hpp" />
+		<Unit filename="include\MenuControls\DropdownList.hpp" />
 		<Unit filename="include\MenuControls\Image.hpp" />
 		<Unit filename="include\MenuControls\Label.hpp" />
 		<Unit filename="include\Object.hpp" />
@@ -71,6 +73,7 @@
 		<Unit filename="src\Animation.cpp" />
 		<Unit filename="src\Background.cpp" />
 		<Unit filename="src\Game.cpp" />
+		<Unit filename="src\GameMenu.cpp" />
 		<Unit filename="src\Global.cpp" />
 		<Unit filename="src\InputManager.cpp" />
 		<Unit filename="src\Level.cpp" />
@@ -78,6 +81,7 @@
 		<Unit filename="src\Menu.cpp" />
 		<Unit filename="src\MenuControls\Button.cpp" />
 		<Unit filename="src\MenuControls\ControlBase.cpp" />
+		<Unit filename="src\MenuControls\DropdownList.cpp" />
 		<Unit filename="src\MenuControls\Image.cpp" />
 		<Unit filename="src\MenuControls\Label.cpp" />
 		<Unit filename="src\Object.cpp" />

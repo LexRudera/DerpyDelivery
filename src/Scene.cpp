@@ -24,6 +24,12 @@ namespace me
             //Log("Render loop: " + *((Label)m_Objects[i]).GetString());
             m_Objects[i]->tick();
         }
+        Tick();
+    }
+
+    void Scene::Tick()
+    {
+
     }
 
     void Scene::Render(sf::RenderTarget& target)

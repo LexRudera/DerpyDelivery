@@ -16,7 +16,7 @@ namespace me
             virtual ~Scene();
             virtual void Load() = 0;
             void DoTick();
-            virtual void Tick() = 0;
+            virtual void Tick();
             void Render(sf::RenderTarget& target);
             Background* GetBackground(){ return m_Background; }
             void ApplyBackground(Background* bg){ m_Background = bg; }

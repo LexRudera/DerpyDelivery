@@ -17,10 +17,6 @@ namespace me
         //dtor
     }
 
-    void Menu::Tick()
-    {
-    }
-
     void Menu::Add(ControlBase* obj)
     {
         m_Objects.push_back(obj);

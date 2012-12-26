@@ -18,7 +18,6 @@ namespace me
             Menu();
             /** Default destructor */
             virtual ~Menu();
-            void Tick();
             void Add(ControlBase* obj);
         protected:
         private:
