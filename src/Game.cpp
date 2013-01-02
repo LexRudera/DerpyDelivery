@@ -45,6 +45,7 @@ namespace me
             //------------------
             if (m_nextscene != 0)
             {
+                Log("Changing Scene");
                 // Destroy the scene
                 delete m_activeScene;
                 // Destroy resources acordingly to level change message
@@ -54,6 +55,7 @@ namespace me
                 m_nextscene->Load();
                 m_activeScene = m_nextscene;
                 m_nextscene = 0;
+                Log("Scene Changed");
             }
 
             // Input/events

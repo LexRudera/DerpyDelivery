@@ -10,7 +10,7 @@ namespace me
     {
         public:
             /** Default constructor */
-            DropdownList();
+            DropdownList(unsigned int charSize, const sf::Vector2f& pos = sf::Vector2f(), const sf::Vector2f& size = sf::Vector2f(), float rot = 0);
             /** Default destructor */
             virtual ~DropdownList();
 
@@ -19,15 +19,25 @@ namespace me
 
             void Add(const sf::String& text);
 
-            const sf::String& GetSelected() const { return m_Selected->GetString(); }
+            const sf::String& GetSelected() const { return m_Selected.GetString(); }
+            void SetSelected(unsigned int i) { m_Selected.SetString(m_Entries[i]); }
         protected:
         private:
+            // Private functions
+            void OnClick();
+            void Open();
+            void Close();
+
+            bool m_Down = false;
+
+            // Data
             sf::RectangleShape m_Box;
+            std::vector<sf::String> m_Entries;
+            Label m_Selected;
 
-            Label* m_Selected;
-            std::vector<Label*> m_Selections;
-
-            bool m_Down;
+            // Temporarily used stuff
+            sf::RectangleShape m_SelectionBox;
+            std::vector<Label> m_Selections;
     };
 } // namespace me
 

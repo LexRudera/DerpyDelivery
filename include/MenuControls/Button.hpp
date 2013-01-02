@@ -11,6 +11,28 @@ namespace me
     class Button : public ControlBase
     {
         public:
+            struct BtnStateStyle
+            {
+                BtnStateStyle(sf::Texture* tex, sf::Color outl, sf::Color fill, sf::Color text, float thcknss)
+                {
+                    Background = tex;
+                    OutlineColour = outl;
+                    FillColour = fill;
+                    TextColour = text;
+                    OutlineThickness = thcknss;
+                }
+                ~BtnStateStyle()
+                {
+                    delete Background;
+                }
+
+                sf::Texture* Background;
+                sf::Color OutlineColour;
+                sf::Color FillColour;
+                sf::Color TextColour;
+                float OutlineThickness;
+            };
+
             Button(Menu* parent,
                    const sf::String& text,
                    const sf::Vector2f& size = sf::Vector2f(50,50),
@@ -39,28 +61,6 @@ namespace me
             BtnStateStyle* IdleStyle = 0;
             BtnStateStyle* DownStyle = 0;
             BtnStateStyle* HoverStyle = 0;
-    };
-
-    struct BtnStateStyle
-    {
-        BtnStateStyle(sf::Texture* tex, sf::Color outl, sf::Color fill, sf::Color text, float thcknss)
-        {
-            Background = tex;
-            OutlineColour = outl;
-            FillColour = fill;
-            TextColour = text;
-            OutlineThickness = thcknss;
-        }
-        ~BtnStateStyle()
-        {
-            delete Background;
-        }
-
-        sf::Texture* Background;
-        sf::Color OutlineColour;
-        sf::Color FillColour;
-        sf::Color TextColour;
-        float OutlineThickness;
     };
 } // namespace me
 

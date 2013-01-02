@@ -1,7 +1,7 @@
 #include "MenuControls/Button.hpp"
 #include "Global.hpp"
-#include "InputManager.hpp"
 #include "Game.hpp"
+#include "InputManager.hpp"
 
 namespace me
 {
@@ -40,7 +40,7 @@ namespace me
     void Button::tick()
     {
         // Sense the mouse and react accordingly.
-        sf::Vector2i MPos = Game::Get()->GetInputManager()->GetMousePos();
+        const sf::Vector2i& MPos = Game::Get()->GetInputManager()->GetMousePos();
         if (MPos.x > getPosition().x // Below the x pos
             && MPos.x < getPosition().x + m_Btn.getSize().x // Above the lower box bounds
             && MPos.y > getPosition().y // Past the y pos

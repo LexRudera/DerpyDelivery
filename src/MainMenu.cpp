@@ -2,6 +2,7 @@
 #include "Game.hpp"
 #include "Global.hpp"
 #include "OptionsMenu.hpp"
+#include "MenuControls\DropdownList.hpp"
 
 namespace me
 {
@@ -37,6 +38,7 @@ namespace me
         Add(PlayBtn = new Button(this,"Pleh", sf::Vector2f(200,50), sf::Vector2f(300,300)));
         Add(OptionsBtn = new Button(this,"Options", sf::Vector2f(200,50), sf::Vector2f(300,400)));
         Add(QuitBtn = new Button(this,"Quit", sf::Vector2f(200,50), sf::Vector2f(300,500)));
+        Add(new DropdownList(16, sf::Vector2f(600,300)));
 
         // Event Function Delegation
         PlayBtn->SetOnClickFunction(static_cast<MenuEvent>(&MainMenu::PlayBtn_OnClick));
@@ -46,18 +48,18 @@ namespace me
 
     void MainMenu::PlayBtn_OnClick()
     {
-        Log("Play");
+        //Log("Play");
         //Game::Quit();
     }
     void MainMenu::OptionsBtn_OnClick()
     {
-        Log("Options");
+        //Log("Options");
         Game::Get()->ChangeScene(new OptionsMenu());
         //Game::Quit();
     }
     void MainMenu::QuitBtn_OnClick()
     {
-        Log("Quit");
+        //Log("Quit");
         Game::Quit();
     }
 }
