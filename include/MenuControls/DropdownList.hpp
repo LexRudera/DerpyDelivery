@@ -20,24 +20,20 @@ namespace me
             void Add(const sf::String& text);
 
             const sf::String& GetSelected() const { return m_Selected.GetString(); }
-            void SetSelected(unsigned int i) { m_Selected.SetString(m_Entries[i]); }
+            void SetSelected(unsigned int i) { m_Selected.SetString(m_Entries[i]); m_CurrentEntry = i; }
         protected:
         private:
             // Private functions
             void OnClick();
-            void Open();
-            void Close();
-
-            bool m_Down = false;
 
             // Data
             sf::RectangleShape m_Box;
             std::vector<sf::String> m_Entries;
+            unsigned int m_CurrentEntry = 0;
             Label m_Selected;
 
-            // Temporarily used stuff
-            sf::RectangleShape m_SelectionBox;
-            std::vector<Label> m_Selections;
+            sf::ConvexShape m_ArrowRight;
+            sf::ConvexShape m_ArrowLeft;
     };
 } // namespace me
 

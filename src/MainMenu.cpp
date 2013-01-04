@@ -38,7 +38,11 @@ namespace me
         Add(PlayBtn = new Button(this,"Pleh", sf::Vector2f(200,50), sf::Vector2f(300,300)));
         Add(OptionsBtn = new Button(this,"Options", sf::Vector2f(200,50), sf::Vector2f(300,400)));
         Add(QuitBtn = new Button(this,"Quit", sf::Vector2f(200,50), sf::Vector2f(300,500)));
-        Add(new DropdownList(16, sf::Vector2f(600,300)));
+        DropdownList* derp = new DropdownList(16, sf::Vector2f(600,300),sf::Vector2f(150,30));
+        Add(derp);
+        derp->Add("herp");
+        derp->Add("derp");
+        derp->Add("berp");
 
         // Event Function Delegation
         PlayBtn->SetOnClickFunction(static_cast<MenuEvent>(&MainMenu::PlayBtn_OnClick));
