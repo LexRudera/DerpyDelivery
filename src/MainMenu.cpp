@@ -2,7 +2,7 @@
 #include "Game.hpp"
 #include "Global.hpp"
 #include "OptionsMenu.hpp"
-#include "MenuControls\DropdownList.hpp"
+#include "MenuControls\Selector.hpp"
 
 namespace me
 {
@@ -38,7 +38,7 @@ namespace me
         Add(PlayBtn = new Button(this,"Pleh", sf::Vector2f(200,50), sf::Vector2f(300,300)));
         Add(OptionsBtn = new Button(this,"Options", sf::Vector2f(200,50), sf::Vector2f(300,400)));
         Add(QuitBtn = new Button(this,"Quit", sf::Vector2f(200,50), sf::Vector2f(300,500)));
-        DropdownList* derp = new DropdownList(16, sf::Vector2f(600,300),sf::Vector2f(150,30));
+        Selector* derp = new Selector(16, sf::Vector2f(600,300),sf::Vector2f(150,30));
         Add(derp);
         derp->Add("herp");
         derp->Add("derp");

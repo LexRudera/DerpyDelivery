@@ -20,7 +20,6 @@ namespace me
         protected:
         private:
             std::vector<m_GameSlot> m_GameSelections;
-
     };
 }
 

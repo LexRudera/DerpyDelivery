@@ -1,18 +1,18 @@
-#ifndef DROPDOWNLIST_H
-#define DROPDOWNLIST_H
+#ifndef Selector_H
+#define Selector_H
 
 #include <MenuControls\ControlBase.hpp>
 #include "MenuControls\Label.hpp"
 
 namespace me
 {
-    class DropdownList : public ControlBase
+    class Selector : public ControlBase
     {
         public:
             /** Default constructor */
-            DropdownList(unsigned int charSize, const sf::Vector2f& pos = sf::Vector2f(), const sf::Vector2f& size = sf::Vector2f(), float rot = 0);
+            Selector(unsigned int charSize, const sf::Vector2f& pos = sf::Vector2f(), const sf::Vector2f& size = sf::Vector2f(), float rot = 0);
             /** Default destructor */
-            virtual ~DropdownList();
+            virtual ~Selector();
 
             void tick();
             void draw(sf::RenderTarget& target, sf::RenderStates states) const;
@@ -37,4 +37,4 @@ namespace me
     };
 } // namespace me
 
-#endif // DROPDOWNLIST_H
+#endif // Selector_H

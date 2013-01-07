@@ -1,11 +1,11 @@
-#include "MenuControls\DropdownList.hpp"
+#include "MenuControls\Selector.hpp"
 #include "Game.hpp"
 #include "InputManager.hpp"
 #include "Global.hpp"
 
 namespace me
 {
-    DropdownList::DropdownList(unsigned int charSize, const sf::Vector2f& pos, const sf::Vector2f& size, float rot)
+    Selector::Selector(unsigned int charSize, const sf::Vector2f& pos, const sf::Vector2f& size, float rot)
     : m_Box(size),
     m_Selected("none", charSize, sf::Vector2f(10,size.y/2-charSize/4*3))
     {
@@ -44,12 +44,12 @@ namespace me
         m_ArrowRight.setPosition(sf::Vector2f(m_Box.getSize().x-m_Box.getOutlineThickness()-m_ArrowRight.getOutlineThickness()-1-((m_Box.getSize().y-6)/4*3), 3));
     }
 
-    DropdownList::~DropdownList()
+    Selector::~Selector()
     {
         //dtor
     }
 
-    void DropdownList::draw(sf::RenderTarget& target, sf::RenderStates states) const
+    void Selector::draw(sf::RenderTarget& target, sf::RenderStates states) const
     {
         states.transform *= getTransform();
         target.draw(m_Box, states);
@@ -58,7 +58,7 @@ namespace me
         target.draw(m_ArrowRight, states);
     }
 
-    void DropdownList::tick()
+    void Selector::tick()
     {
         // Sense the mouse and save it's position
         const sf::Vector2i& MPos = Game::Get()->GetInputManager()->GetMousePos();
@@ -113,7 +113,7 @@ namespace me
         }
     }
 
-    void DropdownList::Add(const sf::String& entry)
+    void Selector::Add(const sf::String& entry)
     {
         m_Entries.push_back(entry);
     }

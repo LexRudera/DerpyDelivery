@@ -29,6 +29,7 @@
 					<Add option="-DSFML_STATIC" />
 					<Add directory="$(#SFML)\include" />
 					<Add directory=".\include" />
+					<Add directory="$(#boost)" />
 				</Compiler>
 				<ResourceCompiler>
 					<Add directory="$(#sfml)\include" />
@@ -42,7 +43,10 @@
 					<Add library="sfml-graphics-s" />
 					<Add library="sfml-window-s" />
 					<Add library="sfml-system-s" />
+					<Add library="libboost_system-mgw47-1_52" />
+					<Add library="libboost_filesystem-mgw47-1_52" />
 					<Add directory="$(#sfml)\build\lib" />
+					<Add directory=".\lib" />
 				</Linker>
 			</Target>
 		</Build>
@@ -62,9 +66,9 @@
 		<Unit filename="include\Menu.hpp" />
 		<Unit filename="include\MenuControls\Button.hpp" />
 		<Unit filename="include\MenuControls\ControlBase.hpp" />
-		<Unit filename="include\MenuControls\DropdownList.hpp" />
 		<Unit filename="include\MenuControls\Image.hpp" />
 		<Unit filename="include\MenuControls\Label.hpp" />
+		<Unit filename="include\MenuControls\Selector.hpp" />
 		<Unit filename="include\Object.hpp" />
 		<Unit filename="include\OptionsMenu.hpp" />
 		<Unit filename="include\ResourceManager.hpp" />
@@ -81,9 +85,9 @@
 		<Unit filename="src\Menu.cpp" />
 		<Unit filename="src\MenuControls\Button.cpp" />
 		<Unit filename="src\MenuControls\ControlBase.cpp" />
-		<Unit filename="src\MenuControls\DropdownList.cpp" />
 		<Unit filename="src\MenuControls\Image.cpp" />
 		<Unit filename="src\MenuControls\Label.cpp" />
+		<Unit filename="src\MenuControls\Selector.cpp" />
 		<Unit filename="src\Object.cpp" />
 		<Unit filename="src\OptionsMenu.cpp" />
 		<Unit filename="src\ResourceManager.cpp" />
