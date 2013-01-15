@@ -2,6 +2,7 @@
 #include "Game.hpp"
 #include "Global.hpp"
 #include "OptionsMenu.hpp"
+#include "GameMenu.hpp"
 #include "MenuControls\Selector.hpp"
 
 namespace me
@@ -53,6 +54,7 @@ namespace me
     void MainMenu::PlayBtn_OnClick()
     {
         //Log("Play");
+        Game::Get()->ChangeScene(new GameMenu());
         //Game::Quit();
     }
     void MainMenu::OptionsBtn_OnClick()

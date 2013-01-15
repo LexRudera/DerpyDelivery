@@ -48,13 +48,13 @@ namespace me
                 Log("Changing Scene");
                 // Destroy the scene
                 delete m_activeScene;
+                m_activeScene = m_nextscene;
+                m_nextscene = 0;
                 // Destroy resources acordingly to level change message
                 GetResourceManager()->Clear(m_LvlChngMsg);
                 m_LvlChngMsg = Level;
                 // Load and apply next scene
-                m_nextscene->Load();
-                m_activeScene = m_nextscene;
-                m_nextscene = 0;
+                m_activeScene->Load();
                 Log("Scene Changed");
             }
 

@@ -7,7 +7,7 @@ namespace me
 {
     class GameMenu : public Menu
     {
-        struct m_GameSlot
+        class m_GameSlot
         {
         };
         public:
@@ -19,6 +19,8 @@ namespace me
             void Load();
         protected:
         private:
+            void ScanGameFolder();
+            void LoadGameInfo();
             std::vector<m_GameSlot> m_GameSelections;
     };
 }
