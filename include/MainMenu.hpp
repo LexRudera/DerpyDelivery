@@ -2,9 +2,7 @@
 #define MAINMENU_H
 
 #include <Menu.hpp>
-#include "MenuControls/Label.hpp"
-#include "MenuControls/Image.hpp"
-#include "MenuControls/Button.hpp"
+#include "MenuControls.hpp"
 
 namespace me
 {

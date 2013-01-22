@@ -17,9 +17,7 @@ namespace me
         setRotation(rot);
 
         // Visual Style
-        m_Btn.setFillColor(sf::Color(128,128,128));
-        m_Btn.setOutlineColor(sf::Color(85,85,85));
-        m_Btn.setOutlineThickness(3);
+        m_Btn.ApplyStyle(BoxStyle(NULL, sf::Color(128,128,128), sf::Color(85,85,85), 3));
 
         // Alignment
         m_Text.setPosition(sf::Vector2f(size.x/2-m_Text.getLocalBounds().width/2, size.y/2-m_Text.getCharacterSize()/4*3));//-m_Text.getLocalBounds().height/2));
@@ -42,9 +40,9 @@ namespace me
         // Sense the mouse and react accordingly.
         const sf::Vector2i& MPos = Game::Get()->GetInputManager()->GetMousePos();
         if (MPos.x > getPosition().x // Below the x pos
-            && MPos.x < getPosition().x + m_Btn.getSize().x // Above the lower box bounds
+            && MPos.x < getPosition().x + m_Btn.GetSize().x // Above the lower box bounds
             && MPos.y > getPosition().y // Past the y pos
-            && MPos.y < getPosition().y + m_Btn.getSize().y) // Before the right box bounds
+            && MPos.y < getPosition().y + m_Btn.GetSize().y) // Before the right box bounds
         {
             //On Click
             if (Game::Get()->GetInputManager()->IsButtonUp(sf::Mouse::Button::Left))

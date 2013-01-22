@@ -1,7 +1,4 @@
 #include "Menu.hpp"
-#include "MenuControls/Label.hpp"
-#include "MenuControls/Image.hpp"
-#include "MenuControls/Button.hpp"
 #include "Game.hpp"
 #include "Global.hpp"
 

@@ -17,7 +17,7 @@ namespace me
             Background();
             virtual ~Background();
 
-            void Add(sf::Texture* tex, const sf::Vector2f& pos = sf::Vector2f(), const sf::Vector2f& scale = sf::Vector2f(), float rot = 0);
+            void Add(const sf::Texture* tex, const sf::Vector2f& pos = sf::Vector2f(), const sf::Vector2f& scale = sf::Vector2f(), float rot = 0);
             void Rearrange(unsigned int from, unsigned int to);
             void Remove(int at);
             int Amount() { return m_BgTextures.size(); }

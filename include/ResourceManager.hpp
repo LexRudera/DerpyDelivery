@@ -27,20 +27,20 @@ namespace me
             void Clear(Persistence depth = Level);
 
             // Fonts
-            sf::Font* LoadFont(const sf::String& Name, const sf::String& FileName, const Persistence& persistence = Level);
+            const sf::Font* LoadFont(const sf::String& Name, const sf::String& FileName, const Persistence& persistence = Level);
             bool UnloadFont(const sf::String& strng);
-            sf::Font* GetFont(const sf::String& strng);
+            const sf::Font* GetFont(const sf::String& strng);
 
             // Textures
-            sf::Texture* LoadTexture(const sf::String& Name, const sf::String& FileName, const Persistence& persistence = Level);
+            const sf::Texture* LoadTexture(const sf::String& Name, const sf::String& FileName, const Persistence& persistence = Level);
             bool UnloadTexture(const sf::String& strng);
-            sf::Texture* GetTexture(const sf::String& strng);
-            sf::Texture* GetFallbackTexture(){ return FallbackTexture; }
+            const sf::Texture* GetTexture(const sf::String& strng);
+            const sf::Texture* GetFallbackTexture(){ return FallbackTexture; }
 
             // Sounds
-            sf::SoundBuffer* LoadSound(const sf::String& Name, const sf::String& FileName, const Persistence& persistence = Level);
+            const sf::SoundBuffer* LoadSound(const sf::String& Name, const sf::String& FileName, const Persistence& persistence = Level);
             bool UnloadSound(const sf::String& strng);
-            sf::SoundBuffer* GetSound(const sf::String& strng);
+            const sf::SoundBuffer* GetSound(const sf::String& strng);
 
         protected:
         private:

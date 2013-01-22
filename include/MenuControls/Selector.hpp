@@ -2,6 +2,7 @@
 #define Selector_H
 
 #include <MenuControls\ControlBase.hpp>
+#include "MenuControls\StaticBox.hpp"
 #include "MenuControls\Label.hpp"
 
 namespace me
@@ -27,7 +28,7 @@ namespace me
             void OnClick();
 
             // Data
-            sf::RectangleShape m_Box;
+            StaticBox m_Box;
             std::vector<sf::String> m_Entries;
             unsigned int m_CurrentEntry = 0;
             Label m_Selected;

@@ -23,13 +23,36 @@ namespace me
         Log("--GAMEMENU START--");
         ScanGameFolder();
         //Game::Get()->ChangeScene(new MainMenu());
-        Add(m_BackBtn = new Button(this,"<-"));
+        Add(m_BackBtn = new Button(this,"<-",sf::Vector2f(100,Game::Get()->GetWindow()->getSize().y-50),sf::Vector2f(25,25)));
+
+        // Create the slots
+        const unsigned int& Slots = m_AvailableGames.size();
+        const unsigned int height = 80;
+        const unsigned int space = 25;
+        for (unsigned int i = 0; i < Slots; i++)
+        {
+            Log("Slot no. " + to_string(i+1));
+            //Add(sf::Vector2f(Game::Get()->GetWindow()->getSize().x-175, height), sf::Vector2f(150, Game::Get()->GetWindow()->getSize().y/2 +(height+space)*i - (height*Slots + space* (Slots-1))/2 ));
+            m_AvailableGames[i]->SetSize(sf::Vector2f(150, Game::Get()->GetWindow()->getSize().y/2 +(height+space)*i - (height*Slots + space* (Slots-1))/2 ));
+        }
+        //Log(Game::Get()->GetWindow()->getSize().y/2-50);
+        //Add(new StaticBox(sf::Vector2f(Game::Get()->GetWindow()->getSize().x-175,100), sf::Vector2f(150, Game::Get()->GetWindow()->getSize().y/2-50 -50-25/2) ));
+
+        //Add(new StaticBox( sf::Vector2f(Game::Get()->GetWindow()->getSize().x-175,100), sf::Vector2f(150, Game::Get()->GetWindow()->getSize().y/2-50 +50+25/2) ));
+        //Add(new StaticBox(sf::Vector2f(300,100), sf::Vector2f(150,100)));
+        //Add(new StaticBox(sf::Vector2f(300,100), sf::Vector2f(150,100)));
+
+        //StaticBox Slot
+        //Label Name
+        //Button NewGame
+        //Selector Saves
+        //Button LoadSave
+        //Button DeleteSave
 
         m_BackBtn->SetOnClickFunction(static_cast<MenuEvent>(&GameMenu::m_BackBtn_OnClick));
         Log("--GAMEMENU END--");
     }
-    void GameMenu::ScanGameFolder()
-    {
+    void GameMenu::ScanGameFolder() {
         // Scan game folder
         boost::filesystem::path GameDir = boost::filesystem::current_path();
         GameDir += "\\games";
@@ -65,8 +88,7 @@ namespace me
             }
         }
     }
-    void GameMenu::LoadGameInfo(unsigned int index)
-    {
+    void GameMenu::LoadGameInfo(unsigned int index) {
         std::fstream InfoFile(m_AvailableGames[index]->GetPath() + "\\GameInfo.txt");
     }
 

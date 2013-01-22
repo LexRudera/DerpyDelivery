@@ -27,7 +27,6 @@ namespace me
             Log("Clearing Global resources");
 
         // Fonts
-        FontEntry* fe = 0;
         std::vector<FontEntry*>::iterator fit = m_Fonts.begin();
         for(unsigned int i = 0; i<m_Fonts.size(); i++)
         {
@@ -40,7 +39,6 @@ namespace me
         }
 
         // Textures
-        TextureEntry* te = 0;
         std::vector<TextureEntry*>::iterator tit = m_Textures.begin();
         for(unsigned int i = 0; i<m_Textures.size(); i++)
         {
@@ -53,7 +51,6 @@ namespace me
         }
 
         // Sounds
-        SoundEntry* se = 0;
         std::vector<SoundEntry*>::iterator sit = m_Sounds.begin();
         for(unsigned int i = 0; i<m_Sounds.size(); i++)
         {
@@ -67,7 +64,7 @@ namespace me
     }
 
     // ---Fonts---
-    sf::Font* ResourceManager::LoadFont(const sf::String& Name, const sf::String& FileName, const Persistence& persist)
+    const sf::Font* ResourceManager::LoadFont(const sf::String& Name, const sf::String& FileName, const Persistence& persist)
     {
         // Check for existing font
         FontEntry* e = 0;
@@ -124,7 +121,7 @@ namespace me
         return true;
     }
 
-    sf::Font* ResourceManager::GetFont(const sf::String& strng)
+    const sf::Font* ResourceManager::GetFont(const sf::String& strng)
     {
         for(unsigned int i = 0; i<m_Fonts.size(); i++)
         {
@@ -137,7 +134,7 @@ namespace me
     }
 
     // ---Textures---
-    sf::Texture* ResourceManager::LoadTexture(const sf::String& Name, const sf::String& FileName, const Persistence& persist)
+    const sf::Texture* ResourceManager::LoadTexture(const sf::String& Name, const sf::String& FileName, const Persistence& persist)
     {
         /*TextureEntry* t = new TextureEntry(Name, FileName, persist);
         if(!t->loadFromFile(TextureDirectory + FileName))
@@ -202,7 +199,7 @@ namespace me
         return true;
     }
 
-    sf::Texture* ResourceManager::GetTexture(const sf::String& strng)
+    const sf::Texture* ResourceManager::GetTexture(const sf::String& strng)
     {
         for(unsigned int i = 0; i<m_Textures.size(); i++)
         {
@@ -215,7 +212,7 @@ namespace me
     }
 
     // ---Sounds---
-    sf::SoundBuffer* ResourceManager::LoadSound(const sf::String& Name, const sf::String& FileName, const Persistence& persist)
+    const sf::SoundBuffer* ResourceManager::LoadSound(const sf::String& Name, const sf::String& FileName, const Persistence& persist)
     {
         /*SoundEntry* t = new SoundEntry(Name, FileName, persist);
         if(!t->loadFromFile(SoundDirectory + FileName))
@@ -280,7 +277,7 @@ namespace me
         return true;
     }
 
-    sf::SoundBuffer* ResourceManager::GetSound(const sf::String& strng)
+    const sf::SoundBuffer* ResourceManager::GetSound(const sf::String& strng)
     {
         for(unsigned int i = 0; i<m_Sounds.size(); i++)
         {

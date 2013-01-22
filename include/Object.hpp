@@ -18,7 +18,13 @@ namespace me
             Object();
             /** Default destructor */
             virtual ~Object();
+
             virtual void tick();
+
+            sf::Vector2f getPosition() { return sf::Transformable::getPosition(); }
+            void getPosition(float* x, float* y) { *x = getPosition().x; *y = getPosition().y; }
+            float getRotation(){ return sf::Transformable::getRotation(); }
+            void getRotation(float* r) { *r = sf::Transformable::getRotation(); }
         protected:
             virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const = 0;
         private:

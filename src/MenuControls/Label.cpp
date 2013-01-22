@@ -31,7 +31,7 @@ namespace me
 
     bool Label::LoadFont(const sf::String& font)
     {
-        sf::Font* t = Game::Get()->GetResourceManager()->GetFont(font);
+        const sf::Font* t = Game::Get()->GetResourceManager()->GetFont(font);
         if (t == 0)
         {
             //delete t;

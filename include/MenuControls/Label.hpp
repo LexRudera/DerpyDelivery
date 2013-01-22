@@ -18,6 +18,8 @@ namespace me
             sf::FloatRect getLocalBounds() const { return m_Text.getLocalBounds(); }
             sf::FloatRect getGlobalBounds() const { return m_Text.getGlobalBounds(); }
             unsigned int getCharacterSize() const { return m_Text.getCharacterSize(); }
+            void SetColour(const sf::Color& clr) { m_Text.setColor(clr); }
+            sf::Color GetColour() { return m_Text.getColor(); }
         protected:
             virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
         private:

@@ -12,9 +12,12 @@ namespace me
         public:
             ControlBase();
             virtual ~ControlBase();
+            bool IsScrolling() { return m_Scrolling; }
+            void IsScrolling(bool a) { m_Scrolling = a; }
         protected:
             Menu* m_Parent;
         private:
+            bool m_Scrolling = true;
     };
 }
 

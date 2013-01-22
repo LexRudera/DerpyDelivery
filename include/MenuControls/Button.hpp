@@ -3,6 +3,7 @@
 
 #include <MenuControls/ControlBase.hpp>
 #include "MenuControls/Label.hpp"
+#include "MenuControls/StaticBox.hpp"
 #include "Menu.hpp"
 
 namespace me
@@ -11,27 +12,7 @@ namespace me
     class Button : public ControlBase
     {
         public:
-            struct BtnStateStyle
-            {
-                BtnStateStyle(sf::Texture* tex, sf::Color outl, sf::Color fill, sf::Color text, float thcknss)
-                {
-                    Background = tex;
-                    OutlineColour = outl;
-                    FillColour = fill;
-                    TextColour = text;
-                    OutlineThickness = thcknss;
-                }
-                ~BtnStateStyle()
-                {
-                    delete Background;
-                }
 
-                sf::Texture* Background;
-                sf::Color OutlineColour;
-                sf::Color FillColour;
-                sf::Color TextColour;
-                float OutlineThickness;
-            };
 
             Button(Menu* parent,
                    const sf::String& text,
@@ -52,15 +33,15 @@ namespace me
 
             // Elements of a button
             Label m_Text;
-            sf::RectangleShape m_Btn;
+            StaticBox m_Btn;
 
             // Function Delegates
             MenuEvent OnClick = 0;
 
             // Visual Styles
-            BtnStateStyle* IdleStyle = 0;
-            BtnStateStyle* DownStyle = 0;
-            BtnStateStyle* HoverStyle = 0;
+            BoxStyle* IdleStyle = 0;
+            BoxStyle* DownStyle = 0;
+            BoxStyle* HoverStyle = 0;
     };
 } // namespace me
 

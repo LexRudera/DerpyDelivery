@@ -31,7 +31,9 @@ namespace me
     void Game::Run(std::string& EndMessage, Scene* scn) {
         //Log("Initializing");
         Game::sm_frameTime = m_clk.restart();
-        m_window = new sf::RenderWindow(sf::VideoMode(800,600),"Some Game",sf::Style::Titlebar);
+        //m_window = new sf::RenderWindow(sf::VideoMode(800,600),"Some Game",sf::Style::Fullscreen/*sf::Style::Titlebar*/);
+        m_window = new sf::RenderWindow(sf::VideoMode(1680,1050),"Some Game",sf::Style::Fullscreen/*sf::Style::Titlebar*/);
+
         ChangeScene(scn);
 
         sf::Event event;

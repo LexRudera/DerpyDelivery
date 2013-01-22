@@ -64,15 +64,19 @@
 		<Unit filename="include\Level.hpp" />
 		<Unit filename="include\MainMenu.hpp" />
 		<Unit filename="include\Menu.hpp" />
+		<Unit filename="include\MenuControls.hpp" />
 		<Unit filename="include\MenuControls\Button.hpp" />
 		<Unit filename="include\MenuControls\ControlBase.hpp" />
+		<Unit filename="include\MenuControls\ControlsShared.hpp" />
 		<Unit filename="include\MenuControls\Image.hpp" />
 		<Unit filename="include\MenuControls\Label.hpp" />
 		<Unit filename="include\MenuControls\Selector.hpp" />
+		<Unit filename="include\MenuControls\StaticBox.hpp" />
 		<Unit filename="include\Object.hpp" />
 		<Unit filename="include\OptionsMenu.hpp" />
 		<Unit filename="include\ResourceManager.hpp" />
 		<Unit filename="include\Scene.hpp" />
+		<Unit filename="include\SelectedGameMenu.hpp" />
 		<Unit filename="include\Settings.hpp" />
 		<Unit filename="src\Animation.cpp" />
 		<Unit filename="src\Background.cpp" />
@@ -88,10 +92,12 @@
 		<Unit filename="src\MenuControls\Image.cpp" />
 		<Unit filename="src\MenuControls\Label.cpp" />
 		<Unit filename="src\MenuControls\Selector.cpp" />
+		<Unit filename="src\MenuControls\StaticBox.cpp" />
 		<Unit filename="src\Object.cpp" />
 		<Unit filename="src\OptionsMenu.cpp" />
 		<Unit filename="src\ResourceManager.cpp" />
 		<Unit filename="src\Scene.cpp" />
+		<Unit filename="src\SelectedGameMenu.cpp" />
 		<Unit filename="src\Settings.cpp" />
 		<Unit filename="src\main.cpp" />
 		<Extensions>

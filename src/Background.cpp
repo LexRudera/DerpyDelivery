@@ -26,7 +26,7 @@ namespace me
         }
     }
 
-    void Background::Add(sf::Texture* tex, const sf::Vector2f& pos, const sf::Vector2f& scl, float rot)
+    void Background::Add(const sf::Texture* tex, const sf::Vector2f& pos, const sf::Vector2f& scl, float rot)
     {
         sf::Sprite* t = new sf::Sprite(*tex);
         t->setPosition(pos);

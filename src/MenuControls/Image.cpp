@@ -35,7 +35,7 @@ namespace me
 
     bool Image::LoadTexture(const sf::String& strng)
     {
-        sf::Texture* t = Game::Get()->GetResourceManager()->GetTexture(strng);
+        const sf::Texture* t = Game::Get()->GetResourceManager()->GetTexture(strng);
         if (t == 0)
         {
             // If shit fails, load the texture into the Resource Manager beforehand,
