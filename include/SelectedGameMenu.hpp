@@ -3,14 +3,16 @@
 
 #include <Menu.hpp>
 
-
-class SelectedGameMenu : public Menu
+namespace me
 {
-    public:
-        SelectedGameMenu();
-        virtual ~SelectedGameMenu();
-    protected:
-    private:
-};
+    class SelectedGameMenu : public Menu
+    {
+        public:
+            SelectedGameMenu();
+            virtual ~SelectedGameMenu();
+        protected:
+        private:
+    };
+}
 
 #endif // SELECTEDGAMEMENU_H

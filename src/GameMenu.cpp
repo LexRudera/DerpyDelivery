@@ -33,7 +33,8 @@ namespace me
         {
             Log("Slot no. " + to_string(i+1));
             //Add(sf::Vector2f(Game::Get()->GetWindow()->getSize().x-175, height), sf::Vector2f(150, Game::Get()->GetWindow()->getSize().y/2 +(height+space)*i - (height*Slots + space* (Slots-1))/2 ));
-            m_AvailableGames[i]->SetSize(sf::Vector2f(150, Game::Get()->GetWindow()->getSize().y/2 +(height+space)*i - (height*Slots + space* (Slots-1))/2 ));
+            m_AvailableGames[i].Box->setPosition(sf::Vector2f(150, Game::Get()->GetWindow()->getSize().y/2 +(height+space)*i - (height*Slots + space* (Slots-1))/2 ));
+            m_AvailableGames[i].Box->setSize(sf::Vector2f(Game::Get()->GetWindow()->getSize().x-175, height));
         }
         //Log(Game::Get()->GetWindow()->getSize().y/2-50);
         //Add(new StaticBox(sf::Vector2f(Game::Get()->GetWindow()->getSize().x-175,100), sf::Vector2f(150, Game::Get()->GetWindow()->getSize().y/2-50 -50-25/2) ));

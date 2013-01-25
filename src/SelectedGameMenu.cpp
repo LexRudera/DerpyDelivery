@@ -1,11 +1,14 @@
 #include "SelectedGameMenu.hpp"
 
-SelectedGameMenu::SelectedGameMenu()
+namespace me
 {
-    //ctor
-}
+    SelectedGameMenu::SelectedGameMenu()
+    {
+        //ctor
+    }
 
-SelectedGameMenu::~SelectedGameMenu()
-{
-    //dtor
+    SelectedGameMenu::~SelectedGameMenu()
+    {
+        //dtor
+    }
 }
