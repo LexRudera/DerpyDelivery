@@ -12,6 +12,14 @@ namespace me
         //dtor
     }
 
+    void Object::DoTick()
+    {
+        if (m_Logic)
+        {
+            tick();
+        }
+    }
+
     void Object::tick()
     {
 

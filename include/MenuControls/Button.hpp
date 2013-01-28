@@ -27,9 +27,13 @@ namespace me
             bool LoadTexture(const sf::String& strng);
             void SetOnClickFunction(MenuEvent Func) { OnClick = Func; }
             void SetString(const sf::String& t){ m_Text.SetString(t); }
+            void setSize(const sf::Vector2f& i) { m_Btn.setSize(i); CenterText(); }
+            sf::Vector2f getSize() { return m_Btn.getSize(); }
+
         protected:
         private:
             void ApplyState(BtnStateStyle* Style);
+            void CenterText();
 
             // Elements of a button
             Label m_Text;

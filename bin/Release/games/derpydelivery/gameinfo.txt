@@ -1,3 +1,6 @@
 title: Derpy Delivery
 subtitle: That game thingy
-author: Lex Rudera (Pulsewave.co)
+description: A funky game about a wall-eyed pony that somehow delivers mails, flying around with the help of the player and such. Wings and stuff.
+author: Lex Rudera
+email: lex@pulsewave.co
+website: Pulsewave.co

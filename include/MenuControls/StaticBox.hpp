@@ -14,10 +14,10 @@ namespace me
 
             void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 
-            void SetSize(const sf::Vector2f& size) { m_Box.setSize(size); }
-            void SetSize(const float& x, const float& y) { m_Box.setSize(sf::Vector2f(x,y)); }
-            sf::Vector2f GetSize() { return m_Box.getSize(); }
-            void GetSize(float* x, float* y) const { *x = m_Box.getSize().x; *y = m_Box.getSize().y; }
+            void setSize(const sf::Vector2f& size) { m_Box.setSize(size); }
+            void setSize(const float& x, const float& y) { m_Box.setSize(sf::Vector2f(x,y)); }
+            sf::Vector2f getSize() { return m_Box.getSize(); }
+            void getSize(float* x, float* y) const { *x = m_Box.getSize().x; *y = m_Box.getSize().y; }
 
             void ApplyStyle(const BoxStyle& style);
             BoxStyle GetStyle();

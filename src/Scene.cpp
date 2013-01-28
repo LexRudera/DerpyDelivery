@@ -22,7 +22,7 @@ namespace me
         for (unsigned int i = 0; i < m_Objects.size(); i++)
         {
             //Log("Render loop: " + *((Label)m_Objects[i]).GetString());
-            m_Objects[i]->tick();
+            m_Objects[i]->DoTick();
         }
         Tick();
     }

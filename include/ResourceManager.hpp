@@ -11,14 +11,15 @@
 #include <SFML\Audio.hpp>
 namespace me
 {
-    class FontEntry;
-    class TextureEntry;
-    class SoundEntry;
     enum Persistence
     { Level, Campaign, Global, };
 
     class ResourceManager
     {
+        class FontEntry;
+        class TextureEntry;
+        class SoundEntry;
+
         public:
             // Global stuph
             ResourceManager();
@@ -56,43 +57,45 @@ namespace me
             // Sounds
             sf::String SoundDirectory;
             std::vector<SoundEntry*> m_Sounds;
+
+            class ResourceEntry
+            {
+                public:
+                    ResourceEntry(const sf::String& Name, const sf::String& FileName, const Persistence& persist) : m_FileName(FileName), m_Name(Name), m_Persistance(persist) {}
+                    virtual ~ResourceEntry() {}
+                    const sf::String& getName() const { return m_Name; }
+                    void setName(const sf::String& name) { m_Name = name; }
+                    const sf::String& getFilename() const { return m_FileName; }
+                    const Persistence& getPersistance() const { return m_Persistance; }
+                    void setPersistance(const Persistence& persist) { m_Persistance = persist; }
+                private:
+                    sf::String m_FileName;
+                    sf::String m_Name;
+                    Persistence m_Persistance;
+            };
+
+            class FontEntry : public ResourceEntry, public sf::Font
+            {
+                public:
+                    FontEntry(const sf::String& Name, const sf::String& FileName, const Persistence& persist) : ResourceEntry(Name, FileName, persist) {}
+                    virtual ~FontEntry(){}
+            };
+
+            class TextureEntry : public ResourceEntry, public sf::Texture
+            {
+                public:
+                    TextureEntry(const sf::String& Name, const sf::String& FileName, const Persistence& persist) : ResourceEntry(Name, FileName, persist) {}
+                    virtual ~TextureEntry(){}
+            };
+
+            class SoundEntry : public ResourceEntry, public sf::SoundBuffer
+            {
+                public:
+                    SoundEntry(const sf::String& Name, const sf::String& FileName, const Persistence& persist) : ResourceEntry(Name, FileName, persist) {}
+                    virtual ~SoundEntry(){}
+            };
     };
 
-    class ResourceEntry
-    {
-        public:
-            ResourceEntry(const sf::String& Name, const sf::String& FileName, const Persistence& persist) : m_FileName(FileName), m_Name(Name), m_Persistance(persist) {}
-            virtual ~ResourceEntry() {}
-            const sf::String& getName() const { return m_Name; }
-            void setName(const sf::String& name) { m_Name = name; }
-            const sf::String& getFilename() const { return m_FileName; }
-            const Persistence& getPersistance() const { return m_Persistance; }
-            void setPersistance(const Persistence& persist) { m_Persistance = persist; }
-        private:
-            sf::String m_FileName;
-            sf::String m_Name;
-            Persistence m_Persistance;
-    };
 
-    class FontEntry : public ResourceEntry, public sf::Font
-    {
-        public:
-            FontEntry(const sf::String& Name, const sf::String& FileName, const Persistence& persist) : ResourceEntry(Name, FileName, persist) {}
-            virtual ~FontEntry(){}
-    };
-
-    class TextureEntry : public ResourceEntry, public sf::Texture
-    {
-        public:
-            TextureEntry(const sf::String& Name, const sf::String& FileName, const Persistence& persist) : ResourceEntry(Name, FileName, persist) {}
-            virtual ~TextureEntry(){}
-    };
-
-    class SoundEntry : public ResourceEntry, public sf::SoundBuffer
-    {
-        public:
-            SoundEntry(const sf::String& Name, const sf::String& FileName, const Persistence& persist) : ResourceEntry(Name, FileName, persist) {}
-            virtual ~SoundEntry(){}
-    };
 }
 #endif // RESOURCEMANAGER_H

@@ -12,7 +12,7 @@ namespace me
         struct GameSlot
         {
             StaticBox* Box;
-            Label* Name;
+            Label* NameLbl;
             Button* Btn;
             boost::filesystem::path Path;
         };
@@ -23,6 +23,7 @@ namespace me
 
             void Load();
         protected:
+            void Tick();
         private:
             void ScanGameFolder();
             void LoadGameInfo(unsigned int);

@@ -12,21 +12,21 @@ namespace me
         setPosition(pos);
 
         if (size.x == 0) {
-            m_Box.SetSize(sf::Vector2f(150,m_Box.GetSize().y));
+            m_Box.setSize(sf::Vector2f(150,m_Box.getSize().y));
         }
         if (size.y == 0) {
-            m_Box.SetSize(sf::Vector2f(m_Box.GetSize().x, charSize));
+            m_Box.setSize(sf::Vector2f(m_Box.getSize().x, charSize));
         }
-        m_Selected.setPosition(sf::Vector2f(((m_Box.GetSize().y-6)/4*3)+10, m_Box.GetSize().y/2-charSize/4*3));//-m_Text.getLocalBounds().height/2));
+        m_Selected.setPosition(sf::Vector2f(((m_Box.getSize().y-6)/4*3)+10, m_Box.getSize().y/2-charSize/4*3));//-m_Text.getLocalBounds().height/2));
 
         //m_Box.setSize(sf::Vector2f(150, 25));
         m_Box.ApplyStyle(BoxStyle(0, sf::Color(128,128,128), sf::Color(85,85,85), 2));
 
         // Arrow Creation
         m_ArrowLeft.setPointCount(3);
-        m_ArrowLeft.setPoint(0, sf::Vector2f((m_Box.GetSize().y-6)/4*3, 0));
-        m_ArrowLeft.setPoint(1, sf::Vector2f((m_Box.GetSize().y-6)/4*3, m_Box.GetSize().y-6));
-        m_ArrowLeft.setPoint(2, sf::Vector2f(0, (m_Box.GetSize().y-6)/2));
+        m_ArrowLeft.setPoint(0, sf::Vector2f((m_Box.getSize().y-6)/4*3, 0));
+        m_ArrowLeft.setPoint(1, sf::Vector2f((m_Box.getSize().y-6)/4*3, m_Box.getSize().y-6));
+        m_ArrowLeft.setPoint(2, sf::Vector2f(0, (m_Box.getSize().y-6)/2));
         m_ArrowLeft.setFillColor(sf::Color(255, 255, 255));
         m_ArrowLeft.setOutlineColor(sf::Color(0, 0, 0));
         m_ArrowLeft.setOutlineThickness(1);
@@ -34,12 +34,12 @@ namespace me
 
         m_ArrowRight.setPointCount(3);
         m_ArrowRight.setPoint(0, sf::Vector2f(0, 0));
-        m_ArrowRight.setPoint(1, sf::Vector2f((m_Box.GetSize().y-6)/4*3, (m_Box.GetSize().y-6)/2));
-        m_ArrowRight.setPoint(2, sf::Vector2f(0, m_Box.GetSize().y-6));
+        m_ArrowRight.setPoint(1, sf::Vector2f((m_Box.getSize().y-6)/4*3, (m_Box.getSize().y-6)/2));
+        m_ArrowRight.setPoint(2, sf::Vector2f(0, m_Box.getSize().y-6));
         m_ArrowRight.setFillColor(sf::Color(255, 255, 255));
         m_ArrowRight.setOutlineColor(sf::Color(0, 0, 0));
         m_ArrowRight.setOutlineThickness(1);
-        m_ArrowRight.setPosition(sf::Vector2f(m_Box.GetSize().x-m_Box.GetStyle().OutlineThickness-m_ArrowRight.getOutlineThickness()-1-((m_Box.GetSize().y-6)/4*3), 3));
+        m_ArrowRight.setPosition(sf::Vector2f(m_Box.getSize().x-m_Box.GetStyle().OutlineThickness-m_ArrowRight.getOutlineThickness()-1-((m_Box.getSize().y-6)/4*3), 3));
     }
 
     Selector::~Selector()
@@ -92,7 +92,7 @@ namespace me
             }
         }
         if (MPos.x > getPosition().x + m_ArrowRight.getPosition().x - m_ArrowRight.getOutlineThickness()*2-2 // Below the x pos
-            && MPos.x < getPosition().x + m_Box.GetSize().x //+ m_ArrowRight.getPosition().x + m_ArrowRight.getLocalBounds().width - m_ArrowRight.getOutlineThickness()*2 // Above the lower box bounds
+            && MPos.x < getPosition().x + m_Box.getSize().x //+ m_ArrowRight.getPosition().x + m_ArrowRight.getLocalBounds().width - m_ArrowRight.getOutlineThickness()*2 // Above the lower box bounds
             && MPos.y > getPosition().y + m_ArrowRight.getPosition().y // Past the y pos
             && MPos.y < getPosition().y + m_ArrowRight.getPosition().y + m_ArrowRight.getLocalBounds().height) // Before the right box bounds
         {

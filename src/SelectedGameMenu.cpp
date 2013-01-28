@@ -2,7 +2,7 @@
 
 namespace me
 {
-    SelectedGameMenu::SelectedGameMenu()
+    SelectedGameMenu::SelectedGameMenu(const boost::filesystem::path& path)
     {
         //ctor
     }
@@ -10,5 +10,10 @@ namespace me
     SelectedGameMenu::~SelectedGameMenu()
     {
         //dtor
+    }
+
+    void SelectedGameMenu::Load()
+    {
+
     }
 }

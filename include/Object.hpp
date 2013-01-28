@@ -14,20 +14,22 @@ namespace me
     class Object : public sf::Drawable, public sf::Transformable
     {
         public:
-            /** Default constructor */
             Object();
-            /** Default destructor */
             virtual ~Object();
 
-            virtual void tick();
+            void DoTick();
 
             sf::Vector2f getPosition() { return sf::Transformable::getPosition(); }
             void getPosition(float* x, float* y) { *x = getPosition().x; *y = getPosition().y; }
             float getRotation(){ return sf::Transformable::getRotation(); }
             void getRotation(float* r) { *r = sf::Transformable::getRotation(); }
+            void ActivateLogic() { m_Logic = true; }
+            void DeactivateLogic() { m_Logic = false; }
         protected:
             virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const = 0;
+            virtual void tick();
         private:
+            bool m_Logic = true;
     };
 };
 
