@@ -26,7 +26,6 @@ namespace me
             void Tick();
         private:
             void ScanGameFolder();
-            void LoadGameInfo(unsigned int);
 
             void m_BackBtn_OnClick();
 

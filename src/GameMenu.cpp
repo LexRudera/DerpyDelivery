@@ -1,11 +1,11 @@
 #include "GameMenu.hpp"
 #include "Game.hpp"
 #include "MainMenu.hpp"
+#include "SelectedGameMenu.hpp"
 #include "Global.hpp"
 #include "InputManager.hpp"
 #include <boost/filesystem.hpp>
 #include <boost/algorithm/string/case_conv.hpp>
-#include <fstream>
 
 namespace me
 {
@@ -111,6 +111,7 @@ namespace me
                 if (Game::Get()->GetInputManager()->IsButtonUp(sf::Mouse::Button::Left))
                 {
                     Log(to_string(i));
+                    Game::Get()->ChangeScene(new SelectedGameMenu(m_AvailableGames[i].Path));
                     //Game::Get()->ChangeScene(new SelectedGameMenu(m_AvailableGames[i].Path));
                     // If there is an assigned function or not.
                     //if (OnClick != 0)
