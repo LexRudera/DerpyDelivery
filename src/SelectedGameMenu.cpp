@@ -61,6 +61,7 @@ namespace me
             file.get(c); // Get the next characters
             if (file.good()) // Are we good?
             {
+                /* First one-way iterating way
                 if (c == '\n') // Did we hit the end of the line?
                 {
                     if (ValidLine)
@@ -102,13 +103,49 @@ namespace me
                     cat.clear();
                     temp.clear();
                     ValidLine = false;
-                }
-                else if (c == ':')
+                }*/
+                if (c == ':')
                 {
+                    if (cat.empty()) { // If there is no category on the line
+                        std::string tcat;
+                        // Fill a temporary string to get the category
+                        for (std::string::reverse_iterator i = temp.rbegin(); i != temp.rend(); i ++)
+                        {
+                            else if (*i == ' ')
+                                break;
+                            tcat.push_back(*i);
+                        }
+                        // Reverse the tcat into the cat
+                        for (unsigned int i = 0; i < tcat.size(); i++)
+                        {
+                            cat.push_back(tcat[tcat.size()-1-i]);
+                        }
+                        // Done. The category is now on the line.
+                    }
+                    else
+                    {
+                        std::string rtcat, tcat;
+                        // Fill a temporary string to get the next category
+                        for (std::string::reverse_iterator i = temp.rbegin(); i != temp.rend(); i ++)
+                        {
+                            else if (*i == ' ')
+                                break;
+                            rtcat.push_back(*i);
+                        }
+                        // Reverse the rtcat into the tcat
+                        for (unsigned int i = 0; i < rtcat.size(); i++)
+                        {
+                            tcat.push_back(rtcat[rtcat.size()-1-i]);
+                        }
+                        // Clear the category from the data
+                        temp.replace(tcat)
+                    }
+                    temp.clear()
+                    /* First one-way iterating way
                     cat = temp;
                     temp.clear();
                     //Log(cat);
-                    ValidLine = true;
+                    ValidLine = true;*/
                 }
                 else
                     if (temp.empty() && c == ' ') {}
