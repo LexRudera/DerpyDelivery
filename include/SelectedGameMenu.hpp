@@ -41,6 +41,7 @@ namespace me
 
             // Functions
             void ReadGameinfo();
+            void ApplyData(const std::string& category, std::string data);
     };
 }
 

@@ -106,12 +106,19 @@ namespace me
                 }*/
                 if (c == ':')
                 {
+                    Log("");
+                    Log("Hit evaluation point!");
+                    std::string ttemp = temp;
+                    ttemp.insert(0,"Evaluating:\"").append("\"");
+                    Log(ttemp);
+
                     if (cat.empty()) { // If there is no category on the line
-                        std::string tcat;
+                        /*std::string tcat;
+
                         // Fill a temporary string to get the category
                         for (std::string::reverse_iterator i = temp.rbegin(); i != temp.rend(); i ++)
                         {
-                            else if (*i == ' ')
+                            if (*i == ' ')
                                 break;
                             tcat.push_back(*i);
                         }
@@ -119,42 +126,87 @@ namespace me
                         for (unsigned int i = 0; i < tcat.size(); i++)
                         {
                             cat.push_back(tcat[tcat.size()-1-i]);
-                        }
+                        }*/
+
+                        cat= temp;
                         // Done. The category is now on the line.
                     }
-                    else
+                    else // We category ready
                     {
-                        std::string rtcat, tcat;
-                        // Fill a temporary string to get the next category
-                        for (std::string::reverse_iterator i = temp.rbegin(); i != temp.rend(); i ++)
-                        {
-                            else if (*i == ' ')
-                                break;
-                            rtcat.push_back(*i);
-                        }
-                        // Reverse the rtcat into the tcat
-                        for (unsigned int i = 0; i < rtcat.size(); i++)
-                        {
-                            tcat.push_back(rtcat[rtcat.size()-1-i]);
-                        }
-                        // Clear the category from the data
-                        temp.replace(tcat)
+                        // Find split point between the future category and data
+                        int SplitPoint = temp.find_last_of('\n');
+                        // Extract the new category
+                        std::string tcat = temp.substr(SplitPoint+1);
+                        // Extract the data for the current category
+                        temp = temp.substr(0,SplitPoint);
+
+                        // Apply the extracted data into the stored category
+                        ApplyData(cat, temp);
+
+                        // Set the new category
+                        cat = tcat;
+                        Log(to_string(cat.size()));
                     }
-                    temp.clear()
+                    temp.clear();
                     /* First one-way iterating way
                     cat = temp;
                     temp.clear();
                     //Log(cat);
                     ValidLine = true;*/
+                    Log("");
                 }
                 else
-                    if (temp.empty() && c == ' ') {}
+                    if (temp.empty() && c == ' '){}
                     else
                     temp.push_back(c);
 
             }
+            else // End of file or weirdass error
+            {
+                // Apply the extracted data into the stored category
+                ApplyData(cat, temp);
+            }
         }
         Log("-END-");
+    }
+
+    void SelectedGameMenu::ApplyData(const std::string& category, std::string data)
+    {
+        Log("Setting data on a category");
+        Log(category);
+        if (boost::algorithm::to_lower_copy(category) == "title")
+        {
+            Log(category);
+            Log(data);
+            m_Title->SetString(data.append("\'").insert(0,"\'"));
+        }
+        else if (boost::algorithm::to_lower_copy(category) == "subtitle")
+        {
+            Log(category);
+            Log(data);
+        }
+        else if (boost::algorithm::to_lower_copy(category) == "description")
+        {
+            Log(category);
+            Log(data);
+        }
+        else if (boost::algorithm::to_lower_copy(category) == "author")
+        {
+            Log(category);
+            Log(data);
+        }
+        else if (boost::algorithm::to_lower_copy(category) == "email")
+        {
+            Log(category);
+            Log(data);
+        }
+        else if (boost::algorithm::to_lower_copy(category) == "website")
+        {
+            Log(category);
+            Log(data);
+        }
+        else
+            Log("Undefined Info Category");
     }
 
     void SelectedGameMenu::m_Back_OnClick()
