@@ -19,8 +19,11 @@ namespace me
             /** Default destructor */
             virtual ~Menu();
             void Add(ControlBase* obj);
+            bool ButtonReady();
         protected:
+            void Tick();
         private:
+            bool m_ButtonedFrame = false;
     };
 };
 

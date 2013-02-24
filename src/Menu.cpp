@@ -18,4 +18,19 @@ namespace me
     {
         m_Objects.push_back(obj);
     }
+
+    void Menu::Tick()
+    {
+        m_ButtonedFrame = false;
+    }
+
+    bool Menu::ButtonReady()
+    {
+        if (m_ButtonedFrame == false)
+        {
+            m_ButtonedFrame = true;
+            return true;
+        }
+        return false;
+    }
 }

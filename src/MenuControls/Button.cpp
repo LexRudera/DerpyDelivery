@@ -50,7 +50,10 @@ namespace me
                 // If there is an assigned function or not.
                 if (OnClick != 0)
                 {
-                    (m_Parent->*OnClick)();
+                    if (m_Parent->ButtonReady())
+                    {
+                        (m_Parent->*OnClick)();
+                    }
                 }
             }
         }

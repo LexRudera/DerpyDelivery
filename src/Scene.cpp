@@ -19,10 +19,12 @@ namespace me
 
     void Scene::DoTick()
     {
-        for (unsigned int i = 0; i < m_Objects.size(); i++)
+        //for (unsigned int i = 0; i < m_Objects.size(); i++)
+        for (std::vector<Object*>::reverse_iterator i = m_Objects.rbegin(); i != m_Objects.rend(); i++)
         {
             //Log("Render loop: " + *((Label)m_Objects[i]).GetString());
-            m_Objects[i]->DoTick();
+            //m_Objects[i]->DoTick();
+            (*i)->DoTick();
         }
         Tick();
     }

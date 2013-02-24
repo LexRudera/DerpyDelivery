@@ -1,6 +1,7 @@
 title: Derpy Delivery
 subtitle: That game thingy
-description: A funky game about a wall-eyed pony that somehow delivers mails, flying around with the help of the player and such. Wings and stuff.
+description: A funky game about a wall-eyed pony that somehow delivers mails,
+flying around with the help of the player and such. Wings and stuff.
 author: Lex Rudera
 email: lex@pulsewave.co
 website: Pulsewave.co

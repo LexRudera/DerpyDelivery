@@ -21,18 +21,17 @@ namespace me
     void SelectedGameMenu::Load()
     {
         // Element creation
-        const int height = Game::Get()->GetWindow()->getSize().y-30;
-        const int width = height/3*4;
-        sf::Vector2f TopLeftPos = sf::Vector2f(Game::Get()->GetWindow()->getSize().x/2-width/2,15);
-        Add(m_Box = new StaticBox(sf::Vector2f(width, height),TopLeftPos));
-        Add(m_Title = new Label("A Title",30, TopLeftPos + sf::Vector2f(80,20)));
-        //Add(m_SubTitle = new Label());
-        //Add(m_Author = new Label());
+        sf::Vector2f Size = sf::Vector2f((Game::Get()->GetWindow()->getSize().y-30)/3*4, (Game::Get()->GetWindow()->getSize().y-30));
+        sf::Vector2f TopLeftPos = sf::Vector2f(Game::Get()->GetWindow()->getSize().x/2-Size.x/2,15);
+        Add(m_Box = new StaticBox(Size, TopLeftPos));
+        Add(m_Title = new Label("Title", 50, TopLeftPos + sf::Vector2f(80,30)));
+        Add(m_SubTitle = new Label("Subtitle", 25, TopLeftPos + sf::Vector2f(90,80)));
+        Add(m_Author = new Label("Author", 20, TopLeftPos + sf::Vector2f(70,20)));
         //Add(m_Email = new Label());
         //Add(m_Website = new Label());
-        //Add(m_Description = new Label());
+        Add(m_Description = new Label("Description", 20, TopLeftPos + sf::Vector2f(50,120)));
         //Add(m_Saves = new Selector());
-        Add(m_Back = new Button(this, "Back"));
+        Add(m_Back = new Button(this, "Back", sf::Vector2f(150,50), TopLeftPos + Size - sf::Vector2f(200,100)));
         //Add(m_Load = new Button(this, "Load Save"));
         //Add(m_Delete = new Button(this, "Delete Save"));
         //Add(m_Play = new Button(this, "Play"));
@@ -61,77 +60,13 @@ namespace me
             file.get(c); // Get the next characters
             if (file.good()) // Are we good?
             {
-                /* First one-way iterating way
-                if (c == '\n') // Did we hit the end of the line?
-                {
-                    if (ValidLine)
-                    {
-                        if (boost::algorithm::to_lower_copy(cat) == "title")
-                        {
-                            Log(cat);
-                            Log(temp);
-                            m_Title->SetString(temp.append("\'").insert(0,"\'"));
-                        }
-                        else if (boost::algorithm::to_lower_copy(cat) == "subtitle")
-                        {
-                            Log(cat);
-                            Log(temp);
-                        }
-                        else if (boost::algorithm::to_lower_copy(cat) == "description")
-                        {
-                            Log(cat);
-                            Log(temp);
-                        }
-                        else if (boost::algorithm::to_lower_copy(cat) == "author")
-                        {
-                            Log(cat);
-                            Log(temp);
-                        }
-                        else if (boost::algorithm::to_lower_copy(cat) == "email")
-                        {
-                            Log(cat);
-                            Log(temp);
-                        }
-                        else if (boost::algorithm::to_lower_copy(cat) == "website")
-                        {
-                            Log(cat);
-                            Log(temp);
-                        }
-                        else
-                            Log("Undefined Info Category");
-                    }
-                    cat.clear();
-                    temp.clear();
-                    ValidLine = false;
-                }*/
                 if (c == ':')
                 {
-                    Log("");
-                    Log("Hit evaluation point!");
-                    std::string ttemp = temp;
-                    ttemp.insert(0,"Evaluating:\"").append("\"");
-                    Log(ttemp);
-
                     if (cat.empty()) { // If there is no category on the line
-                        /*std::string tcat;
-
-                        // Fill a temporary string to get the category
-                        for (std::string::reverse_iterator i = temp.rbegin(); i != temp.rend(); i ++)
-                        {
-                            if (*i == ' ')
-                                break;
-                            tcat.push_back(*i);
-                        }
-                        // Reverse the tcat into the cat
-                        for (unsigned int i = 0; i < tcat.size(); i++)
-                        {
-                            cat.push_back(tcat[tcat.size()-1-i]);
-                        }*/
-
-                        cat= temp;
-                        // Done. The category is now on the line.
+                        // Assign the buffer into the catagory.
+                        cat = temp;
                     }
-                    else // We category ready
+                    else // We have a category ready
                     {
                         // Find split point between the future category and data
                         int SplitPoint = temp.find_last_of('\n');
@@ -147,13 +82,8 @@ namespace me
                         cat = tcat;
                         Log(to_string(cat.size()));
                     }
+                    // Clear the buffer
                     temp.clear();
-                    /* First one-way iterating way
-                    cat = temp;
-                    temp.clear();
-                    //Log(cat);
-                    ValidLine = true;*/
-                    Log("");
                 }
                 else
                     if (temp.empty() && c == ' '){}
@@ -174,26 +104,30 @@ namespace me
     {
         Log("Setting data on a category");
         Log(category);
+        //data.append("\'").insert(0,"\'");
         if (boost::algorithm::to_lower_copy(category) == "title")
         {
             Log(category);
             Log(data);
-            m_Title->SetString(data.append("\'").insert(0,"\'"));
+            m_Title->SetString(data);
         }
         else if (boost::algorithm::to_lower_copy(category) == "subtitle")
         {
             Log(category);
             Log(data);
+            m_SubTitle->SetString(data);
         }
         else if (boost::algorithm::to_lower_copy(category) == "description")
         {
             Log(category);
             Log(data);
+            m_Description->SetString(data);
         }
         else if (boost::algorithm::to_lower_copy(category) == "author")
         {
             Log(category);
             Log(data);
+            m_Author->SetString(data.append("\'s"));
         }
         else if (boost::algorithm::to_lower_copy(category) == "email")
         {
