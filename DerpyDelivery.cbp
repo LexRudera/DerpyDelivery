@@ -78,6 +78,7 @@
 		<Unit filename="include\Scene.hpp" />
 		<Unit filename="include\SelectedGameMenu.hpp" />
 		<Unit filename="include\Settings.hpp" />
+		<Unit filename="include\Utils\GameInfoReader.hpp" />
 		<Unit filename="src\Animation.cpp" />
 		<Unit filename="src\Background.cpp" />
 		<Unit filename="src\Game.cpp" />
@@ -99,6 +100,7 @@
 		<Unit filename="src\Scene.cpp" />
 		<Unit filename="src\SelectedGameMenu.cpp" />
 		<Unit filename="src\Settings.cpp" />
+		<Unit filename="src\Utils\GameInfoReader.cpp" />
 		<Unit filename="src\main.cpp" />
 		<Extensions>
 			<code_completion />

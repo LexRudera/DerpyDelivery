@@ -38,10 +38,6 @@ namespace me
             void m_Load_OnClick();
             void m_Delete_OnClick();
             void m_Play_OnClick();
-
-            // Functions
-            void ReadGameinfo();
-            void ApplyData(const std::string& category, std::string data);
     };
 }
 
