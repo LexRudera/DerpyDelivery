@@ -32,36 +32,39 @@ namespace me
         //Add(m_Email = new Label());
         //Add(m_Website = new Label());
         Add(m_Description = new Label(GIF.Read("Description"), 20, TopLeftPos + sf::Vector2f(50,120)));
-        //Add(m_Saves = new Selector());
-        Add(m_Back = new Button(this, "Back", sf::Vector2f(150,50), TopLeftPos + Size - sf::Vector2f(200,100)));
-        //Add(m_Load = new Button(this, "Load Save"));
-        //Add(m_Delete = new Button(this, "Delete Save"));
-        //Add(m_Play = new Button(this, "Play"));
-
+        Add(m_Back = new Button(this, "Back", sf::Vector2f(150,50), TopLeftPos + Size - sf::Vector2f(500,112)));
+        Add(m_Load = new Button(this, "Load Save", sf::Vector2f(150,50), TopLeftPos + Size - sf::Vector2f(200,125)));
+        Add(m_Delete = new Button(this, "Delete Save", sf::Vector2f(150,50), TopLeftPos + Size - sf::Vector2f(200,75)));
+        Add(m_Play = new Button(this, "Play", sf::Vector2f(150,50), TopLeftPos + Size - sf::Vector2f(400,112 )));
+        Add(m_Saves = new Selector(16, sf::Vector2f(150,25), TopLeftPos + Size - sf::Vector2f(200,150)));
         // Event Functions
         m_Back->SetOnClickFunction(static_cast<MenuEvent>(&SelectedGameMenu::m_Back_OnClick));
-        /*m_Load->SetOnClickFunction(static_cast<MenuEvent>(&SelectedGameMenu::m_Load_OnClick));
+        m_Load->SetOnClickFunction(static_cast<MenuEvent>(&SelectedGameMenu::m_Load_OnClick));
         m_Delete->SetOnClickFunction(static_cast<MenuEvent>(&SelectedGameMenu::m_Delete_OnClick));
-        m_Play->SetOnClickFunction(static_cast<MenuEvent>(&SelectedGameMenu::m_Play_OnClick));*/
+        m_Play->SetOnClickFunction(static_cast<MenuEvent>(&SelectedGameMenu::m_Play_OnClick));
     }
 
     void SelectedGameMenu::m_Back_OnClick()
     {
+        Log("Back Clicked!");
         Game::Get()->ChangeScene(new GameMenu());
     }
 
     void SelectedGameMenu::m_Load_OnClick()
     {
+        Log("Load Clicked!");
 
     }
 
     void SelectedGameMenu::m_Delete_OnClick()
     {
+        Log("Delete Clicked!");
 
     }
 
     void SelectedGameMenu::m_Play_OnClick()
     {
+        Log("Play Clicked!");
 
     }
 }

@@ -5,7 +5,7 @@
 
 namespace me
 {
-    Selector::Selector(unsigned int charSize, const sf::Vector2f& pos, const sf::Vector2f& size, float rot)
+    Selector::Selector(unsigned int charSize, const sf::Vector2f& size, const sf::Vector2f& pos, float rot)
     : m_Box(size),
     m_Selected("none", charSize, sf::Vector2f(10,size.y/2-charSize/4*3))
     {

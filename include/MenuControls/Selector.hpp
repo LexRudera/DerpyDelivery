@@ -11,7 +11,7 @@ namespace me
     {
         public:
             /** Default constructor */
-            Selector(unsigned int charSize, const sf::Vector2f& pos = sf::Vector2f(), const sf::Vector2f& size = sf::Vector2f(), float rot = 0);
+            Selector(unsigned int charSize, const sf::Vector2f& size = sf::Vector2f(), const sf::Vector2f& pos = sf::Vector2f(), float rot = 0);
             /** Default destructor */
             virtual ~Selector();
 

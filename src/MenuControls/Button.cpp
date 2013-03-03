@@ -47,10 +47,9 @@ namespace me
             //On Click
             if (Game::Get()->GetInputManager()->IsButtonUp(sf::Mouse::Button::Left))
             {
-                // If there is an assigned function or not.
-                if (OnClick != 0)
+                if (m_Parent->ButtonReady()) // If a button already have been pressed this frame, don't even try anything
                 {
-                    if (m_Parent->ButtonReady())
+                    if (OnClick != 0) // If there is an assigned function or not.
                     {
                         (m_Parent->*OnClick)();
                     }
