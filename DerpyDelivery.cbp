@@ -30,6 +30,7 @@
 					<Add directory="$(#SFML)\include" />
 					<Add directory=".\include" />
 					<Add directory="$(#boost)" />
+					<Add directory="$(#lua)\include" />
 				</Compiler>
 				<ResourceCompiler>
 					<Add directory="$(#sfml)\include" />
@@ -45,8 +46,10 @@
 					<Add library="sfml-system-s" />
 					<Add library="libboost_system-mgw47-1_52" />
 					<Add library="libboost_filesystem-mgw47-1_52" />
+					<Add library="lua52" />
 					<Add directory="$(#sfml)\build\lib" />
 					<Add directory=".\lib" />
+					<Add directory="$(#lua)\lib" />
 				</Linker>
 			</Target>
 		</Build>
